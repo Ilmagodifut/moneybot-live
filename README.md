@@ -49,6 +49,8 @@ Se no, il giudice non sta aggiungendo valore e le soglie vanno riviste.
 ## Due capitali da 1.000 $
 
 - **Lento**: la strategia descritta sopra, su 18 monete, con Claude come giudice.
+- **Rapido 360°** (`moneybot/fast.py`, `RAPIDO_360`): stessa idea su tutte le 18 crypto, compra al -8%,
+  fino a 6 posizioni. Nel backtest ha reso meno del rapido su BTC/ETH e con cali più forti: è un confronto dal vivo.
 - **Rapido** (`moneybot/fast.py`): compra BTC o ETH quando crollano del 4% sotto la loro media
   a 200 ore e rivende al rimbalzo, dopo al massimo 5 giorni o con uno stop del 10%. Solo regole.
 

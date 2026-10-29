@@ -348,3 +348,20 @@ def test_multi_live_rebalance(tmp_path, monkeypatch):
     # un'ora dopo non ribilancia di nuovo
     multi.run_live(tmp_path, out, now_s=t + 3600)
     assert len(read_trades(multi.paths(tmp_path)["trades"])) == 2
+
+
+def test_fast_360_buys_deepest_dips_up_to_max_positions(tmp_path):
+    from moneybot import fast
+    base = [100.0] * 1300
+    candles = {sym: make_candles(base) for sym in fast.RAPIDO_360.symbols}
+    candles["SOL"] = make_candles(base + [90.0])   # -10%: compra
+    candles["ADA"] = make_candles(base + [91.5])   # -8,5%: compra
+    candles["DOGE"] = make_candles(base + [95.0])  # -5%: no (soglia -8%)
+    out = tmp_path / "dash"
+    t = candles["SOL"][-1].close_time
+    fast.run(candles, t, True, tmp_path, out, fast.RAPIDO_360)
+    state = State.load(fast.paths(tmp_path, fast.RAPIDO_360)["state"])
+    assert set(state.positions) == {"SOL", "ADA"}
+    assert all(p.cost == pytest.approx(1000 / 6, rel=1e-2) for p in state.positions.values())  # la seconda risente delle commissioni della prima
+    watch = json.loads((out / "fast360_watch.json").read_text())
+    assert watch[0]["symbol"] == "SOL" and len(watch) == len(fast.RAPIDO_360.symbols)
