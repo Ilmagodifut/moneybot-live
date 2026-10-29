@@ -56,6 +56,18 @@ Nel backtest le strategie veloci "classiche" (trend a 4 ore, comprare le monete 
 prima) perdevano oltre l'80% in commissioni: il capitale rapido usa invece i crolli, che sono rari.
 Quando non ci sono crolli resta in contanti.
 
+## Terzo capitale: 200 prodotti
+
+`moneybot/multi.py`: 1.000 $ su 200 prodotti (circa 110 grandi azioni USA, 72 ETF di borse,
+settori, obbligazioni e materie prime, 18 crypto), prezzi giornalieri da Yahoo Finance.
+Ogni mese, dopo la chiusura di Wall Street, tiene in parti uguali i 10 prodotti saliti di più
+nell'ultimo anno e sopra la loro media di 200 giorni.
+
+Nel backtest su circa 20 anni (`python -m moneybot multi-backtest`) i risultati con azioni e
+crypto sono gonfiati dal "senno di poi" (la lista è fatta con i vincitori di oggi). Sugli ETF,
+che non hanno questo problema, la stessa regola ha reso meno del semplice S&P 500 ma con un
+crollo massimo molto più piccolo.
+
 ## Backtest: le regole provate sul passato
 
 `python -m moneybot backtest` fa girare le stesse regole (senza Claude) su 2 anni di prezzi orari

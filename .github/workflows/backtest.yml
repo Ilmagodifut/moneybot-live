@@ -30,11 +30,13 @@ jobs:
           restore-keys: klines-
       - name: Backtest su 2 anni
         run: python -m moneybot backtest
+      - name: Backtest multi-mercato su 20 anni
+        run: python -m moneybot multi-backtest
       - name: Salva i risultati
         run: |
           git config user.name "moneybot"
           git config user.email "moneybot@users.noreply.github.com"
-          git add state/dashboard/backtest.json
+          git add state/dashboard/backtest.json state/dashboard/multi_backtest.json
           git diff --cached --quiet && exit 0
           git commit -m "backtest settimanale $(date -u '+%Y-%m-%d')"
           git pull --rebase
