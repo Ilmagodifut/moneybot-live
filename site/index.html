@@ -142,6 +142,41 @@
     <p class="empty" id="verdicts-empty" hidden>Ancora nessuna decisione.</p>
   </section>
 
+  <section class="card" id="backtest">
+    <div class="card-head">
+      <div>
+        <h2>Prova sul passato: 2 anni</h2>
+        <p class="note">Le stesse regole fatte girare sui prezzi orari reali di <span id="bt-period">—</span>, con commissioni. Le impostazioni si scelgono sul primo periodo e si giudicano sul secondo.</p>
+      </div>
+      <div class="legend"><span><i class="l-eq"></i>Regole attuali</span><span><i class="l-old"></i>Prime regole orarie</span><span><i class="l-bh"></i>Compra e tieni</span></div>
+    </div>
+    <p class="headline" id="bt-headline"></p>
+    <div class="chart" id="bt-chart"></div>
+    <div class="table-box">
+      <table>
+        <thead><tr><th>Versione</th><th class="num">Allenamento</th><th class="num">Verifica</th><th class="num">2 anni</th><th class="num">Calo max</th><th class="num">Operazioni</th><th class="num">Vinte</th></tr></thead>
+        <tbody id="bt-table"></tbody>
+      </table>
+    </div>
+    <p class="note">Il backtest non include Claude e non garantisce i risultati futuri: serve a scartare le regole che sul passato non avrebbero funzionato.</p>
+  </section>
+
+  <section class="card" id="claude-vs-rules">
+    <div class="card-head">
+      <div>
+        <h2>Claude contro regole</h2>
+        <p class="note">Per ogni moneta candidata: di quanto si è mosso il prezzo nelle 24 ore successive, secondo chi ha dato il via libera.</p>
+      </div>
+    </div>
+    <div class="table-box">
+      <table>
+        <thead><tr><th>Gruppo</th><th class="num">Casi</th><th class="num">Variazione media a 24 ore</th><th class="num">Saliti più dei costi</th></tr></thead>
+        <tbody id="cmp-table"></tbody>
+      </table>
+    </div>
+    <p class="note">Se "Via libera di Claude" fa meglio di "Via libera delle regole", Claude sta aggiungendo valore. Servono alcuni giorni di dati per dirlo.</p>
+  </section>
+
   <section class="how">
     <div class="step"><b>Ogni ora</b><p>Il bot scarica i prezzi di 18 monete, controlla stop e trend delle posizioni e cerca nuove entrate.</p></div>
     <div class="step"><b>Regole</b><p>Sono candidate solo le monete in salita su più orizzonti, con slancio presente ma non esagerato.</p></div>

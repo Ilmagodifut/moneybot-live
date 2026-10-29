@@ -14,8 +14,9 @@ class Snapshot:
     time: int
     close: float
     ema20: float
-    ema50: float
-    ema200: float
+    trend_fast: float        # media mobile a config.TREND_FAST ore
+    trend_mid: float
+    trend_slow: float
     rsi14: float
     atr14: float
     change_1h: float
@@ -31,13 +32,13 @@ class Snapshot:
 
 
 def snapshot(symbol: str, candles: list[Candle]) -> Snapshot | None:
-    if len(candles) < 200:
+    if len(candles) < config.TREND_SLOW:
         return None
     closes = [c.close for c in candles]
     highs = [c.high for c in candles]
     lows = [c.low for c in candles]
     vols = [c.volume for c in candles]
-    e20, e50, e200 = ema(closes, 20), ema(closes, 50), ema(closes, 200)
+    e20 = ema(closes, 20)
     a = atr(highs, lows, closes)[-1]
     vol_24h = sum(vols[-24:])
     prev_week = vols[-24 * 8:-24]
@@ -48,8 +49,9 @@ def snapshot(symbol: str, candles: list[Candle]) -> Snapshot | None:
         time=candles[-1].close_time,
         close=closes[-1],
         ema20=e20[-1],
-        ema50=e50[-1],
-        ema200=e200[-1],
+        trend_fast=ema(closes, config.TREND_FAST)[-1],
+        trend_mid=ema(closes, config.TREND_MID)[-1],
+        trend_slow=ema(closes, config.TREND_SLOW)[-1],
         rsi14=rsi(closes)[-1],
         atr14=a,
         change_1h=pct_change(closes[-1], closes[-2]),
@@ -63,10 +65,10 @@ def snapshot(symbol: str, candles: list[Candle]) -> Snapshot | None:
 
 
 def is_candidate(s: Snapshot) -> bool:
-    """Trend rialzista su più orizzonti, slancio presente ma non esagerato."""
+    """Trend rialzista su giorni e settimane, slancio presente ma non esagerato."""
     return (
-        s.close > s.ema200
-        and s.ema20 > s.ema50 > s.ema200
+        s.close > s.trend_slow
+        and s.trend_fast > s.trend_mid > s.trend_slow
         and 50 <= s.rsi14 <= 70
     )
 
@@ -77,4 +79,12 @@ def rules_only_gate(s: Snapshot) -> bool:
 
 
 def trend_broken(s: Snapshot) -> bool:
-    return s.ema20 < s.ema50
+    return s.trend_fast < s.trend_mid
+
+
+def trend_label(s: Snapshot) -> str:
+    if s.trend_fast > s.trend_mid > s.trend_slow:
+        return "up"
+    if s.trend_fast < s.trend_mid < s.trend_slow:
+        return "down"
+    return "sideways"

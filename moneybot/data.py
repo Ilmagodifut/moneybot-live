@@ -19,24 +19,34 @@ class Candle:
     close_time: int  # millisecondi
 
 
-def fetch_candles(symbol: str, interval: str, limit: int) -> list[Candle]:
-    """Scarica le candele e tiene solo quelle già chiuse."""
+def _get(symbol: str, params: dict) -> list:
     last_error = None
     for attempt in range(3):
         try:
-            resp = requests.get(
-                BASE_URL,
-                params={"symbol": symbol, "interval": interval, "limit": limit},
-                timeout=20,
-            )
+            resp = requests.get(BASE_URL, params={"symbol": symbol, **params}, timeout=20)
             resp.raise_for_status()
-            rows = resp.json()
-            break
+            return resp.json()
         except requests.RequestException as e:
             last_error = e
             time.sleep(2 ** attempt)
-    else:
-        raise RuntimeError(f"impossibile scaricare {symbol}: {last_error}")
+    raise RuntimeError(f"impossibile scaricare {symbol}: {last_error}")
+
+
+def fetch_candles(symbol: str, interval: str, limit: int) -> list[Candle]:
+    """Scarica le ultime `limit` candele (a blocchi da 1000) e tiene solo quelle già chiuse."""
+    rows: list = []
+    end_time = None
+    while len(rows) < limit:
+        params = {"interval": interval, "limit": min(1000, limit - len(rows))}
+        if end_time is not None:
+            params["endTime"] = end_time
+        batch = _get(symbol, params)
+        if not batch:
+            break
+        rows = batch + rows
+        end_time = int(batch[0][0]) - 1
+        if len(batch) < params["limit"]:
+            break
 
     now_ms = int(time.time() * 1000)
     candles = [

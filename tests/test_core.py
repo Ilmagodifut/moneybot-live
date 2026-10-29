@@ -8,7 +8,7 @@ from moneybot import bot, config, judge
 from moneybot.data import Candle
 from moneybot.indicators import atr, ema, rsi
 from moneybot.portfolio import Broker, State, read_trades
-from moneybot.strategy import snapshot
+from moneybot.strategy import rules_only_gate, snapshot
 
 HOUR = 3600 * 1000
 
@@ -45,9 +45,9 @@ def test_atr_of_fixed_range():
 
 
 def test_snapshot_needs_enough_history():
-    assert snapshot("X", make_candles([1.0] * 100)) is None
-    s = snapshot("X", make_candles([100 + i * 0.1 for i in range(300)]))
-    assert s.ema20 > s.ema50 > s.ema200
+    assert snapshot("X", make_candles([1.0] * 500)) is None
+    s = snapshot("X", make_candles([100 + i * 0.1 for i in range(1000)]))
+    assert s.trend_fast > s.trend_mid > s.trend_slow
 
 
 # --- portafoglio ---
@@ -84,7 +84,7 @@ def test_state_roundtrip(tmp_path):
 # --- gestione posizioni e sicurezza ---
 
 def test_position_is_stopped_out_when_price_falls(tmp_path):
-    closes = [100 + i * 0.1 for i in range(250)]
+    closes = [100 + i * 0.1 for i in range(1000)]
     candles = make_candles(closes)
     state = State()
     broker = Broker(state, tmp_path / "t.csv")
@@ -101,7 +101,7 @@ def test_position_is_stopped_out_when_price_falls(tmp_path):
 
 
 def test_trailing_stop_only_moves_up(tmp_path):
-    closes = [100 + i * 0.5 for i in range(250)]
+    closes = [100 + i * 0.5 for i in range(1000)]
     candles = make_candles(closes, spread=0.001)
     state = State()
     broker = Broker(state, tmp_path / "t.csv")
@@ -160,7 +160,7 @@ def fake_client(answer: dict, stop_reason="end_turn"):
 
 def test_judge_request_and_parse_haiku(monkeypatch):
     monkeypatch.setattr(config, "JUDGE_MODEL", "claude-haiku-5-5")
-    s = snapshot("ETH", make_candles([100 + i * 0.1 for i in range(300)]))
+    s = snapshot("ETH", make_candles([100 + i * 0.1 for i in range(1000)]))
     client, seen = fake_client(good_verdict().__dict__)
     assert judge.ask(client, s, s) == good_verdict()
     assert seen["body"]["model"] == "claude-haiku-5-5"
@@ -171,7 +171,7 @@ def test_judge_request_and_parse_haiku(monkeypatch):
 
 def test_judge_uses_fallbacks_on_bigger_models(monkeypatch):
     monkeypatch.setattr(config, "JUDGE_MODEL", "claude-opus-5-5")
-    s = snapshot("ETH", make_candles([100 + i * 0.1 for i in range(300)]))
+    s = snapshot("ETH", make_candles([100 + i * 0.1 for i in range(1000)]))
     client, seen = fake_client(good_verdict().__dict__)
     assert judge.ask(client, s, s) == good_verdict()
     assert seen["body"]["fallbacks"] == "default"
@@ -182,7 +182,7 @@ def test_daily_judge_cap(tmp_path, monkeypatch):
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test")
     monkeypatch.setattr(bot.judge, "ask", lambda *a: None)
     monkeypatch.setattr(bot, "is_candidate", lambda s: True)
-    candles = make_candles([100 + i * 0.1 for i in range(300)])
+    candles = make_candles([100 + i * 0.1 for i in range(1000)])
     snaps = {sym: snapshot(sym, candles) for sym in ["A", "B", "C"]}
     state = State(day="2026-01-01", judge_day="2026-01-01", judge_calls_today=config.MAX_JUDGE_CALLS_PER_DAY - 1)
     bot.look_for_entries(state, Broker(state, tmp_path / "t.csv"), snaps, 1000.0, candles[-1].close_time, tmp_path / "v.jsonl")
@@ -191,7 +191,7 @@ def test_daily_judge_cap(tmp_path, monkeypatch):
 
 
 def test_judge_refusal_is_a_pass():
-    s = snapshot("ETH", make_candles([100 + i * 0.1 for i in range(300)]))
+    s = snapshot("ETH", make_candles([100 + i * 0.1 for i in range(1000)]))
     client, _ = fake_client({}, stop_reason="refusal")
     assert judge.ask(client, s, None) is None
 
@@ -200,7 +200,7 @@ def test_judge_refusal_is_a_pass():
 
 def test_export_writes_row_files(tmp_path):
     from moneybot import export
-    candles = make_candles([100 + i * 0.1 for i in range(300)])
+    candles = make_candles([100 + i * 0.1 for i in range(1000)])
     snaps = {"BTC": snapshot("BTC", candles)}
     state = State()
     p = bot.paths(tmp_path)
@@ -210,13 +210,14 @@ def test_export_writes_row_files(tmp_path):
     export.write_all(state, snaps, p, p["dashboard"])
     summary = json.loads((p["dashboard"] / "summary.json").read_text())[0]
     assert summary["open_positions"] == 1
-    assert summary["benchmark"] == pytest.approx(1299.0, rel=1e-3)
+    assert summary["benchmark"] == pytest.approx(1999.0, rel=1e-3)
+    assert json.loads((p["dashboard"] / "market.json").read_text())[0]["trend"] == "up"
     assert json.loads((p["dashboard"] / "positions.json").read_text())[0]["symbol"] == "BTC"
     assert len(json.loads((p["dashboard"] / "equity.json").read_text())) == 1
 
 
 def test_same_candle_is_evaluated_once(tmp_path, monkeypatch):
-    candles = make_candles([100 + i * 0.1 for i in range(300)])
+    candles = make_candles([100 + i * 0.1 for i in range(1000)])
     monkeypatch.setattr(bot, "fetch_candles", lambda *a: candles)
     monkeypatch.setattr(config, "STATE_DIR", tmp_path)
     monkeypatch.setattr(config, "REPORT_PATH", tmp_path / "REPORT.md")
@@ -239,7 +240,7 @@ def test_rules_take_over_when_claude_is_unavailable(tmp_path, monkeypatch):
     monkeypatch.setattr(bot.judge, "ask", no_credit)
     monkeypatch.setattr(bot, "is_candidate", lambda s: True)
     monkeypatch.setattr(bot, "rules_only_gate", lambda s: True)
-    candles = make_candles([100 + i * 0.1 for i in range(300)])
+    candles = make_candles([100 + i * 0.1 for i in range(1000)])
     snaps = {sym: snapshot(sym, candles) for sym in ["A", "B"]}
     state = State(day="2026-01-01")
     bot.look_for_entries(state, Broker(state, tmp_path / "t.csv"), snaps, 1000.0, candles[-1].close_time, tmp_path / "v.jsonl")
@@ -249,7 +250,7 @@ def test_rules_take_over_when_claude_is_unavailable(tmp_path, monkeypatch):
 
 
 def test_no_credit_error_becomes_unavailable():
-    s = snapshot("ETH", make_candles([100 + i * 0.1 for i in range(300)]))
+    s = snapshot("ETH", make_candles([100 + i * 0.1 for i in range(1000)]))
 
     def handler(request):
         return httpx.Response(400, json={"type": "error", "error": {"type": "invalid_request_error", "message": "Your credit balance is too low to access the Anthropic API."}})
@@ -257,3 +258,30 @@ def test_no_credit_error_becomes_unavailable():
     client = anthropic.Anthropic(api_key="test", max_retries=0, http_client=httpx.Client(transport=httpx.MockTransport(handler)))
     with pytest.raises(judge.JudgeUnavailable):
         judge.ask(client, s, None)
+
+
+# --- backtest ---
+
+def test_backtest_trades_and_stats():
+    from moneybot import backtest
+    # salita lenta, poi crollo: il bot deve entrare e poi uscire
+    closes = [100 * (1.0004 ** i) for i in range(2500)] + [100 * (1.0004 ** 2500) * (0.995 ** i) for i in range(300)]
+    rows = [[i * HOUR, c, c * 1.002, c * 0.998, c, 1, i * HOUR + HOUR - 1, 1000.0] for i, c in enumerate(closes)]
+    s = backtest.build_series(rows)
+    times = sorted(s.index)[backtest.WARMUP:]
+    res = backtest.simulate({"BTC": s}, times, backtest.LIVE)
+    assert res["trades"], "nessuna operazione"
+    assert res["trades"][-1]["reason"] in ("stop", "trend")
+    st = backtest.stats(res, times[0], times[-1] + HOUR)
+    assert st["trades"] == len(res["trades"])
+    assert -1 < st["return"] < 1
+
+
+def test_backtest_rules_match_live_rules():
+    from moneybot import backtest
+    closes = [100 + i * 0.05 + (i % 7) * 0.3 for i in range(1500)]
+    candles = make_candles(closes)
+    rows = [[c.open_time, c.open, c.high, c.low, c.close, 1, c.close_time, c.volume] for c in candles]
+    s = backtest.build_series(rows)
+    snap = snapshot("X", candles)
+    assert backtest.passes_rules(s, len(rows) - 1, backtest.LIVE) == rules_only_gate(snap)

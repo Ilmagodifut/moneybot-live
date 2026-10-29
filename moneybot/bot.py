@@ -95,7 +95,7 @@ def manage_positions(state: State, broker: Broker, candles: dict[str, list[Candl
             pos.stop = max(pos.stop, pos.highest - trail)
             pos.last_checked = c.close_time
         if not closed and trend_broken(s):
-            broker.sell(sym, s.close, s.time, "trend rotto (EMA20 < EMA50)")
+            broker.sell(sym, s.close, s.time, f"trend rotto (media {config.TREND_FAST}h sotto {config.TREND_MID}h)")
 
 
 def update_safety(state: State, equity: float, now: int) -> bool:
@@ -139,7 +139,8 @@ def look_for_entries(state: State, broker: Broker, snaps: dict[str, Snapshot], e
     for s in candidates:
         if len(state.positions) >= config.MAX_OPEN_POSITIONS:
             break
-        record = {"time": s.time, "symbol": s.symbol, "price": s.close, "snapshot": s.to_dict()}
+        # Cosa farebbero le sole regole: serve a capire se Claude aggiunge valore.
+        record = {"time": s.time, "symbol": s.symbol, "price": s.close, "snapshot": s.to_dict(), "rules_passed": rules_only_gate(s)}
         if use_claude:
             if calls >= config.MAX_JUDGE_CALLS_PER_RUN or state.judge_calls_today >= config.MAX_JUDGE_CALLS_PER_DAY:
                 break
