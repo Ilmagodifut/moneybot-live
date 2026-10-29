@@ -49,6 +49,10 @@ VERDICT_SCHEMA = {
 }
 
 
+class JudgeUnavailable(Exception):
+    """Claude non può rispondere a nessuna richiesta (chiave non valida, credito finito)."""
+
+
 @dataclass
 class Verdict:
     trend_healthy: str
@@ -108,9 +112,15 @@ def ask(client: anthropic.Anthropic, s: Snapshot, btc: Snapshot | None) -> Verdi
             response = client.beta.messages.create(
                 **request, betas=["server-side-fallback-2026-07-01"], fallbacks="default",
             )
-    except anthropic.AuthenticationError:
-        log.error("chiave Claude non valida: giudice disattivato per questo giro")
-        raise
+    except (anthropic.AuthenticationError, anthropic.PermissionDeniedError) as e:
+        log.error("chiave Claude non valida: per questo giro decidono le regole")
+        raise JudgeUnavailable from e
+    except anthropic.BadRequestError as e:
+        if "credit" in str(e).lower():
+            log.error("credito Claude esaurito: per questo giro decidono le regole")
+            raise JudgeUnavailable from e
+        log.warning("Claude: richiesta rifiutata su %s, considerato pass", s.symbol)
+        return None
     except anthropic.RateLimitError:
         log.warning("Claude: troppe richieste, %s considerato pass", s.symbol)
         return None

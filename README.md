@@ -56,9 +56,10 @@ Puoi lanciarlo anche a mano: scheda **Actions** → **MONEYBOT giro orario** →
 2. Nel repository GitHub: **Settings → Secrets and variables → Actions → New repository secret**,
    nome `ANTHROPIC_API_KEY`, valore la chiave.
 
-Il modello predefinito è `claude-haiku-5-5`, il più economico. Claude viene chiamato solo per le monete
-candidate, al massimo 4 volte all'ora e 48 volte al giorno: circa 2-3 centesimi al giorno al massimo.
-Per un modello più capace (e più costoso) crea nella scheda **Variables** `MONEYBOT_MODEL` = `claude-sonnet-5-5`.
+Il modello predefinito è `claude-sonnet-5-5`. Claude viene chiamato solo per le monete candidate,
+al massimo 3 volte all'ora e 36 volte al giorno: circa 0,40 $ al giorno al massimo (1 € ogni 2-3 giorni).
+Per spendere quasi niente crea nella scheda **Variables** `MONEYBOT_MODEL` = `claude-haiku-5-5`.
+Se la chiave non è valida o il credito finisce, il bot continua da solo con le sole regole.
 
 ## Usarlo sul tuo computer
 

@@ -147,9 +147,10 @@ def look_for_entries(state: State, broker: Broker, snaps: dict[str, Snapshot], e
             state.judge_calls_today += 1
             try:
                 verdict = judge.ask(client, s, btc)
-            except anthropic.AuthenticationError:
+            except judge.JudgeUnavailable:
+                # Senza Claude il bot non si blocca: da qui in poi decidono le regole.
                 use_claude = False
-                verdict = None
+        if use_claude:
             record["mode"] = "claude"
             record["verdict"] = verdict.__dict__ if verdict else None
             passed = bool(verdict and verdict.passes_gate())
