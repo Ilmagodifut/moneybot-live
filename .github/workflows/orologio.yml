@@ -1,7 +1,7 @@
 name: Orologio
 
-# Fa partire il bot ogni 30 minuti senza dipendere dagli orari programmati di GitHub.
-# L'ambiente "orologio" ha un'attesa di 30 minuti: durante l'attesa non si usa
+# Fa partire il bot ogni 15 minuti senza dipendere dagli orari programmati di GitHub.
+# L'ambiente "orologio" ha un'attesa di 15 minuti: durante l'attesa non si usa
 # nessuna macchina. Finita l'attesa, l'orologio si rimette in moto e lancia il bot.
 on:
   workflow_dispatch:
