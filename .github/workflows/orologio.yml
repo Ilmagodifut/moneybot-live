@@ -1,0 +1,28 @@
+name: Orologio
+
+# Fa partire il bot ogni 30 minuti senza dipendere dagli orari programmati di GitHub.
+# L'ambiente "orologio" ha un'attesa di 30 minuti: durante l'attesa non si usa
+# nessuna macchina. Finita l'attesa, l'orologio si rimette in moto e lancia il bot.
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: orologio
+  cancel-in-progress: false
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    environment: orologio
+    timeout-minutes: 5
+    steps:
+      - name: Rimetti in moto l'orologio e fai partire il bot
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run orologio.yml --repo "$GITHUB_REPOSITORY" --ref main
+          gh workflow run bot.yml --repo "$GITHUB_REPOSITORY" --ref main
