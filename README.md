@@ -46,6 +46,16 @@ Ogni verdetto viene ricontrollato 24 ore dopo. Nel report c'è una tabella: quan
 "buy" con probabilità 0,8, il prezzo è davvero salito circa 8 volte su 10?
 Se no, il giudice non sta aggiungendo valore e le soglie vanno riviste.
 
+## Due capitali da 1.000 $
+
+- **Lento**: la strategia descritta sopra, su 18 monete, con Claude come giudice.
+- **Rapido** (`moneybot/fast.py`): compra BTC o ETH quando crollano del 6% sotto la loro media
+  a 200 ore e rivende al rimbalzo, dopo al massimo 5 giorni o con uno stop del 10%. Solo regole.
+
+Nel backtest le strategie veloci "classiche" (trend a 4 ore, comprare le monete migliori del giorno
+prima) perdevano oltre l'80% in commissioni: il capitale rapido usa invece i crolli, che sono rari.
+Quando non ci sono crolli resta in contanti.
+
 ## Backtest: le regole provate sul passato
 
 `python -m moneybot backtest` fa girare le stesse regole (senza Claude) su 2 anni di prezzi orari

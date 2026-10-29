@@ -12,17 +12,20 @@
   const fmtPrice = (v) => (v >= 1000 ? d3.format(",.1f")(v) : v >= 1 ? d3.format(",.3f")(v) : d3.format(".4~g")(v));
   const parseT = (t) => new Date(String(t).replace(" ", "T") + ":00Z");
 
-  const bot = { summary: null, equity: [], market: [], positions: [], trades: [], verdicts: [], comparison: [], backtest: null };
+  const bot = { summary: null, equity: [], market: [], positions: [], trades: [], verdicts: [], comparison: [], backtest: null,
+    fast_summary: null, fast_positions: [], fast_trades: [], fast_equity: [], fast_watch: [] };
   const live = {};   // simbolo -> {price, open24}
   const spark = {};  // simbolo -> prezzi di chiusura orari (48)
 
   // ---------- caricamento dati ----------
   async function loadBot() {
-    const names = ["summary", "equity", "market", "positions", "trades", "verdicts", "comparison", "backtest"];
+    const names = ["summary", "equity", "market", "positions", "trades", "verdicts", "comparison", "backtest",
+      "fast_summary", "fast_positions", "fast_trades", "fast_equity", "fast_watch"];
     const bust = "?t=" + Date.now();
     const results = await Promise.allSettled(names.map((n) => fetch("data/" + n + ".json" + bust).then((r) => r.json())));
     results.forEach((r, i) => { if (r.status === "fulfilled") bot[names[i]] = r.value; });
     bot.summary = Array.isArray(bot.summary) ? bot.summary[0] : bot.summary;
+    bot.fast_summary = Array.isArray(bot.fast_summary) ? bot.fast_summary[0] : bot.fast_summary;
     renderAll();
   }
 
@@ -88,6 +91,61 @@
     const ratios = bot.market.filter((m) => m.bench_start && priceOf(m.symbol)).map((m) => priceOf(m.symbol) / m.bench_start);
     const bench = ratios.length ? s.start_cash * d3.mean(ratios) : s.benchmark;
     return { equity, bench, pnl: equity / s.start_cash - 1, benchPct: bench / s.start_cash - 1 };
+  }
+
+  function liveFast() {
+    const s = bot.fast_summary;
+    if (!s) return null;
+    return s.cash + bot.fast_positions.reduce((sum, p) => sum + p.qty * (priceOf(p.symbol) ?? p.price), 0);
+  }
+
+  // Variazione del capitale rispetto a un momento passato, usando lo storico orario.
+  function changeSince(history, live, startCash, sinceMs) {
+    if (live == null) return null;
+    let base = null;
+    for (const h of history) {
+      if (parseT(h.time) <= sinceMs) base = h.equity;
+      else break;
+    }
+    if (base == null) base = history.length ? history[0].equity : startCash;
+    return live / base - 1;
+  }
+
+  function renderDuo() {
+    const now = Date.now();
+    const midnight = new Date(); midnight.setUTCHours(0, 0, 0, 0);
+    const sets = [
+      ["slow", liveNumbers() && liveNumbers().equity, bot.equity, bot.summary, bot.positions.length],
+      ["fast", liveFast(), bot.fast_equity, bot.fast_summary, bot.fast_positions.length],
+    ];
+    for (const [k, live, hist, sum, npos] of sets) {
+      if (!sum || live == null) continue;
+      countTo($(k + "-eq"), live, fmtUsd);
+      countTo($(k + "-day"), changeSince(hist, live, sum.start_cash, +midnight), fmtPct, true);
+      countTo($(k + "-24"), changeSince(hist, live, sum.start_cash, now - 24 * 3600e3), fmtPct, true);
+      countTo($(k + "-all"), live / sum.start_cash - 1, fmtPct, true);
+      $(k + "-pos").textContent = npos ? `${npos} ${npos === 1 ? "posizione" : "posizioni"}` : "tutto in contanti";
+    }
+    const w = $("fast-watch");
+    const rows = (bot.fast_watch || []).map((x) => {
+      const held = bot.fast_positions.find((p) => p.symbol === x.symbol);
+      const price = priceOf(x.symbol) ?? x.price;
+      const dist = price / x.mean - 1;
+      const row = document.createElement("div");
+      row.className = "watch-row";
+      const b = document.createElement("b"); b.textContent = x.symbol;
+      const bar = document.createElement("div"); bar.className = "watch-bar";
+      const fill = document.createElement("i");
+      // 0% = sulla media, 100% = soglia di acquisto raggiunta
+      fill.style.width = Math.max(0, Math.min(100, (dist / x.trigger) * 100)) + "%";
+      bar.append(fill);
+      const em = document.createElement("em");
+      em.textContent = held ? "in portafoglio" : `${fmtPct(dist)} dalla media · compra a ${d3.format(".0%")(x.trigger)}`;
+      em.className = held ? "up" : "";
+      row.append(b, bar, em);
+      return row;
+    });
+    w.replaceChildren(...rows);
   }
 
   // ---------- numeri animati ----------
@@ -262,11 +320,13 @@
   }
 
   function renderTables() {
-    const trades = bot.trades.slice().reverse();
+    const trades = bot.trades.map((t) => ({ ...t, cap: "Lento" }))
+      .concat(bot.fast_trades.map((t) => ({ ...t, cap: "Rapido" })))
+      .sort((a, b) => (a.time < b.time ? 1 : -1));
     $("trades-empty").hidden = trades.length > 0;
     $("trades").replaceChildren(...trades.map((t) => {
       const tr = document.createElement("tr");
-      tr.append(td(t.time), td(t.symbol), badge(t.side === "BUY" ? "Acquisto" : "Vendita", t.side === "BUY" ? "buy" : "sell"),
+      tr.append(td(t.time), td(t.cap), td(t.symbol), badge(t.side === "BUY" ? "Acquisto" : "Vendita", t.side === "BUY" ? "buy" : "sell"),
         td(usd2(t.value), "num"), signed(t.pnl, usd2), td(t.reason));
       return tr;
     }));
@@ -292,9 +352,12 @@
     const n = liveNumbers();
     if (!hist.length && !n) return;
     const data = n ? hist.concat({ t: new Date(), eq: n.equity, bh: n.bench, live: true }) : hist;
+    const fastHist = bot.fast_equity.map((d) => ({ t: parseT(d.time), v: d.equity }));
+    const fl = liveFast();
+    const fastData = fl != null ? fastHist.concat({ t: new Date(), v: fl, live: true }) : fastHist;
     const W = Math.max(280, el.clientWidth), H = 290;
     el.replaceChildren();
-    const vals = data.flatMap((d) => [d.eq, d.bh]);
+    const vals = data.flatMap((d) => [d.eq, d.bh]).concat(fastData.map((d) => d.v));
     let lo = d3.min(vals), hi = d3.max(vals);
     const pad = Math.max((hi - lo) * 0.25, hi * 0.003);
     lo -= pad; hi += pad;
@@ -334,6 +397,12 @@
       eq.attr("class", "line-eq").style("--len", eq.node().getTotalLength());
       chartDrawn = true;
     }
+    if (fastData.length) {
+      svg.append("path").datum(fastData).attr("fill", "none").attr("stroke", "#ff7ac6").attr("stroke-width", 2.2)
+        .attr("stroke-linecap", "round").attr("d", d3.line().x((d) => x(d.t)).y((d) => y(d.v)));
+      const lf = fastData[fastData.length - 1];
+      svg.append("circle").attr("cx", x(lf.t)).attr("cy", y(lf.v)).attr("r", 4.5).attr("fill", "#ff7ac6");
+    }
     const last = data[data.length - 1];
     svg.append("circle").attr("cx", x(last.t)).attr("cy", y(last.bh)).attr("r", 4).attr("fill", "#8f7dff");
     svg.append("circle").attr("class", last.live ? "live-dot" : "").attr("cx", x(last.t)).attr("cy", y(last.eq)).attr("r", 5).attr("fill", "#3ee0ff").attr("filter", "url(#glow)");
@@ -348,7 +417,9 @@
         rule.style("display", null).attr("x1", px).attr("x2", px);
         tip.style("display", null).selectAll("*").remove();
         tip.append("div").attr("class", "t").text(d.live ? "Adesso (live)" : d3.utcFormat("%d/%m %H:%M UTC")(d.t));
-        const a = tip.append("div"); a.append("i").style("background", "#3ee0ff"); a.append("span").text("Bot " + fmtUsd(d.eq));
+        const a = tip.append("div"); a.append("i").style("background", "#3ee0ff"); a.append("span").text("Lento " + fmtUsd(d.eq));
+        const fd = fastData.length ? fastData[Math.min(fastData.length - 1, d3.bisector((q) => q.t).center(fastData, d.t))] : null;
+        if (fd) { const f = tip.append("div"); f.append("i").style("background", "#ff7ac6"); f.append("span").text("Rapido " + fmtUsd(fd.v)); }
         const b = tip.append("div"); b.append("i").style("background", "#8f7dff"); b.append("span").text("Compra e tieni " + fmtUsd(d.bh));
         const box = el.getBoundingClientRect(), tw = tip.node().offsetWidth;
         tip.style("left", Math.min(Math.max(0, (px / W) * box.width + 12), box.width - tw) + "px").style("top", "12px");
@@ -387,7 +458,7 @@
       if (v.name === bt.live) tr.className = "live";
       const name = td(v.name);
       name.title = v.description;
-      tr.append(name, pctCell(v.train.return), pctCell(v.test.return), pctCell(v.full.return),
+      tr.append(name, td(v.family || ""), pctCell(v.train.return), pctCell(v.test.return), pctCell(v.full.return),
         td("-" + d3.format(".0%")(v.full.max_drawdown), "num"), td(String(v.full.trades), "num"),
         td(v.full.win_rate == null ? "—" : d3.format(".0%")(v.full.win_rate), "num"));
       return tr;
@@ -451,12 +522,12 @@
     }));
   }
 
-  function renderAll() { renderKpis(); renderTicker(); renderRadar(); renderPositions(); renderTables(); renderChart(); renderBacktest(); renderComparison(); }
+  function renderAll() { renderDuo(); renderKpis(); renderTicker(); renderRadar(); renderPositions(); renderTables(); renderChart(); renderBacktest(); renderComparison(); }
 
   // I prezzi cambiano più volte al secondo: KPI e radar subito, grafico al massimo ogni 5 s.
   let lastChart = 0;
   function onPrices() {
-    renderKpis(); renderTicker(); renderRadar(); renderPositions();
+    renderDuo(); renderKpis(); renderTicker(); renderRadar(); renderPositions();
     if (performance.now() - lastChart > 5000) { lastChart = performance.now(); renderChart(); }
   }
 

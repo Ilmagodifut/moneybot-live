@@ -41,6 +41,41 @@
     <div class="ticker-track" id="ticker"></div>
   </div>
 
+  <section class="duo" aria-label="I due capitali">
+    <article class="cap slow">
+      <div class="cap-head">
+        <div>
+          <p class="label">Capitale lento</p>
+          <p class="cap-sub">Trend su giorni e settimane · 18 monete · Claude giudice</p>
+        </div>
+        <span class="cap-pos" id="slow-pos">—</span>
+      </div>
+      <b class="cap-big" id="slow-eq">—</b>
+      <div class="cap-stats">
+        <div><span>Oggi</span><b id="slow-day">—</b></div>
+        <div><span>Ultime 24 ore</span><b id="slow-24">—</b></div>
+        <div><span>Dall'inizio</span><b id="slow-all">—</b></div>
+      </div>
+    </article>
+    <article class="cap fast">
+      <div class="cap-head">
+        <div>
+          <p class="label">Capitale rapido</p>
+          <p class="cap-sub">Compra i crolli di BTC ed ETH · tiene da ore a 5 giorni</p>
+        </div>
+        <span class="cap-pos" id="fast-pos">—</span>
+      </div>
+      <b class="cap-big" id="fast-eq">—</b>
+      <div class="cap-stats">
+        <div><span>Oggi</span><b id="fast-day">—</b></div>
+        <div><span>Ultime 24 ore</span><b id="fast-24">—</b></div>
+        <div><span>Dall'inizio</span><b id="fast-all">—</b></div>
+      </div>
+      <div class="watch" id="fast-watch"></div>
+    </article>
+  </section>
+
+  <h2 class="section-title">Capitale lento: dettagli</h2>
   <section class="kpis">
     <article class="kpi main">
       <p class="label">Capitale live</p>
@@ -77,10 +112,10 @@
   <section class="card">
     <div class="card-head">
       <div>
-        <h2>Andamento del capitale</h2>
+        <h2>Andamento dei due capitali</h2>
         <p class="note">Un punto a ogni giro orario del bot, più il valore live di adesso.</p>
       </div>
-      <div class="legend"><span><i class="l-eq"></i>MONEYBOT</span><span><i class="l-bh"></i>Compra e tieni</span></div>
+      <div class="legend"><span><i class="l-eq"></i>Lento</span><span><i class="l-fast"></i>Rapido</span><span><i class="l-bh"></i>Compra e tieni</span></div>
     </div>
     <div class="chart" id="chart"></div>
   </section>
@@ -99,7 +134,7 @@
   <div class="grid2">
     <section class="card">
       <div class="card-head">
-        <h2>Posizioni aperte</h2>
+        <h2>Posizioni aperte (lento)</h2>
         <p class="note">Risultato calcolato in diretta. Lo stop chiude la posizione se il prezzo scende fin lì.</p>
       </div>
       <div class="table-box">
@@ -118,7 +153,7 @@
       </div>
       <div class="table-box">
         <table>
-          <thead><tr><th>Ora (UTC)</th><th>Moneta</th><th>Tipo</th><th class="num">Valore</th><th class="num">Risultato</th><th>Motivo</th></tr></thead>
+          <thead><tr><th>Ora (UTC)</th><th>Capitale</th><th>Moneta</th><th>Tipo</th><th class="num">Valore</th><th class="num">Risultato</th><th>Motivo</th></tr></thead>
           <tbody id="trades"></tbody>
         </table>
       </div>
@@ -145,7 +180,7 @@
   <section class="card" id="backtest">
     <div class="card-head">
       <div>
-        <h2>Prova sul passato: 2 anni</h2>
+        <h2>Prova sul passato: 2 anni, 18 strategie</h2>
         <p class="note">Le stesse regole fatte girare sui prezzi orari reali di <span id="bt-period">—</span>, con commissioni. Le impostazioni si scelgono sul primo periodo e si giudicano sul secondo.</p>
       </div>
       <div class="legend"><span><i class="l-eq"></i>Regole attuali</span><span><i class="l-old"></i>Prime regole orarie</span><span><i class="l-bh"></i>Compra e tieni</span></div>
@@ -154,7 +189,7 @@
     <div class="chart" id="bt-chart"></div>
     <div class="table-box">
       <table>
-        <thead><tr><th>Versione</th><th class="num">Allenamento</th><th class="num">Verifica</th><th class="num">2 anni</th><th class="num">Calo max</th><th class="num">Operazioni</th><th class="num">Vinte</th></tr></thead>
+        <thead><tr><th>Strategia</th><th>Tipo</th><th class="num">Allenamento</th><th class="num">Verifica</th><th class="num">2 anni</th><th class="num">Calo max</th><th class="num">Operazioni</th><th class="num">Vinte</th></tr></thead>
         <tbody id="bt-table"></tbody>
       </table>
     </div>

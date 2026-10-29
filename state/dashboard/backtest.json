@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-29 16:52",
+ "generated": "2026-10-29 16:58",
  "start": "2024-12-18",
  "split": "2026-01-30",
  "end": "2026-10-29",
@@ -32,6 +32,7 @@
  "variants": [
   {
    "name": "lento (attuale)",
+   "family": "regole del bot",
    "description": "Trend su giorni e settimane (medie a 80, 200 e 800 ore), stop larghi. Sono le regole del bot oggi.",
    "params": {
     "name": "lento (attuale)",
@@ -79,6 +80,7 @@
   },
   {
    "name": "lento + filtro BTC",
+   "family": "regole del bot",
    "description": "Compra solo se BTC \u00e8 sopra la sua media di 50 giorni.",
    "params": {
     "name": "lento + filtro BTC",
@@ -126,6 +128,7 @@
   },
   {
    "name": "lento + filtro BTC + solo trailing",
+   "family": "regole del bot",
    "description": "Filtro BTC; esce solo con il trailing stop.",
    "params": {
     "name": "lento + filtro BTC + solo trailing",
@@ -173,6 +176,7 @@
   },
   {
    "name": "lento + trailing stretto",
+   "family": "regole del bot",
    "description": "Trailing al 4% per proteggere prima i guadagni.",
    "params": {
     "name": "lento + trailing stretto",
@@ -220,6 +224,7 @@
   },
   {
    "name": "lento + 3 posizioni",
+   "family": "regole del bot",
    "description": "Al massimo 3 posizioni da 15%.",
    "params": {
     "name": "lento + 3 posizioni",
@@ -267,6 +272,7 @@
   },
   {
    "name": "orarie (prima)",
+   "family": "regole del bot",
    "description": "Le prime regole del bot: trend su medie a 20, 50 e 200 ore, stop stretti.",
    "params": {
     "name": "orarie (prima)",
@@ -314,6 +320,7 @@
   },
   {
    "name": "orarie + filtro BTC",
+   "family": "regole del bot",
    "description": "Regole orarie, ma solo quando BTC \u00e8 in trend rialzista.",
    "params": {
     "name": "orarie + filtro BTC",
@@ -361,6 +368,7 @@
   },
   {
    "name": "orarie + stop larghi",
+   "family": "regole del bot",
    "description": "Regole orarie con stop e trailing larghi.",
    "params": {
     "name": "orarie + stop larghi",
@@ -405,9 +413,329 @@
     "avg_trade": -0.0049,
     "score": -0.84
    }
+  },
+  {
+   "name": "solo BTC in trend",
+   "family": "trend su BTC",
+   "description": "Tiene BTC solo quando \u00e8 sopra la sua media di 50 giorni; altrimenti contanti.",
+   "train": {
+    "return": -0.2308,
+    "max_drawdown": 0.2442,
+    "trades": 18,
+    "win_rate": 0.167,
+    "profit_factor": 0.42,
+    "avg_trade": -0.0134,
+    "score": -0.95
+   },
+   "test": {
+    "return": 0.1728,
+    "max_drawdown": 0.1589,
+    "trades": 9,
+    "win_rate": 0.222,
+    "profit_factor": 2.31,
+    "avg_trade": 0.0197,
+    "score": 1.09
+   },
+   "full": {
+    "return": -0.098,
+    "max_drawdown": 0.2965,
+    "trades": 27,
+    "win_rate": 0.185,
+    "profit_factor": 0.78,
+    "avg_trade": -0.0023,
+    "score": -0.33
+   }
+  },
+  {
+   "name": "BTC+ETH in trend",
+   "family": "trend su BTC",
+   "description": "BTC ed ETH met\u00e0 e met\u00e0, ciascuno solo quando \u00e8 sopra la sua media di 50 giorni.",
+   "train": {
+    "return": -0.0681,
+    "max_drawdown": 0.2788,
+    "trades": 46,
+    "win_rate": 0.348,
+    "profit_factor": 0.86,
+    "avg_trade": 0.0885,
+    "score": -0.24
+   },
+   "test": {
+    "return": 0.0955,
+    "max_drawdown": 0.1656,
+    "trades": 21,
+    "win_rate": 0.381,
+    "profit_factor": 1.5,
+    "avg_trade": 0.0423,
+    "score": 0.58
+   },
+   "full": {
+    "return": 0.0208,
+    "max_drawdown": 0.3592,
+    "trades": 67,
+    "win_rate": 0.358,
+    "profit_factor": 1.02,
+    "avg_trade": 0.074,
+    "score": 0.06
+   }
+  },
+  {
+   "name": "BTC+ETH trend veloce",
+   "family": "trend su BTC",
+   "description": "Come sopra ma con la media di 8 giorni: entra ed esce prima.",
+   "train": {
+    "return": -0.398,
+    "max_drawdown": 0.4099,
+    "trades": 102,
+    "win_rate": 0.324,
+    "profit_factor": 0.54,
+    "avg_trade": 0.0092,
+    "score": -0.97
+   },
+   "test": {
+    "return": -0.2355,
+    "max_drawdown": 0.3149,
+    "trades": 58,
+    "win_rate": 0.259,
+    "profit_factor": 0.58,
+    "avg_trade": -0.0003,
+    "score": -0.75
+   },
+   "full": {
+    "return": -0.5398,
+    "max_drawdown": 0.5921,
+    "trades": 160,
+    "win_rate": 0.3,
+    "profit_factor": 0.55,
+    "avg_trade": 0.0058,
+    "score": -0.91
+   }
+  },
+  {
+   "name": "momentum 3 su 30 giorni",
+   "family": "momentum",
+   "description": "Ogni settimana tiene le 3 monete salite di pi\u00f9 in 30 giorni, solo se BTC \u00e8 in trend.",
+   "train": {
+    "return": -0.0525,
+    "max_drawdown": 0.3529,
+    "trades": 47,
+    "win_rate": 0.489,
+    "profit_factor": 0.93,
+    "avg_trade": 0.0579,
+    "score": -0.15
+   },
+   "test": {
+    "return": 0.1652,
+    "max_drawdown": 0.2811,
+    "trades": 32,
+    "win_rate": 0.594,
+    "profit_factor": 1.32,
+    "avg_trade": 0.1364,
+    "score": 0.59
+   },
+   "full": {
+    "return": 0.1041,
+    "max_drawdown": 0.4128,
+    "trades": 79,
+    "win_rate": 0.532,
+    "profit_factor": 1.08,
+    "avg_trade": 0.0897,
+    "score": 0.25
+   }
+  },
+  {
+   "name": "momentum 3 su 14 giorni",
+   "family": "momentum",
+   "description": "Ogni settimana tiene le 3 monete salite di pi\u00f9 in 14 giorni, solo se BTC \u00e8 in trend.",
+   "train": {
+    "return": -0.1228,
+    "max_drawdown": 0.3541,
+    "trades": 56,
+    "win_rate": 0.518,
+    "profit_factor": 0.84,
+    "avg_trade": 0.0429,
+    "score": -0.35
+   },
+   "test": {
+    "return": 0.5161,
+    "max_drawdown": 0.2635,
+    "trades": 33,
+    "win_rate": 0.576,
+    "profit_factor": 1.94,
+    "avg_trade": 0.112,
+    "score": 1.96
+   },
+   "full": {
+    "return": 0.33,
+    "max_drawdown": 0.3778,
+    "trades": 89,
+    "win_rate": 0.539,
+    "profit_factor": 1.26,
+    "avg_trade": 0.0685,
+    "score": 0.87
+   }
+  },
+  {
+   "name": "momentum 5 senza filtro",
+   "family": "momentum",
+   "description": "Ogni settimana tiene le 5 monete salite di pi\u00f9 in 30 giorni, sempre.",
+   "train": {
+    "return": -0.475,
+    "max_drawdown": 0.5087,
+    "trades": 89,
+    "win_rate": 0.382,
+    "profit_factor": 0.44,
+    "avg_trade": 0.0124,
+    "score": -0.93
+   },
+   "test": {
+    "return": -0.0416,
+    "max_drawdown": 0.3409,
+    "trades": 63,
+    "win_rate": 0.556,
+    "profit_factor": 0.81,
+    "avg_trade": 0.0458,
+    "score": -0.12
+   },
+   "full": {
+    "return": -0.4959,
+    "max_drawdown": 0.6564,
+    "trades": 152,
+    "win_rate": 0.454,
+    "profit_factor": 0.55,
+    "avg_trade": 0.0263,
+    "score": -0.76
+   }
+  },
+  {
+   "name": "compra i ribassi BTC/ETH",
+   "family": "ribassi",
+   "description": "Compra BTC/ETH quando scendono del 6% sotto la media a 200 ore; esce al ritorno alla media.",
+   "train": {
+    "return": -0.0087,
+    "max_drawdown": 0.126,
+    "trades": 28,
+    "win_rate": 0.679,
+    "profit_factor": 1.01,
+    "avg_trade": 0.0057,
+    "score": -0.07
+   },
+   "test": {
+    "return": -0.0835,
+    "max_drawdown": 0.1283,
+    "trades": 8,
+    "win_rate": 0.5,
+    "profit_factor": 0.41,
+    "avg_trade": -0.0217,
+    "score": -0.65
+   },
+   "full": {
+    "return": -0.0904,
+    "max_drawdown": 0.2077,
+    "trades": 36,
+    "win_rate": 0.639,
+    "profit_factor": 0.83,
+    "avg_trade": -0.0004,
+    "score": -0.44
+   }
+  },
+  {
+   "name": "compra i ribassi (8 monete)",
+   "family": "ribassi",
+   "description": "Come sopra sulle 8 monete pi\u00f9 grandi, ribasso del 8%.",
+   "train": {
+    "return": -0.028,
+    "max_drawdown": 0.1754,
+    "trades": 119,
+    "win_rate": 0.563,
+    "profit_factor": 0.96,
+    "avg_trade": 0.0004,
+    "score": -0.16
+   },
+   "test": {
+    "return": -0.1281,
+    "max_drawdown": 0.1886,
+    "trades": 26,
+    "win_rate": 0.346,
+    "profit_factor": 0.25,
+    "avg_trade": -0.0416,
+    "score": -0.68
+   },
+   "full": {
+    "return": -0.1518,
+    "max_drawdown": 0.2859,
+    "trades": 145,
+    "win_rate": 0.524,
+    "profit_factor": 0.8,
+    "avg_trade": -0.0071,
+    "score": -0.53
+   }
+  },
+  {
+   "name": "veloce: trend 4 ore",
+   "family": "veloce",
+   "description": "Ogni 4 ore tiene le 3 monete con trend orario rialzista pi\u00f9 forte.",
+   "train": {
+    "return": -0.872,
+    "max_drawdown": 0.8744,
+    "trades": 1459,
+    "win_rate": 0.337,
+    "profit_factor": 0.66,
+    "avg_trade": 0.0001,
+    "score": -1.0
+   },
+   "test": {
+    "return": -0.5568,
+    "max_drawdown": 0.5932,
+    "trades": 1068,
+    "win_rate": 0.339,
+    "profit_factor": 0.78,
+    "avg_trade": 0.0097,
+    "score": -0.94
+   },
+   "full": {
+    "return": -0.9433,
+    "max_drawdown": 0.9452,
+    "trades": 2527,
+    "win_rate": 0.338,
+    "profit_factor": 0.67,
+    "avg_trade": 0.0042,
+    "score": -1.0
+   }
+  },
+  {
+   "name": "veloce: le migliori di ieri",
+   "family": "veloce",
+   "description": "Ogni giorno compra le 3 monete salite di pi\u00f9 nelle ultime 24 ore.",
+   "train": {
+    "return": -0.8187,
+    "max_drawdown": 0.8288,
+    "trades": 712,
+    "win_rate": 0.389,
+    "profit_factor": 0.64,
+    "avg_trade": -0.002,
+    "score": -0.99
+   },
+   "test": {
+    "return": 0.021,
+    "max_drawdown": 0.3664,
+    "trades": 464,
+    "win_rate": 0.409,
+    "profit_factor": 1.01,
+    "avg_trade": 0.0101,
+    "score": 0.06
+   },
+   "full": {
+    "return": -0.8149,
+    "max_drawdown": 0.8634,
+    "trades": 1176,
+    "win_rate": 0.397,
+    "profit_factor": 0.71,
+    "avg_trade": 0.0028,
+    "score": -0.94
+   }
   }
  ],
- "best": "lento (attuale)",
+ "best": "compra i ribassi BTC/ETH",
  "live": "lento (attuale)",
  "curve": [
   {
