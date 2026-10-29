@@ -3,7 +3,7 @@
   const SYMBOLS = ["BTC", "ETH", "SOL", "BNB", "XRP", "ADA", "DOGE", "AVAX", "LINK", "DOT", "LTC", "TRX", "SUI", "NEAR", "ATOM", "UNI", "TON", "APT"];
   const REST = "https://data-api.binance.vision/api/v3";
   const WS = "wss://data-stream.binance.vision/stream?streams=" + SYMBOLS.map((s) => s.toLowerCase() + "usdt@miniTicker").join("/");
-  const BOT_MINUTE = 17; // il giro orario parte intorno al minuto 17 (UTC)
+  const BOT_MINUTES = [7, 37]; // il giro parte intorno ai minuti 7 e 37 di ogni ora
 
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const $ = (id) => document.getElementById(id);
@@ -588,9 +588,13 @@
   // ---------- conto alla rovescia al prossimo giro ----------
   function tickCountdown() {
     const now = new Date();
-    const next = new Date(now);
-    next.setUTCMinutes(BOT_MINUTE, 0, 0);
-    if (next <= now) next.setUTCHours(next.getUTCHours() + 1);
+    const candidates = BOT_MINUTES.flatMap((m) => [0, 1].map((h) => {
+      const d = new Date(now);
+      d.setUTCMinutes(m, 0, 0);
+      d.setUTCHours(d.getUTCHours() + h);
+      return d;
+    })).filter((d) => d > now);
+    const next = new Date(Math.min(...candidates));
     const s = Math.round((next - now) / 1000);
     $("countdown").textContent = "~" + String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
   }
