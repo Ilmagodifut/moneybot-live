@@ -25,7 +25,7 @@
   const bot = { summary: null, equity: [], market: [], positions: [], trades: [], verdicts: [], comparison: [], backtest: null,
     fast_summary: null, fast_positions: [], fast_trades: [], fast_equity: [], fast_watch: [],
     multi_summary: null, multi_positions: [], multi_trades: [], multi_equity: [], multi_backtest: null,
-    fast360_summary: null, fast360_positions: [], fast360_trades: [], fast360_equity: [], fast360_watch: [] };
+    rapid200_summary: null, rapid200_positions: [], rapid200_trades: [], rapid200_equity: [], rapid200_watch: [] };
   const live = {};   // simbolo -> {price, open24}
   const spark = {};  // simbolo -> prezzi di chiusura orari (48)
 
@@ -34,14 +34,14 @@
     const names = ["summary", "equity", "market", "positions", "trades", "verdicts", "comparison", "backtest",
       "fast_summary", "fast_positions", "fast_trades", "fast_equity", "fast_watch",
       "multi_summary", "multi_positions", "multi_trades", "multi_equity", "multi_backtest",
-      "fast360_summary", "fast360_positions", "fast360_trades", "fast360_equity", "fast360_watch"];
+      "rapid200_summary", "rapid200_positions", "rapid200_trades", "rapid200_equity", "rapid200_watch"];
     const bust = "?t=" + Date.now();
     const results = await Promise.allSettled(names.map((n) => fetch("data/" + n + ".json" + bust).then((r) => r.json())));
     results.forEach((r, i) => { if (r.status === "fulfilled") bot[names[i]] = r.value; });
     bot.summary = Array.isArray(bot.summary) ? bot.summary[0] : bot.summary;
     bot.fast_summary = Array.isArray(bot.fast_summary) ? bot.fast_summary[0] : bot.fast_summary;
     bot.multi_summary = Array.isArray(bot.multi_summary) ? bot.multi_summary[0] : bot.multi_summary;
-    bot.fast360_summary = Array.isArray(bot.fast360_summary) ? bot.fast360_summary[0] : bot.fast360_summary;
+    bot.rapid200_summary = Array.isArray(bot.rapid200_summary) ? bot.rapid200_summary[0] : bot.rapid200_summary;
     renderAll();
   }
 
@@ -120,10 +120,10 @@
     const sym = p.symbol.endsWith("-USD") ? p.symbol.slice(0, -4) : null;
     return (sym && live[sym] ? live[sym].price : null) ?? p.price;
   };
-  function liveMulti() {
-    const s = bot.multi_summary;
+  function liveMulti(prefix = "multi") {
+    const s = bot[prefix + "_summary"];
     if (!s) return null;
-    return s.cash + bot.multi_positions.reduce((sum, p) => sum + p.qty * multiPrice(p), 0);
+    return s.cash + bot[prefix + "_positions"].reduce((sum, p) => sum + p.qty * multiPrice(p), 0);
   }
 
   // Variazione del capitale rispetto a un momento passato, usando lo storico orario.
@@ -144,7 +144,7 @@
     const sets = [
       ["slow", liveNumbers() && liveNumbers().equity, bot.equity, bot.summary, bot.positions.length],
       ["fast", liveFast(), bot.fast_equity, bot.fast_summary, bot.fast_positions.length],
-      ["f360", liveFast("fast360"), bot.fast360_equity, bot.fast360_summary, bot.fast360_positions.length],
+      ["f360", liveMulti("rapid200"), bot.rapid200_equity, bot.rapid200_summary, bot.rapid200_positions.length],
       ["multi", liveMulti(), bot.multi_equity, bot.multi_summary, bot.multi_positions.length],
     ];
     for (const [k, live, hist, sum, npos] of sets) {
@@ -162,9 +162,38 @@
     }
     renderWatch("fast-watch", bot.fast_watch || [], bot.fast_positions);
     // Per il 360°: le posizioni aperte e le 4 monete più vicine alla soglia.
-    const held360 = new Set(bot.fast360_positions.map((p) => p.symbol));
-    const near = (bot.fast360_watch || []).slice().sort((a, b) => (held360.has(b.symbol) - held360.has(a.symbol)) || (a.distance - b.distance));
-    renderWatch("f360-watch", near.slice(0, Math.max(4, held360.size)), bot.fast360_positions);
+    renderRapid200();
+  }
+
+  // Rapido 200: cosa tiene e i candidati di oggi (RSI a 2 giorni più basso = calo più forte).
+  function renderRapid200() {
+    const box = $("f360-watch");
+    const rows = [];
+    const line = (sym, text, cls) => {
+      const row = document.createElement("div");
+      row.className = "watch-row r200";
+      const b = document.createElement("b"); b.textContent = sym.replace("-USD", "");
+      const em = document.createElement("em"); em.textContent = text; if (cls) em.className = cls;
+      row.append(b, em);
+      rows.push(row);
+    };
+    const pos = bot.rapid200_positions || [];
+    pos.forEach((p) => {
+      const v = p.qty * multiPrice(p) - p.invested;
+      line(p.symbol, `${p.kind} · ${v >= 0 ? "+" : "-"}${usd2(Math.abs(v))}`, v >= 0 ? "up" : "down");
+    });
+    if (!pos.length) {
+      const watch = bot.rapid200_watch || [];
+      watch.slice(0, 4).forEach((x) => line(x.symbol, `${x.kind} · RSI ${x.rsi} · ${x.rsi < 5 ? "da comprare" : "compra sotto 5"}`, x.rsi < 5 ? "up" : ""));
+    }
+    const s = bot.rapid200_summary;
+    const note = document.createElement("p");
+    note.className = "r200-note";
+    note.textContent = s && s.last_decision
+      ? `Ultima decisione: ${s.last_decision.split("-").reverse().join("/")}, dopo la chiusura di Wall Street.`
+      : "Prima decisione stasera dopo la chiusura di Wall Street (22:00 ora italiana).";
+    rows.push(note);
+    box.replaceChildren(...rows);
   }
 
   function renderWatch(id, list, positions) {
@@ -373,7 +402,7 @@
     const trades = bot.trades.map((t) => ({ ...t, cap: "Lento" }))
       .concat(bot.fast_trades.map((t) => ({ ...t, cap: "Rapido" })))
       .concat(bot.multi_trades.map((t) => ({ ...t, cap: "200 prodotti" })))
-      .concat(bot.fast360_trades.map((t) => ({ ...t, cap: "Rapido 360°" })))
+      .concat(bot.rapid200_trades.map((t) => ({ ...t, cap: "Rapido 200" })))
       .sort((a, b) => (a.time < b.time ? 1 : -1));
     $("trades-empty").hidden = trades.length > 0;
     $("trades").replaceChildren(...trades.map((t) => {
@@ -407,8 +436,8 @@
     const fastHist = bot.fast_equity.map((d) => ({ t: parseT(d.time), v: d.equity }));
     const fl = liveFast();
     const fastData = fl != null ? fastHist.concat({ t: new Date(), v: fl, live: true }) : fastHist;
-    const f360Live = liveFast("fast360");
-    const f360Hist = bot.fast360_equity.map((d) => ({ t: parseT(d.time), v: d.equity }));
+    const f360Live = liveMulti("rapid200");
+    const f360Hist = bot.rapid200_equity.map((d) => ({ t: parseT(d.time), v: d.equity }));
     const f360Data = f360Live != null ? f360Hist.concat({ t: new Date(), v: f360Live, live: true }) : f360Hist;
     const multiLive = liveMulti();
     const multiHist = bot.multi_equity.map((d) => ({ t: parseT(d.time), v: d.equity }));
@@ -491,7 +520,7 @@
         const fd = fastData.length ? fastData[Math.min(fastData.length - 1, d3.bisector((q) => q.t).center(fastData, d.t))] : null;
         if (fd) { const f = tip.append("div"); f.append("i").style("background", "#ff7ac6"); f.append("span").text("Rapido " + fmtUsd(fd.v)); }
         const zd = f360Data.length ? f360Data[Math.min(f360Data.length - 1, d3.bisector((q) => q.t).center(f360Data, d.t))] : null;
-        if (zd) { const z = tip.append("div"); z.append("i").style("background", "#31e6a0"); z.append("span").text("Rapido 360° " + fmtUsd(zd.v)); }
+        if (zd) { const z = tip.append("div"); z.append("i").style("background", "#31e6a0"); z.append("span").text("Rapido 200 " + fmtUsd(zd.v)); }
         const md = multiData.length ? multiData[Math.min(multiData.length - 1, d3.bisector((q) => q.t).center(multiData, d.t))] : null;
         if (md) { const g = tip.append("div"); g.append("i").style("background", "#ffc65a"); g.append("span").text("200 prodotti " + fmtUsd(md.v)); }
         const b = tip.append("div"); b.append("i").style("background", "#8f7dff"); b.append("span").text("Compra e tieni " + fmtUsd(d.bh));
