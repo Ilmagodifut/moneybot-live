@@ -84,7 +84,7 @@ nella web app la sezione "Claude contro regole" mostra chi sceglie meglio.
 
 ## Attivare il giro automatico (gratis, su GitHub)
 
-Il file `.github/workflows/bot.yml` fa girare il bot due volte all'ora (minuti 7 e 37) su GitHub Actions,
+Il file `.github/workflows/bot.yml` fa girare il bot su GitHub Actions (orari programmati ai minuti 7 e 37, più l'orologio di `.github/workflows/orologio.yml` che lo rilancia ogni 30 minuti),
 salva stato e report nel repository e ripubblica la web app su GitHub Pages (branch `gh-pages`).
 Puoi lanciarlo anche a mano: scheda **Actions** → **MONEYBOT giro orario** → **Run workflow**.
 
