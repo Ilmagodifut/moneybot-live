@@ -11,6 +11,16 @@
   const fmtPct = d3.format("+.2%");
   const fmtPrice = (v) => (v >= 1000 ? d3.format(",.1f")(v) : v >= 1 ? d3.format(",.3f")(v) : d3.format(".4~g")(v));
   const parseT = (t) => new Date(String(t).replace(" ", "T") + ":00Z");
+  // Tutti gli orari si mostrano in ora italiana.
+  const ROME = "Europe/Rome";
+  const fmtRome = new Intl.DateTimeFormat("it-IT", { timeZone: ROME, day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+  const itTime = (d) => fmtRome.format(d instanceof Date ? d : parseT(d)).replace(",", "");
+  const romeMidnight = () => {
+    const now = new Date();
+    const parts = Object.fromEntries(new Intl.DateTimeFormat("en-GB", { timeZone: ROME, hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23" })
+      .formatToParts(now).map((p) => [p.type, p.value]));
+    return +now - ((+parts.hour * 60 + +parts.minute) * 60 + +parts.second) * 1000 - now.getMilliseconds();
+  };
 
   const bot = { summary: null, equity: [], market: [], positions: [], trades: [], verdicts: [], comparison: [], backtest: null,
     fast_summary: null, fast_positions: [], fast_trades: [], fast_equity: [], fast_watch: [],
@@ -127,7 +137,7 @@
 
   function renderDuo() {
     const now = Date.now();
-    const midnight = new Date(); midnight.setUTCHours(0, 0, 0, 0);
+    const midnight = romeMidnight();
     const sets = [
       ["slow", liveNumbers() && liveNumbers().equity, bot.equity, bot.summary, bot.positions.length],
       ["fast", liveFast(), bot.fast_equity, bot.fast_summary, bot.fast_positions.length],
@@ -136,7 +146,7 @@
     for (const [k, live, hist, sum, npos] of sets) {
       if (!sum || live == null) continue;
       countTo($(k + "-eq"), live, fmtUsd);
-      countTo($(k + "-day"), changeSince(hist, live, sum.start_cash, +midnight), fmtPct, true);
+      countTo($(k + "-day"), changeSince(hist, live, sum.start_cash, midnight), fmtPct, true);
       countTo($(k + "-24"), changeSince(hist, live, sum.start_cash, now - 24 * 3600e3), fmtPct, true);
       countTo($(k + "-all"), live / sum.start_cash - 1, fmtPct, true);
       $(k + "-pos").textContent = npos ? `${npos} ${npos === 1 ? "posizione" : "posizioni"}` : "tutto in contanti";
@@ -206,7 +216,7 @@
     $("status-pill").classList.toggle("on", s.status !== "halted");
     $("mode-pill").textContent = s.mode === "claude" ? "Claude giudice" : "Solo regole";
     $("mode-pill").classList.toggle("ai", s.mode === "claude");
-    $("bot-updated").textContent = s.updated;
+    $("bot-updated").textContent = itTime(s.last_run || s.updated);
     // L'ora dell'ultimo giro del bot, in ora italiana, con quanti minuti fa.
     const runs = [s.last_run, bot.multi_summary && bot.multi_summary.updated].filter(Boolean).map(parseT);
     if (runs.length) {
@@ -355,7 +365,7 @@
     $("trades-empty").hidden = trades.length > 0;
     $("trades").replaceChildren(...trades.map((t) => {
       const tr = document.createElement("tr");
-      tr.append(td(t.time), td(t.cap), td(t.symbol), badge(t.side === "BUY" ? "Acquisto" : "Vendita", t.side === "BUY" ? "buy" : "sell"),
+      tr.append(td(itTime(t.time)), td(t.cap), td(t.symbol), badge(t.side === "BUY" ? "Acquisto" : "Vendita", t.side === "BUY" ? "buy" : "sell"),
         td(usd2(t.value), "num"), signed(t.pnl, usd2), td(t.reason));
       return tr;
     }));
@@ -366,7 +376,7 @@
     $("verdicts").replaceChildren(...verdicts.map((v) => {
       const tr = document.createElement("tr");
       const judged = v.action ? badge(actionLabel[v.action] || v.action, v.action) : badge(v.passed ? "via libera" : "scartata", v.passed ? "buy" : "pass");
-      tr.append(td(v.time), td(v.symbol), td(v.mode === "claude" ? "Claude" : "Regole"), judged,
+      tr.append(td(itTime(v.time)), td(v.symbol), td(v.mode === "claude" ? "Claude" : "Regole"), judged,
         td(v.action_prob == null ? "" : d3.format(".0%")(v.action_prob), "num"),
         badge(v.bought ? "comprata" : "non comprata", v.bought ? "buy" : "pass"),
         v.outcome_24h == null ? td("in attesa", "num") : signed(v.outcome_24h, d3.format(".2%")));
@@ -409,7 +419,7 @@
     svg.append("g").attr("class", "grid").attr("transform", `translate(${ml},0)`).call(d3.axisLeft(y).ticks(5).tickSize(-(W - ml - 16)).tickFormat(""));
     svg.append("g").attr("class", "axis").attr("transform", `translate(${ml},0)`).call(yAxis).attr("font-size", null).attr("font-family", null);
     svg.append("g").attr("class", "axis").attr("transform", `translate(0,${H - 24})`)
-      .call(d3.axisBottom(x).ticks(Math.max(2, Math.floor(W / 120))).tickFormat(d3.utcFormat("%d/%m %H:%M")))
+      .call(d3.axisBottom(x).ticks(Math.max(2, Math.floor(W / 120))).tickFormat((d) => itTime(d)))
       .attr("font-size", null).attr("font-family", null);
 
     const defs = svg.append("defs");
@@ -454,7 +464,7 @@
         const d = data[bis(data, x.invert(mx))], px = x(d.t);
         rule.style("display", null).attr("x1", px).attr("x2", px);
         tip.style("display", null).selectAll("*").remove();
-        tip.append("div").attr("class", "t").text(d.live ? "Adesso (live)" : d3.utcFormat("%d/%m %H:%M UTC")(d.t));
+        tip.append("div").attr("class", "t").text(d.live ? "Adesso (live)" : itTime(d.t));
         const a = tip.append("div"); a.append("i").style("background", "#3ee0ff"); a.append("span").text("Lento " + fmtUsd(d.eq));
         const fd = fastData.length ? fastData[Math.min(fastData.length - 1, d3.bisector((q) => q.t).center(fastData, d.t))] : null;
         if (fd) { const f = tip.append("div"); f.append("i").style("background", "#ff7ac6"); f.append("span").text("Rapido " + fmtUsd(fd.v)); }
