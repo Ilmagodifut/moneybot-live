@@ -207,6 +207,14 @@
     $("mode-pill").textContent = s.mode === "claude" ? "Claude giudice" : "Solo regole";
     $("mode-pill").classList.toggle("ai", s.mode === "claude");
     $("bot-updated").textContent = s.updated;
+    // L'ora dell'ultimo giro del bot, in ora italiana, con quanti minuti fa.
+    const runs = [s.last_run, bot.multi_summary && bot.multi_summary.updated].filter(Boolean).map(parseT);
+    if (runs.length) {
+      const last = new Date(Math.max(...runs));
+      const ago = Math.max(0, Math.round((Date.now() - last) / 60000));
+      const hhmm = last.toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Rome" });
+      $("last-run").textContent = `${hhmm} (${ago < 60 ? ago + " min fa" : Math.floor(ago / 60) + " h fa"})`;
+    }
   }
 
   function renderTicker() {
