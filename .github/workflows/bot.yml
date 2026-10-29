@@ -2,7 +2,7 @@ name: MONEYBOT giro orario
 
 on:
   schedule:
-    - cron: "7,37 * * * *"   # due volte all'ora: se GitHub ne salta uno, c'è l'altro
+    - cron: "7,37 * * * *"   # due volte all'ora (minuti 7 e 37, UTC)
   workflow_dispatch:        # pulsante "Run workflow" per lanciarlo a mano
 
 permissions:
