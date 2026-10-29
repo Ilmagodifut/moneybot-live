@@ -1,6 +1,6 @@
 # MONEYBOT – report (paper trading, soldi finti)
 
-Aggiornato: 2026-10-29 15:59 UTC · giri eseguiti: 5 · modalità: solo regole (Claude non configurato) · stato: **attivo**
+Aggiornato: 2026-10-29 15:59 UTC · giri eseguiti: 6 · modalità: solo regole (Claude non configurato) · stato: **attivo**
 
 ## Capitale
 
@@ -16,9 +16,9 @@ Aggiornato: 2026-10-29 15:59 UTC · giri eseguiti: 5 · modalità: solo regole (
 
 | Moneta | Entrata | Prezzo ora | Risultato | Stop |
 |---|---|---|---|---|
+| BNB | 750.495 (2026-10-29 15:59) | 750.12 | -0.15% | 727.98 |
 | TRX | 0.331466 (2026-10-29 14:59) | 0.3315 | -0.09% | 0.321522 |
 | UNI | 7.28164 (2026-10-29 14:59) | 7.398 | +1.50% | 7.06539 |
-| BNB | 750.495 (2026-10-29 15:59) | 750.12 | -0.15% | 727.98 |
 
 ## Operazioni chiuse
 
