@@ -78,6 +78,13 @@ def run() -> None:
         fast.run(candles, now, new_candle, config.STATE_DIR, p["dashboard"])
     except Exception:
         log.exception("capitale rapido: errore, il capitale lento non è toccato")
+
+    # Il terzo capitale: 200 prodotti tra azioni, ETF e crypto, ribilanciato ogni mese.
+    try:
+        from . import multi
+        multi.run_live(config.STATE_DIR, p["dashboard"])
+    except Exception:
+        log.exception("capitale multi-mercato: errore, gli altri capitali non sono toccati")
     log.info("giro completato: capitale %.2f$, posizioni aperte %d", state.equity(prices), len(state.positions))
 
 

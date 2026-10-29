@@ -13,19 +13,22 @@
   const parseT = (t) => new Date(String(t).replace(" ", "T") + ":00Z");
 
   const bot = { summary: null, equity: [], market: [], positions: [], trades: [], verdicts: [], comparison: [], backtest: null,
-    fast_summary: null, fast_positions: [], fast_trades: [], fast_equity: [], fast_watch: [] };
+    fast_summary: null, fast_positions: [], fast_trades: [], fast_equity: [], fast_watch: [],
+    multi_summary: null, multi_positions: [], multi_trades: [], multi_equity: [], multi_backtest: null };
   const live = {};   // simbolo -> {price, open24}
   const spark = {};  // simbolo -> prezzi di chiusura orari (48)
 
   // ---------- caricamento dati ----------
   async function loadBot() {
     const names = ["summary", "equity", "market", "positions", "trades", "verdicts", "comparison", "backtest",
-      "fast_summary", "fast_positions", "fast_trades", "fast_equity", "fast_watch"];
+      "fast_summary", "fast_positions", "fast_trades", "fast_equity", "fast_watch",
+      "multi_summary", "multi_positions", "multi_trades", "multi_equity", "multi_backtest"];
     const bust = "?t=" + Date.now();
     const results = await Promise.allSettled(names.map((n) => fetch("data/" + n + ".json" + bust).then((r) => r.json())));
     results.forEach((r, i) => { if (r.status === "fulfilled") bot[names[i]] = r.value; });
     bot.summary = Array.isArray(bot.summary) ? bot.summary[0] : bot.summary;
     bot.fast_summary = Array.isArray(bot.fast_summary) ? bot.fast_summary[0] : bot.fast_summary;
+    bot.multi_summary = Array.isArray(bot.multi_summary) ? bot.multi_summary[0] : bot.multi_summary;
     renderAll();
   }
 
@@ -99,6 +102,17 @@
     return s.cash + bot.fast_positions.reduce((sum, p) => sum + p.qty * (priceOf(p.symbol) ?? p.price), 0);
   }
 
+  // Prezzo per un prodotto del capitale multi-mercato: le crypto in diretta da Binance, il resto dall'ultimo giro.
+  const multiPrice = (p) => {
+    const sym = p.symbol.endsWith("-USD") ? p.symbol.slice(0, -4) : null;
+    return (sym && live[sym] ? live[sym].price : null) ?? p.price;
+  };
+  function liveMulti() {
+    const s = bot.multi_summary;
+    if (!s) return null;
+    return s.cash + bot.multi_positions.reduce((sum, p) => sum + p.qty * multiPrice(p), 0);
+  }
+
   // Variazione del capitale rispetto a un momento passato, usando lo storico orario.
   function changeSince(history, live, startCash, sinceMs) {
     if (live == null) return null;
@@ -117,6 +131,7 @@
     const sets = [
       ["slow", liveNumbers() && liveNumbers().equity, bot.equity, bot.summary, bot.positions.length],
       ["fast", liveFast(), bot.fast_equity, bot.fast_summary, bot.fast_positions.length],
+      ["multi", liveMulti(), bot.multi_equity, bot.multi_summary, bot.multi_positions.length],
     ];
     for (const [k, live, hist, sum, npos] of sets) {
       if (!sum || live == null) continue;
@@ -125,6 +140,11 @@
       countTo($(k + "-24"), changeSince(hist, live, sum.start_cash, now - 24 * 3600e3), fmtPct, true);
       countTo($(k + "-all"), live / sum.start_cash - 1, fmtPct, true);
       $(k + "-pos").textContent = npos ? `${npos} ${npos === 1 ? "posizione" : "posizioni"}` : "tutto in contanti";
+    }
+    if (bot.multi_summary) {
+      $("multi-next").textContent = bot.multi_positions.length
+        ? `Prossimo ribilanciamento: ${bot.multi_summary.next_rebalance}, dopo la chiusura di Wall Street.`
+        : "Primo acquisto stasera dopo la chiusura di Wall Street (22:00 ora italiana).";
     }
     const w = $("fast-watch");
     const rows = (bot.fast_watch || []).map((x) => {
@@ -322,6 +342,7 @@
   function renderTables() {
     const trades = bot.trades.map((t) => ({ ...t, cap: "Lento" }))
       .concat(bot.fast_trades.map((t) => ({ ...t, cap: "Rapido" })))
+      .concat(bot.multi_trades.map((t) => ({ ...t, cap: "200 prodotti" })))
       .sort((a, b) => (a.time < b.time ? 1 : -1));
     $("trades-empty").hidden = trades.length > 0;
     $("trades").replaceChildren(...trades.map((t) => {
@@ -355,9 +376,12 @@
     const fastHist = bot.fast_equity.map((d) => ({ t: parseT(d.time), v: d.equity }));
     const fl = liveFast();
     const fastData = fl != null ? fastHist.concat({ t: new Date(), v: fl, live: true }) : fastHist;
+    const multiLive = liveMulti();
+    const multiHist = bot.multi_equity.map((d) => ({ t: parseT(d.time), v: d.equity }));
+    const multiData = multiLive != null ? multiHist.concat({ t: new Date(), v: multiLive, live: true }) : multiHist;
     const W = Math.max(280, el.clientWidth), H = 290;
     el.replaceChildren();
-    const vals = data.flatMap((d) => [d.eq, d.bh]).concat(fastData.map((d) => d.v));
+    const vals = data.flatMap((d) => [d.eq, d.bh]).concat(fastData.map((d) => d.v), multiData.map((d) => d.v));
     let lo = d3.min(vals), hi = d3.max(vals);
     const pad = Math.max((hi - lo) * 0.25, hi * 0.003);
     lo -= pad; hi += pad;
@@ -397,6 +421,12 @@
       eq.attr("class", "line-eq").style("--len", eq.node().getTotalLength());
       chartDrawn = true;
     }
+    if (multiData.length) {
+      svg.append("path").datum(multiData).attr("fill", "none").attr("stroke", "#ffc65a").attr("stroke-width", 2.2)
+        .attr("stroke-linecap", "round").attr("d", d3.line().x((d) => x(d.t)).y((d) => y(d.v)));
+      const lm = multiData[multiData.length - 1];
+      svg.append("circle").attr("cx", x(lm.t)).attr("cy", y(lm.v)).attr("r", 4.5).attr("fill", "#ffc65a");
+    }
     if (fastData.length) {
       svg.append("path").datum(fastData).attr("fill", "none").attr("stroke", "#ff7ac6").attr("stroke-width", 2.2)
         .attr("stroke-linecap", "round").attr("d", d3.line().x((d) => x(d.t)).y((d) => y(d.v)));
@@ -420,6 +450,8 @@
         const a = tip.append("div"); a.append("i").style("background", "#3ee0ff"); a.append("span").text("Lento " + fmtUsd(d.eq));
         const fd = fastData.length ? fastData[Math.min(fastData.length - 1, d3.bisector((q) => q.t).center(fastData, d.t))] : null;
         if (fd) { const f = tip.append("div"); f.append("i").style("background", "#ff7ac6"); f.append("span").text("Rapido " + fmtUsd(fd.v)); }
+        const md = multiData.length ? multiData[Math.min(multiData.length - 1, d3.bisector((q) => q.t).center(multiData, d.t))] : null;
+        if (md) { const g = tip.append("div"); g.append("i").style("background", "#ffc65a"); g.append("span").text("200 prodotti " + fmtUsd(md.v)); }
         const b = tip.append("div"); b.append("i").style("background", "#8f7dff"); b.append("span").text("Compra e tieni " + fmtUsd(d.bh));
         const box = el.getBoundingClientRect(), tw = tip.node().offsetWidth;
         tip.style("left", Math.min(Math.max(0, (px / W) * box.width + 12), box.width - tw) + "px").style("top", "12px");
@@ -522,12 +554,34 @@
     }));
   }
 
-  function renderAll() { renderDuo(); renderKpis(); renderTicker(); renderRadar(); renderPositions(); renderTables(); renderChart(); renderBacktest(); renderComparison(); }
+  function renderMulti() {
+    const pos = bot.multi_positions || [];
+    $("multi-empty").hidden = pos.length > 0;
+    $("multi-table").replaceChildren(...pos.slice().sort((a, b) => b.qty * multiPrice(b) - a.qty * multiPrice(a)).map((p) => {
+      const tr = document.createElement("tr");
+      const value = p.qty * multiPrice(p);
+      tr.append(td(p.symbol.replace("-USD", "")), td(p.kind), td(usd2(p.invested), "num"), td(usd2(value), "num"), signed(value - p.invested, usd2));
+      return tr;
+    }));
+    const bt = bot.multi_backtest;
+    if (!bt) return;
+    $("multi-bt-note").textContent = `Dal ${bt.start} al ${bt.end} su ${bt.products} prodotti; regola scelta sugli anni ${bt.start.slice(0, 4)}-${bt.split.slice(0, 4)} e verificata sugli anni successivi.`;
+    const best = bt.variants.find((v) => v.name === bt.best);
+    const rows = [["Tutti i 200 prodotti", best]].concat(bt.by_kind.map((k) => [k.universe.replace("solo ", "Solo "), k]))
+      .concat([["Borsa USA (S&P 500), compra e tieni", bt.spy]]);
+    $("multi-bt").replaceChildren(...rows.map(([name, r]) => {
+      const tr = document.createElement("tr");
+      tr.append(td(name), pctCell(r.train.cagr), pctCell(r.test.cagr), td("-" + d3.format(".0%")(r.full.max_drawdown), "num"));
+      return tr;
+    }));
+  }
+
+  function renderAll() { renderMulti(); renderDuo(); renderKpis(); renderTicker(); renderRadar(); renderPositions(); renderTables(); renderChart(); renderBacktest(); renderComparison(); }
 
   // I prezzi cambiano più volte al secondo: KPI e radar subito, grafico al massimo ogni 5 s.
   let lastChart = 0;
   function onPrices() {
-    renderDuo(); renderKpis(); renderTicker(); renderRadar(); renderPositions();
+    renderDuo(); renderKpis(); renderTicker(); renderRadar(); renderPositions(); renderMulti();
     if (performance.now() - lastChart > 5000) { lastChart = performance.now(); renderChart(); }
   }
 

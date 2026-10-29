@@ -3,6 +3,7 @@
     python -m moneybot resume    riattiva il bot dopo uno stop di sicurezza
     python -m moneybot check     fa una domanda di prova a Claude (su BTC) senza fare operazioni
     python -m moneybot backtest  prova le regole su 2 anni di prezzi orari e salva i risultati
+    python -m moneybot multi-backtest  prova il capitale multi-mercato su circa 20 anni
 """
 
 import logging
@@ -29,6 +30,10 @@ def main() -> None:
         from . import backtest
         report = backtest.run(out_dir=bot.paths(config.STATE_DIR)["dashboard"])
         print(f"migliore sul periodo di allenamento: {report['best']}")
+    elif command == "multi-backtest":
+        from . import multi
+        report = multi.run_backtest(out_dir=bot.paths(config.STATE_DIR)["dashboard"])
+        print(f"prodotti: {report['products']}, migliore in allenamento: {report['best']}")
     elif command == "check":
         check_claude()
     else:

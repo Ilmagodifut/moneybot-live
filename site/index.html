@@ -73,6 +73,22 @@
       </div>
       <div class="watch" id="fast-watch"></div>
     </article>
+    <article class="cap multi">
+      <div class="cap-head">
+        <div>
+          <p class="label">Capitale 200 prodotti</p>
+          <p class="cap-sub">Azioni, ETF e crypto · le 10 più forti dell'anno · ribilancia ogni mese</p>
+        </div>
+        <span class="cap-pos" id="multi-pos">—</span>
+      </div>
+      <b class="cap-big" id="multi-eq">—</b>
+      <div class="cap-stats">
+        <div><span>Oggi</span><b id="multi-day">—</b></div>
+        <div><span>Ultime 24 ore</span><b id="multi-24">—</b></div>
+        <div><span>Dall'inizio</span><b id="multi-all">—</b></div>
+      </div>
+      <p class="cap-note" id="multi-next"></p>
+    </article>
   </section>
 
   <h2 class="section-title">Capitale lento: dettagli</h2>
@@ -112,10 +128,10 @@
   <section class="card">
     <div class="card-head">
       <div>
-        <h2>Andamento dei due capitali</h2>
+        <h2>Andamento dei capitali</h2>
         <p class="note">Un punto a ogni giro orario del bot, più il valore live di adesso.</p>
       </div>
-      <div class="legend"><span><i class="l-eq"></i>Lento</span><span><i class="l-fast"></i>Rapido</span><span><i class="l-bh"></i>Compra e tieni</span></div>
+      <div class="legend"><span><i class="l-eq"></i>Lento</span><span><i class="l-fast"></i>Rapido</span><span><i class="l-multi"></i>200 prodotti</span><span><i class="l-bh"></i>Compra e tieni crypto</span></div>
     </div>
     <div class="chart" id="chart"></div>
   </section>
@@ -175,6 +191,31 @@
       </table>
     </div>
     <p class="empty" id="verdicts-empty" hidden>Ancora nessuna decisione.</p>
+  </section>
+
+  <section class="card" id="multi">
+    <div class="card-head">
+      <div>
+        <h2>Capitale 200 prodotti: cosa tiene</h2>
+        <p class="note">Le 10 tra 200 azioni, ETF e crypto salite di più nell'ultimo anno e sopra la media di 200 giorni. Prezzi aggiornati ogni ora.</p>
+      </div>
+    </div>
+    <div class="table-box">
+      <table>
+        <thead><tr><th>Prodotto</th><th>Tipo</th><th class="num">Investito</th><th class="num">Valore</th><th class="num">Risultato</th></tr></thead>
+        <tbody id="multi-table"></tbody>
+      </table>
+    </div>
+    <p class="empty" id="multi-empty" hidden>Il primo acquisto avviene dopo la chiusura della borsa americana (22:00 ora italiana).</p>
+    <h3 class="sub-h">Prova sul passato: circa 20 anni</h3>
+    <p class="note" id="multi-bt-note"></p>
+    <div class="table-box">
+      <table>
+        <thead><tr><th>Stessa regola su…</th><th class="num">All'anno, 2006-2018</th><th class="num">All'anno, verifica</th><th class="num">Calo max</th></tr></thead>
+        <tbody id="multi-bt"></tbody>
+      </table>
+    </div>
+    <p class="note">Le azioni e le crypto di oggi sono quelle che "ce l'hanno fatta": sul passato i loro risultati sono gonfiati dal senno di poi. Gli ETF sono il confronto onesto con la borsa.</p>
   </section>
 
   <section class="card" id="backtest">

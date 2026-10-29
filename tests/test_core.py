@@ -308,3 +308,43 @@ def test_fast_capital_buys_dip_and_sells_rebound(tmp_path):
     assert [x["side"] for x in trades] == ["BUY", "SELL"] and float(trades[-1]["pnl"]) > 0
     assert json.loads((out / "fast_summary.json").read_text())[0]["closed_trades"] == 1
     assert len(json.loads((out / "fast_watch.json").read_text())) == 2
+
+
+# --- capitale multi-mercato ---
+
+def test_multi_picks_strongest_in_uptrend_and_trades_like_live():
+    from moneybot import multi
+    n = 600
+    days = [i * multi.DAY for i in range(n)]
+    prices = {
+        "SPY": [100 * 1.0003 ** i for i in range(n)],
+        "AAPL": [100 * 1.002 ** i for i in range(n)],      # la più forte
+        "XOM": [100 * 1.001 ** i for i in range(n)],
+        "PFE": [100 * 0.999 ** i for i in range(n)],       # in calo: mai
+    }
+    p = multi.MultiParams("t", top=2, lookback=252, every=21, market_filter=False)
+    ema200 = {s: multi.ema_series(v, 200) for s, v in prices.items()}
+    assert multi.pick(prices, ema200, n - 1, p, list(prices)) == ["AAPL", "XOM"]
+    res = multi.simulate(days, prices, p)
+    assert res["curve"][-1][1] > multi.config.STARTING_CASH
+    assert all("PFE" not in held for _, held in res["held"])
+
+
+def test_multi_live_rebalance(tmp_path, monkeypatch):
+    from moneybot import multi
+    n = 400
+    data = {
+        "SPY": {i * multi.DAY: 100 * 1.0003 ** i for i in range(n)},
+        "NVDA": {i * multi.DAY: 100 * 1.003 ** i for i in range(n)},
+    }
+    monkeypatch.setattr(multi, "load_universe", lambda *a, **k: data)
+    monkeypatch.setattr(multi, "quote", lambda s: None)
+    out = tmp_path / "dash"
+    t = 30 * multi.DAY + 21 * 3600 + 60
+    multi.run_live(tmp_path, out, now_s=t)
+    pos = json.loads((out / "multi_positions.json").read_text())
+    assert [x["symbol"] for x in pos] == ["NVDA", "SPY"]
+    assert all(x["invested"] == pytest.approx(100.0) for x in pos)
+    # un'ora dopo non ribilancia di nuovo
+    multi.run_live(tmp_path, out, now_s=t + 3600)
+    assert len(read_trades(multi.paths(tmp_path)["trades"])) == 2
