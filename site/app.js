@@ -3,7 +3,7 @@
   const SYMBOLS = ["BTC", "ETH", "SOL", "BNB", "XRP", "ADA", "DOGE", "AVAX", "LINK", "DOT", "LTC", "TRX", "SUI", "NEAR", "ATOM", "UNI", "TON", "APT"];
   const REST = "https://data-api.binance.vision/api/v3";
   const WS = "wss://data-stream.binance.vision/stream?streams=" + SYMBOLS.map((s) => s.toLowerCase() + "usdt@miniTicker").join("/");
-  const BOT_MINUTES = [7, 37]; // il giro parte intorno ai minuti 7 e 37 di ogni ora
+  const BOT_EVERY_MIN = 15; // l'orologio su GitHub fa partire il bot ogni 15 minuti
 
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const $ = (id) => document.getElementById(id);
@@ -605,16 +605,12 @@
 
   // ---------- conto alla rovescia al prossimo giro ----------
   function tickCountdown() {
-    const now = new Date();
-    const candidates = BOT_MINUTES.flatMap((m) => [0, 1].map((h) => {
-      const d = new Date(now);
-      d.setUTCMinutes(m, 0, 0);
-      d.setUTCHours(d.getUTCHours() + h);
-      return d;
-    })).filter((d) => d > now);
-    const next = new Date(Math.min(...candidates));
-    const s = Math.round((next - now) / 1000);
-    $("countdown").textContent = "~" + String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
+    const runs = [bot.summary && bot.summary.last_run, bot.multi_summary && bot.multi_summary.updated].filter(Boolean).map(parseT);
+    if (!runs.length) return;
+    // Il prossimo giro: l'ultimo più l'intervallo dell'orologio (più un paio di minuti di avvio).
+    const next = Math.max(...runs) + (BOT_EVERY_MIN + 2) * 60000;
+    const s = Math.round((next - Date.now()) / 1000);
+    $("countdown").textContent = s <= 0 ? "a momenti" : "~" + String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
   }
 
   // ---------- sfondo animato ----------
