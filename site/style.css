@@ -89,6 +89,8 @@ h2 { margin: 0; font-family: var(--display); font-size: 1.05rem; font-weight: 60
 .l-fast { background: var(--pink); box-shadow: 0 0 8px var(--pink); }
 .l-multi { background: var(--warn); box-shadow: 0 0 8px var(--warn); }
 .l-f360 { background: var(--up); box-shadow: 0 0 8px var(--up); }
+.watch-row.r200 { grid-template-columns: 4rem 1fr; }
+.r200-note { margin: 2px 0 0; font-size: 0.74rem; color: var(--muted); }
 .cap.f360 { border-color: rgba(49, 230, 160, 0.45); box-shadow: inset 0 0 50px rgba(49, 230, 160, 0.07); }
 .cap.f360 .cap-big { color: var(--up); text-shadow: 0 0 24px rgba(49, 230, 160, 0.4); }
 .cap.multi { border-color: rgba(255, 198, 90, 0.45); box-shadow: inset 0 0 50px rgba(255, 198, 90, 0.07); }

@@ -74,11 +74,18 @@ def run() -> None:
     report.write(state, snaps, p, config.REPORT_PATH)
 
     # Il secondo capitale, separato: strategia rapida su BTC ed ETH.
-    for setup in (fast.RAPIDO, fast.RAPIDO_360):
+    for setup in (fast.RAPIDO,):
         try:
             fast.run(candles, now, new_candle, config.STATE_DIR, p["dashboard"], setup)
         except Exception:
             log.exception("capitale %s: errore, gli altri capitali non sono toccati", setup.folder)
+
+    # Il capitale "Rapido 200": cali bruschi su tutti i 200 prodotti, decide una volta al giorno.
+    try:
+        from . import rapid200
+        rapid200.run_live(config.STATE_DIR, p["dashboard"])
+    except Exception:
+        log.exception("capitale rapido 200: errore, gli altri capitali non sono toccati")
 
     # Il terzo capitale: 200 prodotti tra azioni, ETF e crypto, ribilanciato ogni mese.
     try:

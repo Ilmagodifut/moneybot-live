@@ -365,3 +365,28 @@ def test_fast_360_buys_deepest_dips_up_to_max_positions(tmp_path):
     assert all(p.cost == pytest.approx(1000 / 6, rel=1e-2) for p in state.positions.values())  # la seconda risente delle commissioni della prima
     watch = json.loads((out / "fast360_watch.json").read_text())
     assert watch[0]["symbol"] == "SOL" and len(watch) == len(fast.RAPIDO_360.symbols)
+
+
+# --- capitale rapido 200 ---
+
+def test_rapid200_buys_sharp_drop_in_uptrend_and_sells_rebound(tmp_path, monkeypatch):
+    from moneybot import multi, rapid200
+    n = 400
+    up = [100 * 1.001 ** i for i in range(n)]
+    drop = up[:-2] + [up[-3] * 0.96, up[-3] * 0.93]        # due giorni di calo forte, sopra la media di 200 giorni
+    data = {"SPY": {i * multi.DAY: v for i, v in enumerate(up)},
+            "AAPL": {i * multi.DAY: v for i, v in enumerate(drop)}}
+    monkeypatch.setattr(rapid200, "load_universe", lambda *a, **k: data)
+    monkeypatch.setattr(rapid200, "quote", lambda s: None)
+    out = tmp_path / "dash"
+    monday_21 = 4 * multi.DAY + 21 * 3600 + 60   # 5 gennaio 1970 era un lunedì
+    rapid200.run_live(tmp_path, out, now_s=monday_21)
+    pos = json.loads((out / "rapid200_positions.json").read_text())
+    assert [p["symbol"] for p in pos] == ["AAPL"]
+    assert pos[0]["invested"] == pytest.approx(100.0)
+    # il giorno dopo rimbalza sopra la media di 5 giorni: vende
+    data["AAPL"][n * multi.DAY] = up[-1] * 1.02
+    data["SPY"][n * multi.DAY] = up[-1]
+    rapid200.run_live(tmp_path, out, now_s=monday_21 + multi.DAY)
+    assert json.loads((out / "rapid200_positions.json").read_text()) == []
+    assert json.loads((out / "rapid200_summary.json").read_text())[0]["closed_trades"] == 1
