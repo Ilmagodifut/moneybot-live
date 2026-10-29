@@ -49,7 +49,7 @@ Se no, il giudice non sta aggiungendo valore e le soglie vanno riviste.
 ## Due capitali da 1.000 $
 
 - **Lento**: la strategia descritta sopra, su 18 monete, con Claude come giudice.
-- **Rapido** (`moneybot/fast.py`): compra BTC o ETH quando crollano del 6% sotto la loro media
+- **Rapido** (`moneybot/fast.py`): compra BTC o ETH quando crollano del 4% sotto la loro media
   a 200 ore e rivende al rimbalzo, dopo al massimo 5 giorni o con uno stop del 10%. Solo regole.
 
 Nel backtest le strategie veloci "classiche" (trend a 4 ore, comprare le monete migliori del giorno
