@@ -34,6 +34,7 @@ def write_all(state: State, snaps: dict[str, Snapshot], p: dict[str, Path], out_
 
     summary = [{
         "updated": iso(now),
+        "last_run": iso(state.last_run) if state.last_run else None,
         "runs": state.runs,
         "mode": "claude" if config.judge_enabled() else "rules",
         "status": "halted" if state.halted else "active",
