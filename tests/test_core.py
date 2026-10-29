@@ -158,7 +158,8 @@ def fake_client(answer: dict, stop_reason="end_turn"):
     return client, seen
 
 
-def test_judge_request_and_parse_haiku():
+def test_judge_request_and_parse_haiku(monkeypatch):
+    monkeypatch.setattr(config, "JUDGE_MODEL", "claude-haiku-5-5")
     s = snapshot("ETH", make_candles([100 + i * 0.1 for i in range(300)]))
     client, seen = fake_client(good_verdict().__dict__)
     assert judge.ask(client, s, s) == good_verdict()
@@ -227,3 +228,32 @@ def test_same_candle_is_evaluated_once(tmp_path, monkeypatch):
     bot.run()
     assert len(calls) == 1
     assert len((tmp_path / "equity.csv").read_text().splitlines()) == 2  # intestazione + 1 riga
+
+
+def test_rules_take_over_when_claude_is_unavailable(tmp_path, monkeypatch):
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test")
+
+    def no_credit(*a):
+        raise judge.JudgeUnavailable
+
+    monkeypatch.setattr(bot.judge, "ask", no_credit)
+    monkeypatch.setattr(bot, "is_candidate", lambda s: True)
+    monkeypatch.setattr(bot, "rules_only_gate", lambda s: True)
+    candles = make_candles([100 + i * 0.1 for i in range(300)])
+    snaps = {sym: snapshot(sym, candles) for sym in ["A", "B"]}
+    state = State(day="2026-01-01")
+    bot.look_for_entries(state, Broker(state, tmp_path / "t.csv"), snaps, 1000.0, candles[-1].close_time, tmp_path / "v.jsonl")
+    rows = [json.loads(l) for l in (tmp_path / "v.jsonl").read_text().splitlines()]
+    assert [r["mode"] for r in rows] == ["rules", "rules"]
+    assert set(state.positions) == {"A", "B"}
+
+
+def test_no_credit_error_becomes_unavailable():
+    s = snapshot("ETH", make_candles([100 + i * 0.1 for i in range(300)]))
+
+    def handler(request):
+        return httpx.Response(400, json={"type": "error", "error": {"type": "invalid_request_error", "message": "Your credit balance is too low to access the Anthropic API."}})
+
+    client = anthropic.Anthropic(api_key="test", max_retries=0, http_client=httpx.Client(transport=httpx.MockTransport(handler)))
+    with pytest.raises(judge.JudgeUnavailable):
+        judge.ask(client, s, None)

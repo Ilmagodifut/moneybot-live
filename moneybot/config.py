@@ -37,11 +37,11 @@ DAILY_LOSS_LIMIT = 0.03    # -3% nel giorno: stop ai nuovi acquisti fino a doman
 MAX_DRAWDOWN = 0.25        # -25% dal massimo: bot fermo finché non lo riattivi
 
 # Il giudice (Claude). Senza chiave il bot usa solo le regole.
-# Haiku è il modello più economico: con 2 $ di credito dura mesi.
-JUDGE_MODEL = os.environ.get("MONEYBOT_MODEL") or "claude-haiku-5-5"
+# Sonnet: buon equilibrio tra qualità e costo (circa 1 centesimo a valutazione).
+JUDGE_MODEL = os.environ.get("MONEYBOT_MODEL") or "claude-sonnet-5-5"
 JUDGE_EFFORT = os.environ.get("MONEYBOT_EFFORT") or "low"
-MAX_JUDGE_CALLS_PER_RUN = 4
-MAX_JUDGE_CALLS_PER_DAY = 48   # tetto di spesa: circa 2-3 centesimi al giorno con Haiku
+MAX_JUDGE_CALLS_PER_RUN = 3
+MAX_JUDGE_CALLS_PER_DAY = 36   # tetto di spesa: al massimo circa 0,40 $ al giorno con Sonnet
 
 # Il cancello: Claude risponde, il codice decide.
 GATE_ACTION_MIN_PROB = 0.65
