@@ -24,7 +24,8 @@
 
   const bot = { summary: null, equity: [], market: [], positions: [], trades: [], verdicts: [], comparison: [], backtest: null,
     fast_summary: null, fast_positions: [], fast_trades: [], fast_equity: [], fast_watch: [],
-    multi_summary: null, multi_positions: [], multi_trades: [], multi_equity: [], multi_backtest: null };
+    multi_summary: null, multi_positions: [], multi_trades: [], multi_equity: [], multi_backtest: null,
+    fast360_summary: null, fast360_positions: [], fast360_trades: [], fast360_equity: [], fast360_watch: [] };
   const live = {};   // simbolo -> {price, open24}
   const spark = {};  // simbolo -> prezzi di chiusura orari (48)
 
@@ -32,13 +33,15 @@
   async function loadBot() {
     const names = ["summary", "equity", "market", "positions", "trades", "verdicts", "comparison", "backtest",
       "fast_summary", "fast_positions", "fast_trades", "fast_equity", "fast_watch",
-      "multi_summary", "multi_positions", "multi_trades", "multi_equity", "multi_backtest"];
+      "multi_summary", "multi_positions", "multi_trades", "multi_equity", "multi_backtest",
+      "fast360_summary", "fast360_positions", "fast360_trades", "fast360_equity", "fast360_watch"];
     const bust = "?t=" + Date.now();
     const results = await Promise.allSettled(names.map((n) => fetch("data/" + n + ".json" + bust).then((r) => r.json())));
     results.forEach((r, i) => { if (r.status === "fulfilled") bot[names[i]] = r.value; });
     bot.summary = Array.isArray(bot.summary) ? bot.summary[0] : bot.summary;
     bot.fast_summary = Array.isArray(bot.fast_summary) ? bot.fast_summary[0] : bot.fast_summary;
     bot.multi_summary = Array.isArray(bot.multi_summary) ? bot.multi_summary[0] : bot.multi_summary;
+    bot.fast360_summary = Array.isArray(bot.fast360_summary) ? bot.fast360_summary[0] : bot.fast360_summary;
     renderAll();
   }
 
@@ -106,10 +109,10 @@
     return { equity, bench, pnl: equity / s.start_cash - 1, benchPct: bench / s.start_cash - 1 };
   }
 
-  function liveFast() {
-    const s = bot.fast_summary;
+  function liveFast(prefix = "fast") {
+    const s = bot[prefix + "_summary"];
     if (!s) return null;
-    return s.cash + bot.fast_positions.reduce((sum, p) => sum + p.qty * (priceOf(p.symbol) ?? p.price), 0);
+    return s.cash + bot[prefix + "_positions"].reduce((sum, p) => sum + p.qty * (priceOf(p.symbol) ?? p.price), 0);
   }
 
   // Prezzo per un prodotto del capitale multi-mercato: le crypto in diretta da Binance, il resto dall'ultimo giro.
@@ -141,6 +144,7 @@
     const sets = [
       ["slow", liveNumbers() && liveNumbers().equity, bot.equity, bot.summary, bot.positions.length],
       ["fast", liveFast(), bot.fast_equity, bot.fast_summary, bot.fast_positions.length],
+      ["f360", liveFast("fast360"), bot.fast360_equity, bot.fast360_summary, bot.fast360_positions.length],
       ["multi", liveMulti(), bot.multi_equity, bot.multi_summary, bot.multi_positions.length],
     ];
     for (const [k, live, hist, sum, npos] of sets) {
@@ -156,9 +160,17 @@
         ? `Prossimo ribilanciamento: ${bot.multi_summary.next_rebalance}, dopo la chiusura di Wall Street.`
         : "Primo acquisto stasera dopo la chiusura di Wall Street (22:00 ora italiana).";
     }
-    const w = $("fast-watch");
-    const rows = (bot.fast_watch || []).map((x) => {
-      const held = bot.fast_positions.find((p) => p.symbol === x.symbol);
+    renderWatch("fast-watch", bot.fast_watch || [], bot.fast_positions);
+    // Per il 360°: le posizioni aperte e le 4 monete più vicine alla soglia.
+    const held360 = new Set(bot.fast360_positions.map((p) => p.symbol));
+    const near = (bot.fast360_watch || []).slice().sort((a, b) => (held360.has(b.symbol) - held360.has(a.symbol)) || (a.distance - b.distance));
+    renderWatch("f360-watch", near.slice(0, Math.max(4, held360.size)), bot.fast360_positions);
+  }
+
+  function renderWatch(id, list, positions) {
+    const w = $(id);
+    const rows = list.map((x) => {
+      const held = positions.find((p) => p.symbol === x.symbol);
       const price = priceOf(x.symbol) ?? x.price;
       const dist = price / x.mean - 1;
       const row = document.createElement("div");
@@ -361,6 +373,7 @@
     const trades = bot.trades.map((t) => ({ ...t, cap: "Lento" }))
       .concat(bot.fast_trades.map((t) => ({ ...t, cap: "Rapido" })))
       .concat(bot.multi_trades.map((t) => ({ ...t, cap: "200 prodotti" })))
+      .concat(bot.fast360_trades.map((t) => ({ ...t, cap: "Rapido 360°" })))
       .sort((a, b) => (a.time < b.time ? 1 : -1));
     $("trades-empty").hidden = trades.length > 0;
     $("trades").replaceChildren(...trades.map((t) => {
@@ -394,12 +407,15 @@
     const fastHist = bot.fast_equity.map((d) => ({ t: parseT(d.time), v: d.equity }));
     const fl = liveFast();
     const fastData = fl != null ? fastHist.concat({ t: new Date(), v: fl, live: true }) : fastHist;
+    const f360Live = liveFast("fast360");
+    const f360Hist = bot.fast360_equity.map((d) => ({ t: parseT(d.time), v: d.equity }));
+    const f360Data = f360Live != null ? f360Hist.concat({ t: new Date(), v: f360Live, live: true }) : f360Hist;
     const multiLive = liveMulti();
     const multiHist = bot.multi_equity.map((d) => ({ t: parseT(d.time), v: d.equity }));
     const multiData = multiLive != null ? multiHist.concat({ t: new Date(), v: multiLive, live: true }) : multiHist;
     const W = Math.max(280, el.clientWidth), H = 290;
     el.replaceChildren();
-    const vals = data.flatMap((d) => [d.eq, d.bh]).concat(fastData.map((d) => d.v), multiData.map((d) => d.v));
+    const vals = data.flatMap((d) => [d.eq, d.bh]).concat(fastData.map((d) => d.v), multiData.map((d) => d.v), f360Data.map((d) => d.v));
     let lo = d3.min(vals), hi = d3.max(vals);
     const pad = Math.max((hi - lo) * 0.25, hi * 0.003);
     lo -= pad; hi += pad;
@@ -439,6 +455,12 @@
       eq.attr("class", "line-eq").style("--len", eq.node().getTotalLength());
       chartDrawn = true;
     }
+    if (f360Data.length) {
+      svg.append("path").datum(f360Data).attr("fill", "none").attr("stroke", "#31e6a0").attr("stroke-width", 2.2)
+        .attr("stroke-linecap", "round").attr("d", d3.line().x((d) => x(d.t)).y((d) => y(d.v)));
+      const lz = f360Data[f360Data.length - 1];
+      svg.append("circle").attr("cx", x(lz.t)).attr("cy", y(lz.v)).attr("r", 4.5).attr("fill", "#31e6a0");
+    }
     if (multiData.length) {
       svg.append("path").datum(multiData).attr("fill", "none").attr("stroke", "#ffc65a").attr("stroke-width", 2.2)
         .attr("stroke-linecap", "round").attr("d", d3.line().x((d) => x(d.t)).y((d) => y(d.v)));
@@ -468,6 +490,8 @@
         const a = tip.append("div"); a.append("i").style("background", "#3ee0ff"); a.append("span").text("Lento " + fmtUsd(d.eq));
         const fd = fastData.length ? fastData[Math.min(fastData.length - 1, d3.bisector((q) => q.t).center(fastData, d.t))] : null;
         if (fd) { const f = tip.append("div"); f.append("i").style("background", "#ff7ac6"); f.append("span").text("Rapido " + fmtUsd(fd.v)); }
+        const zd = f360Data.length ? f360Data[Math.min(f360Data.length - 1, d3.bisector((q) => q.t).center(f360Data, d.t))] : null;
+        if (zd) { const z = tip.append("div"); z.append("i").style("background", "#31e6a0"); z.append("span").text("Rapido 360° " + fmtUsd(zd.v)); }
         const md = multiData.length ? multiData[Math.min(multiData.length - 1, d3.bisector((q) => q.t).center(multiData, d.t))] : null;
         if (md) { const g = tip.append("div"); g.append("i").style("background", "#ffc65a"); g.append("span").text("200 prodotti " + fmtUsd(md.v)); }
         const b = tip.append("div"); b.append("i").style("background", "#8f7dff"); b.append("span").text("Compra e tieni " + fmtUsd(d.bh));
