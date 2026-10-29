@@ -1,6 +1,6 @@
 [
  {
-  "updated": "2026-10-29 20:45",
+  "updated": "2026-10-29 21:00",
   "start_cash": 1000.0,
   "equity": 1000.0,
   "cash": 1000.0,
@@ -8,6 +8,6 @@
   "closed_trades": 0,
   "winning_trades": 0,
   "fees_paid": 0,
-  "last_decision": ""
+  "last_decision": "2026-10-29"
  }
 ]

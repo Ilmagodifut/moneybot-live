@@ -43,5 +43,14 @@
   "value": 101.04,
   "pnl": 1.04,
   "reason": "trend rotto (media 80h sotto 200h)"
+ },
+ {
+  "time": "2026-10-29 20:59",
+  "symbol": "BNB",
+  "side": "SELL",
+  "price": 727.61622,
+  "value": 96.89,
+  "pnl": -3.25,
+  "reason": "stop"
  }
 ]

@@ -4,3 +4,4 @@ time,symbol,side,price,qty,value,fee,pnl,reason
 2026-10-29 15:59,BNB,BUY,750.49506,0.13329939,100.14,0.1001,0.00,regole
 2026-10-29 16:59,TRX,SELL,0.3312343,301.3887,99.73,0.0998,-0.27,trend rotto (media 80h sotto 200h)
 2026-10-29 16:59,UNI,SELL,7.372312,13.719439,101.04,0.1011,1.04,trend rotto (media 80h sotto 200h)
+2026-10-29 20:59,BNB,SELL,727.61622,0.13329939,96.89,0.0970,-3.25,stop

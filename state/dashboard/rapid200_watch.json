@@ -1,1 +1,42 @@
-[]
+[
+ {
+  "symbol": "CRM",
+  "kind": "azione",
+  "rsi": 6.4
+ },
+ {
+  "symbol": "EWW",
+  "kind": "ETF",
+  "rsi": 6.7
+ },
+ {
+  "symbol": "LIN",
+  "kind": "azione",
+  "rsi": 9.9
+ },
+ {
+  "symbol": "NEAR-USD",
+  "kind": "crypto",
+  "rsi": 11.0
+ },
+ {
+  "symbol": "BNB-USD",
+  "kind": "crypto",
+  "rsi": 12.6
+ },
+ {
+  "symbol": "BTC-USD",
+  "kind": "crypto",
+  "rsi": 14.7
+ },
+ {
+  "symbol": "ADP",
+  "kind": "azione",
+  "rsi": 15.8
+ },
+ {
+  "symbol": "MPC",
+  "kind": "azione",
+  "rsi": 19.0
+ }
+]
