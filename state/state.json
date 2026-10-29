@@ -31,7 +31,7 @@
   "judge_calls_today": 0,
   "judge_day": "2026-10-29",
   "last_candle": 1793293199999,
-  "last_run": 1793293458920,
+  "last_run": 1793294847291,
   "peak_equity": 1001.4067603099375,
   "positions": {
     "BNB": {
@@ -44,6 +44,6 @@
       "stop": 727.9802082
     }
   },
-  "runs": 7,
+  "runs": 8,
   "start_time": 1793285999999
 }

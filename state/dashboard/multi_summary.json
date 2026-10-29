@@ -1,0 +1,13 @@
+[
+ {
+  "updated": "2026-10-29 17:27",
+  "start_cash": 1000.0,
+  "equity": 1000.0,
+  "cash": 1000.0,
+  "open_positions": 0,
+  "closed_trades": 0,
+  "fees_paid": 0,
+  "next_rebalance": "2026-10-29",
+  "strategy": "top 10 su 12 mesi, mensile, senza filtro"
+ }
+]

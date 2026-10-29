@@ -1,0 +1,17 @@
+{
+  "benchmark_start": {},
+  "cash": 1000.0,
+  "cooldowns": {},
+  "day": "",
+  "day_start_equity": 1000.0,
+  "halt_reason": "",
+  "halted": false,
+  "judge_calls_today": 0,
+  "judge_day": "",
+  "last_candle": 1793293200000,
+  "last_run": 0,
+  "peak_equity": 1000.0,
+  "positions": {},
+  "runs": 1,
+  "start_time": 0
+}
