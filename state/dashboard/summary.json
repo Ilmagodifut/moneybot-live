@@ -1,18 +1,18 @@
 [
  {
-  "updated": "2026-10-29 15:59",
-  "runs": 6,
-  "mode": "rules",
+  "updated": "2026-10-29 16:59",
+  "runs": 7,
+  "mode": "claude",
   "status": "active",
   "halt_reason": "",
   "start_cash": 1000.0,
-  "equity": 1001.26,
-  "benchmark": 1011.36,
-  "cash": 699.86,
-  "open_positions": 3,
-  "closed_trades": 0,
-  "winning_trades": 0,
-  "realized_pnl": 0,
-  "fees_paid": 0.3
+  "equity": 1000.58,
+  "benchmark": 1005.08,
+  "cash": 900.63,
+  "open_positions": 1,
+  "closed_trades": 2,
+  "winning_trades": 1,
+  "realized_pnl": 0.77,
+  "fees_paid": 0.5
  }
 ]

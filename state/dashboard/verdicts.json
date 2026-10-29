@@ -10,6 +10,7 @@
   "reason": null,
   "passed": true,
   "bought": true,
+  "rules_passed": null,
   "outcome_24h": null,
   "green": null
  },
@@ -24,6 +25,7 @@
   "reason": null,
   "passed": true,
   "bought": true,
+  "rules_passed": null,
   "outcome_24h": null,
   "green": null
  },
@@ -38,6 +40,7 @@
   "reason": null,
   "passed": false,
   "bought": false,
+  "rules_passed": null,
   "outcome_24h": null,
   "green": null
  },
@@ -52,6 +55,7 @@
   "reason": null,
   "passed": true,
   "bought": true,
+  "rules_passed": null,
   "outcome_24h": null,
   "green": null
  },
@@ -66,6 +70,7 @@
   "reason": null,
   "passed": false,
   "bought": false,
+  "rules_passed": null,
   "outcome_24h": null,
   "green": null
  }
