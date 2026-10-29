@@ -292,7 +292,7 @@ def test_backtest_rules_match_live_rules():
 def test_fast_capital_buys_dip_and_sells_rebound(tmp_path):
     from moneybot import fast
     base = [100.0] * 1300
-    dip = base + [91.0]                 # -9% sotto la media: compra
+    dip = base + [95.5]                 # -4,5% sotto la media: compra
     rebound = dip + [101.0]             # torna sopra la media: vende
     out = tmp_path / "dash"
     out.mkdir()

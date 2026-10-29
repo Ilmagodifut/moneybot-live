@@ -1,6 +1,6 @@
 """Il capitale rapido: 1.000 $ finti separati, strategia di breve periodo.
 
-Compra BTC o ETH quando scendono di colpo del 6% sotto la loro media a 200 ore
+Compra BTC o ETH quando scendono di colpo del 4% sotto la loro media a 200 ore
 (circa 8 giorni), purché il trend di 50 giorni non sia crollato; rivende quando il
 prezzo torna alla media, dopo al massimo 5 giorni o con uno stop del 10%.
 Metà del capitale per moneta. Solo regole: niente Claude, per non spendere credito.
@@ -21,8 +21,8 @@ log = logging.getLogger(__name__)
 
 SYMBOLS = ["BTC", "ETH"]
 FRACTION = 0.5       # metà del capitale per moneta
-DROP = 0.06          # ribasso sotto la media a 200 ore per comprare
-TREND_FLOOR = 0.12   # ...ma non più del 12% sotto la media di 50 giorni
+DROP = 0.04          # ribasso sotto la media a 200 ore per comprare (scelto col backtest)
+TREND_FLOOR = 2 * DROP  # ...ma non troppo sotto la media di 50 giorni (come nel backtest)
 MAX_HOURS = 120      # uscita dopo 5 giorni al massimo
 STOP = 0.10          # stop del 10% sotto l'entrata
 HOUR_MS = 3600 * 1000
