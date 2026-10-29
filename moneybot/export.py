@@ -7,7 +7,7 @@ from pathlib import Path
 from . import config
 from .portfolio import State, iso, read_trades
 from .report import benchmark, read_verdicts
-from .strategy import Snapshot, is_candidate
+from .strategy import Snapshot, is_candidate, trend_label
 
 EQUITY_FIELDS = ["time", "equity", "benchmark", "cash", "positions"]
 
@@ -79,7 +79,7 @@ def write_all(state: State, snaps: dict[str, Snapshot], p: dict[str, Path], out_
         s = snaps.get(sym)
         if not s:
             continue
-        trend = "up" if s.ema20 > s.ema50 > s.ema200 else ("down" if s.ema20 < s.ema50 < s.ema200 else "sideways")
+        trend = trend_label(s)
         market.append({
             "symbol": sym, "price": s.close, "change_24h": round(s.change_24h, 5),
             "change_7d": round(s.change_7d, 5), "rsi": round(s.rsi14, 1), "trend": trend,
@@ -95,7 +95,7 @@ def write_all(state: State, snaps: dict[str, Snapshot], p: dict[str, Path], out_
             "time": iso(v["time"]), "symbol": v["symbol"], "price": v["price"], "mode": v["mode"],
             "action": j.get("action"), "action_prob": j.get("action_prob"),
             "market_risk": j.get("market_risk"), "reason": j.get("reason"),
-            "passed": v["passed"], "bought": v.get("bought", False),
+            "passed": v["passed"], "bought": v.get("bought", False), "rules_passed": v.get("rules_passed"),
             "outcome_24h": v.get("outcome_24h"), "green": v.get("green"),
         })
 
@@ -108,8 +108,31 @@ def write_all(state: State, snaps: dict[str, Snapshot], p: dict[str, Path], out_
                     "cash": float(r["cash"]), "positions": int(r["positions"]),
                 })
 
+    comparison = compare_judges(list(latest.values()))
+
     for name, rows in [
+        ("comparison", comparison),
         ("summary", summary), ("positions", positions), ("trades", trade_rows),
         ("market", market), ("verdicts", verdicts), ("equity", equity[-2000:]),
     ]:
         (out_dir / f"{name}.json").write_text(json.dumps(rows, indent=1))
+
+
+def compare_judges(verdicts: list[dict]) -> list[dict]:
+    """Variazione media del prezzo 24 ore dopo, per chi ha dato il via libera."""
+    done = [v for v in verdicts if v.get("outcome_24h") is not None]
+    groups = [
+        ("Tutte le candidate", done),
+        ("Via libera delle regole", [v for v in done if v.get("rules_passed", v["mode"] == "rules" and v["passed"])]),
+        ("Via libera di Claude", [v for v in done if v["mode"] == "claude" and v["passed"]]),
+        ("Scartate da Claude", [v for v in done if v["mode"] == "claude" and not v["passed"]]),
+    ]
+    rows = []
+    for name, g in groups:
+        rows.append({
+            "group": name,
+            "cases": len(g),
+            "avg_24h": round(sum(v["outcome_24h"] for v in g) / len(g), 5) if g else None,
+            "green_rate": round(sum(1 for v in g if v.get("green")) / len(g), 3) if g else None,
+        })
+    return rows

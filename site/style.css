@@ -84,6 +84,11 @@ h2 { margin: 0; font-family: var(--display); font-size: 1.05rem; font-weight: 60
 .legend i { display: inline-block; width: 18px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
 .l-eq { background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
 .l-bh { background: var(--violet); }
+.l-old { background: var(--warn); }
+.headline { margin: 0 0 12px; font-size: 0.95rem; line-height: 1.5; max-width: 70ch; }
+.headline b { font-family: var(--mono); }
+tr.live td { background: rgba(62, 224, 255, 0.07); }
+tr.live td:first-child { color: var(--cyan); font-weight: 600; }
 .lg::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; border: 1px solid; }
 .lg.held::before { border-color: var(--up); box-shadow: 0 0 8px var(--up); }
 .lg.cand::before { border-color: var(--cyan); box-shadow: 0 0 8px var(--cyan); }

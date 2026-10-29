@@ -81,7 +81,9 @@ def build_dossier(s: Snapshot, btc: Snapshot | None) -> str:
             f"symbol: {x.symbol}",
             f"price: {x.close:.6g}",
             f"change 1h / 24h / 7d: {x.change_1h:+.2%} / {x.change_24h:+.2%} / {x.change_7d:+.2%}",
-            f"EMA20 / EMA50 / EMA200: {x.ema20:.6g} / {x.ema50:.6g} / {x.ema200:.6g}",
+            f"EMA20: {x.ema20:.6g}",
+            f"trend averages EMA{config.TREND_FAST} / EMA{config.TREND_MID} / EMA{config.TREND_SLOW} (hours): "
+            f"{x.trend_fast:.6g} / {x.trend_mid:.6g} / {x.trend_slow:.6g}",
             f"RSI14: {x.rsi14:.1f}",
             f"ATR14 (avg hourly range): {x.atr14:.6g} ({x.atr14 / x.close:.2%} of price)",
             f"price above EMA20, in ATRs: {x.dist_ema20_atr:.2f}",

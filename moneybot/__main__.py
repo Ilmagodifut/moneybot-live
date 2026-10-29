@@ -2,6 +2,7 @@
     python -m moneybot run       esegue un giro (controlla posizioni, cerca entrate, aggiorna il report)
     python -m moneybot resume    riattiva il bot dopo uno stop di sicurezza
     python -m moneybot check     fa una domanda di prova a Claude (su BTC) senza fare operazioni
+    python -m moneybot backtest  prova le regole su 2 anni di prezzi orari e salva i risultati
 """
 
 import logging
@@ -24,6 +25,10 @@ def main() -> None:
         state.peak_equity = state.cash + sum(p.cost for p in state.positions.values())
         state.save(path)
         print("bot riattivato")
+    elif command == "backtest":
+        from . import backtest
+        report = backtest.run(out_dir=bot.paths(config.STATE_DIR)["dashboard"])
+        print(f"migliore sul periodo di allenamento: {report['best']}")
     elif command == "check":
         check_claude()
     else:

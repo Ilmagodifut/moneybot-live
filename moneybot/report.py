@@ -5,7 +5,7 @@ from pathlib import Path
 
 from . import config
 from .portfolio import State, iso, read_trades
-from .strategy import Snapshot, is_candidate
+from .strategy import Snapshot, is_candidate, trend_label
 
 BUCKETS = [(0.0, 0.65), (0.65, 0.75), (0.75, 0.85), (0.85, 1.01)]
 
@@ -89,7 +89,7 @@ def render(state: State, snaps: dict[str, Snapshot], trades: list[dict], verdict
         if not s:
             lines.append(f"| {sym} | dati mancanti | | | | | |")
             continue
-        trend = "su" if s.ema20 > s.ema50 > s.ema200 else ("giù" if s.ema20 < s.ema50 < s.ema200 else "laterale")
+        trend = {"up": "su", "down": "giù", "sideways": "laterale"}[trend_label(s)]
         lines.append(
             f"| {sym} | {s.close:.6g} | {pct(s.change_24h)} | {pct(s.change_7d)} | {s.rsi14:.0f} "
             f"| {trend} | {'sì' if is_candidate(s) else ''} |"

@@ -15,7 +15,8 @@ Una volta all'ora il bot:
    LINK, DOT, LTC, TRX, SUI, NEAR, ATOM, UNI, TON, APT) dal servizio pubblico di Binance;
 2. controlla le posizioni aperte: esce se scatta lo stop o se il trend si rompe;
 3. cerca nuove entrate:
-   - **regole fisse** scelgono le candidate (trend rialzista su più orizzonti, RSI tra 50 e 70);
+   - **regole fisse** scelgono le candidate: trend rialzista su giorni e settimane
+     (medie mobili a 80, 200 e 800 ore), RSI tra 50 e 70;
    - **Claude fa da giudice**: riceve solo i numeri e risponde a 4 domande chiuse con una probabilità
      (trend sano? prezzo già troppo tirato? rischio di mercato da 1 a 5? compro/aspetto/passo?);
    - **il codice decide**: si compra solo se tutte le risposte superano le soglie scritte in `moneybot/config.py`;
@@ -31,8 +32,9 @@ Senza chiave Claude il bot funziona lo stesso, usando solo le regole.
 | Dimensione di ogni posizione | 10% del capitale |
 | Posizioni aperte al massimo | 5 |
 | Commissioni + slippage simulati | 0,1% + 0,05% a ogni operazione |
-| Stop iniziale | 2 ATR sotto l'entrata (minimo 3%) |
-| Trailing stop | 3 ATR sotto il massimo raggiunto (minimo 4%) |
+| Stop iniziale | 3 ATR sotto l'entrata (minimo 5%) |
+| Trailing stop | 4 ATR sotto il massimo raggiunto (minimo 6%) |
+| Uscita per trend | quando la media a 80 ore scende sotto quella a 200 ore |
 | Perdita giornaliera massima | -3%: niente nuovi acquisti fino al giorno dopo |
 | Perdita massima dal picco | -25%: bot fermo finché non lo riattivi (`python -m moneybot resume`) |
 
@@ -43,6 +45,20 @@ La sicurezza di Claude **non** aumenta mai la dimensione di una posizione: decid
 Ogni verdetto viene ricontrollato 24 ore dopo. Nel report c'è una tabella: quando Claude dice
 "buy" con probabilità 0,8, il prezzo è davvero salito circa 8 volte su 10?
 Se no, il giudice non sta aggiungendo valore e le soglie vanno riviste.
+
+## Backtest: le regole provate sul passato
+
+`python -m moneybot backtest` fa girare le stesse regole (senza Claude) su 2 anni di prezzi orari
+reali delle 18 monete, con commissioni e slippage, e prova alcune varianti. Le varianti si scelgono
+sul primo 60% del periodo e si giudicano sul restante 40%, che nessuna scelta ha visto.
+Gira da solo ogni domenica e i risultati sono nella web app.
+
+Le regole attuali vengono da qui: le prime regole su medie orarie facevano circa 1.000 operazioni
+in 2 anni e perdevano soprattutto in commissioni; la versione "lenta" ne fa meno della metà e
+nel periodo di verifica ha fatto meglio sia delle prime regole sia del semplice compra e tieni.
+
+Il bot registra anche, per ogni moneta valutata da Claude, cosa avrebbero deciso le sole regole:
+nella web app la sezione "Claude contro regole" mostra chi sceglie meglio.
 
 ## Attivare il giro automatico (gratis, su GitHub)
 

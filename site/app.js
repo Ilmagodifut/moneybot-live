@@ -12,13 +12,13 @@
   const fmtPrice = (v) => (v >= 1000 ? d3.format(",.1f")(v) : v >= 1 ? d3.format(",.3f")(v) : d3.format(".4~g")(v));
   const parseT = (t) => new Date(String(t).replace(" ", "T") + ":00Z");
 
-  const bot = { summary: null, equity: [], market: [], positions: [], trades: [], verdicts: [] };
+  const bot = { summary: null, equity: [], market: [], positions: [], trades: [], verdicts: [], comparison: [], backtest: null };
   const live = {};   // simbolo -> {price, open24}
   const spark = {};  // simbolo -> prezzi di chiusura orari (48)
 
   // ---------- caricamento dati ----------
   async function loadBot() {
-    const names = ["summary", "equity", "market", "positions", "trades", "verdicts"];
+    const names = ["summary", "equity", "market", "positions", "trades", "verdicts", "comparison", "backtest"];
     const bust = "?t=" + Date.now();
     const results = await Promise.allSettled(names.map((n) => fetch("data/" + n + ".json" + bust).then((r) => r.json())));
     results.forEach((r, i) => { if (r.status === "fulfilled") bot[names[i]] = r.value; });
@@ -356,7 +356,102 @@
       .on("pointerleave", () => { tip.style("display", "none"); rule.style("display", "none"); });
   }
 
-  function renderAll() { renderKpis(); renderTicker(); renderRadar(); renderPositions(); renderTables(); renderChart(); }
+  // ---------- backtest e confronto ----------
+  const pct1 = (v) => (v == null ? "—" : (v > 0 ? "+" : "") + d3.format(".1%")(v));
+  function pctCell(v) {
+    const c = td(pct1(v), "num " + (v > 0 ? "up" : v < 0 ? "down" : ""));
+    return c;
+  }
+
+  function renderBacktest() {
+    const bt = bot.backtest;
+    if (!bt || !bt.variants) return;
+    $("bt-period").textContent = `${bt.start} – ${bt.end} (verifica dal ${bt.split})`;
+    const live = bt.variants.find((v) => v.name === bt.live) || bt.variants[0];
+    const hourly = bt.variants.find((v) => v.name.startsWith("orarie"));
+    const h = $("bt-headline");
+    h.replaceChildren();
+    const parts = [
+      "Sui 2 anni le regole attuali fanno ", ["b", pct1(live.full.return)],
+      ", le prime regole orarie ", ["b", pct1(hourly ? hourly.full.return : null)],
+      " e il semplice compra e tieni ", ["b", pct1(bt.buy_and_hold.full)],
+      ". Nel periodo di verifica: ", ["b", pct1(live.test.return)], " contro ", ["b", pct1(bt.buy_and_hold.test)], " del mercato.",
+    ];
+    parts.forEach((p) => {
+      if (Array.isArray(p)) { const b = document.createElement("b"); b.textContent = p[1]; h.append(b); }
+      else h.append(p);
+    });
+
+    $("bt-table").replaceChildren(...bt.variants.map((v) => {
+      const tr = document.createElement("tr");
+      if (v.name === bt.live) tr.className = "live";
+      const name = td(v.name);
+      name.title = v.description;
+      tr.append(name, pctCell(v.train.return), pctCell(v.test.return), pctCell(v.full.return),
+        td("-" + d3.format(".0%")(v.full.max_drawdown), "num"), td(String(v.full.trades), "num"),
+        td(v.full.win_rate == null ? "—" : d3.format(".0%")(v.full.win_rate), "num"));
+      return tr;
+    }));
+
+    const el = $("bt-chart");
+    const data = bt.curve.map((d) => ({ t: new Date(d.time + "T00:00:00Z"), a: d.attuale, o: d.orarie, h: d.compra_e_tieni }));
+    if (!data.length) return;
+    const W = Math.max(280, el.clientWidth), H = 260;
+    el.replaceChildren();
+    const vals = data.flatMap((d) => [d.a, d.o, d.h]).filter((v) => v != null);
+    const y = d3.scaleLinear(d3.extent(vals), [H - 24, 10]).nice();
+    const svg = d3.select(el).append("svg").attr("width", "100%").attr("viewBox", `0 0 ${W} ${H}`)
+      .attr("role", "img").attr("aria-label", "Backtest: regole attuali, prime regole e compra e tieni");
+    const yAxis = d3.axisLeft(y).ticks(5).tickFormat((v) => "$" + d3.format(",.0f")(v));
+    const probe = svg.append("g").attr("class", "axis").call(yAxis);
+    let left = 0;
+    probe.selectAll("text").each(function () { left = Math.max(left, this.getComputedTextLength()); });
+    probe.remove();
+    const ml = left + 14;
+    const x = d3.scaleUtc(d3.extent(data, (d) => d.t), [ml, W - 16]);
+    svg.append("g").attr("class", "grid").attr("transform", `translate(${ml},0)`).call(d3.axisLeft(y).ticks(5).tickSize(-(W - ml - 16)).tickFormat(""));
+    svg.append("g").attr("class", "axis").attr("transform", `translate(${ml},0)`).call(yAxis).attr("font-size", null).attr("font-family", null);
+    svg.append("g").attr("class", "axis").attr("transform", `translate(0,${H - 24})`)
+      .call(d3.axisBottom(x).ticks(Math.max(2, Math.floor(W / 110))).tickFormat(d3.utcFormat("%b %y")))
+      .attr("font-size", null).attr("font-family", null);
+    const split = new Date(bt.split + "T00:00:00Z");
+    svg.append("line").attr("x1", x(split)).attr("x2", x(split)).attr("y1", 10).attr("y2", H - 24)
+      .attr("stroke", "rgba(231,238,251,.35)").attr("stroke-dasharray", "3 4");
+    svg.append("text").attr("x", x(split) + 6).attr("y", 20).attr("fill", "#8794ad").attr("font-size", 10).attr("font-family", "JetBrains Mono, monospace").text("verifica →");
+    const line = (key) => d3.line().defined((d) => d[key] != null).x((d) => x(d.t)).y((d) => y(d[key]));
+    svg.append("path").datum(data).attr("fill", "none").attr("stroke", "#8f7dff").attr("stroke-width", 1.6).attr("stroke-dasharray", "5 4").attr("d", line("h"));
+    svg.append("path").datum(data).attr("fill", "none").attr("stroke", "#ffc65a").attr("stroke-width", 1.6).attr("stroke-opacity", 0.85).attr("d", line("o"));
+    svg.append("path").datum(data).attr("fill", "none").attr("stroke", "#3ee0ff").attr("stroke-width", 2.4).attr("filter", "url(#glow)").attr("d", line("a"));
+
+    const tip = d3.select(el).append("div").attr("class", "tip").style("display", "none");
+    const bis = d3.bisector((d) => d.t).center;
+    svg.append("rect").attr("x", ml).attr("width", W - ml).attr("height", H).attr("fill", "transparent")
+      .on("pointermove", (event) => {
+        const d = data[bis(data, x.invert(d3.pointer(event)[0]))];
+        tip.style("display", null).selectAll("*").remove();
+        tip.append("div").attr("class", "t").text(d3.utcFormat("%d/%m/%Y")(d.t));
+        [["#3ee0ff", "Attuali", d.a], ["#ffc65a", "Orarie", d.o], ["#8f7dff", "Compra e tieni", d.h]].forEach(([c, n, v]) => {
+          if (v == null) return;
+          const r = tip.append("div"); r.append("i").style("background", c); r.append("span").text(n + " " + fmtUsd(v));
+        });
+        const box = el.getBoundingClientRect(), tw = tip.node().offsetWidth;
+        tip.style("left", Math.min(Math.max(0, (x(d.t) / W) * box.width + 12), box.width - tw) + "px").style("top", "12px");
+      })
+      .on("pointerleave", () => tip.style("display", "none"));
+  }
+
+  function renderComparison() {
+    const rows = bot.comparison || [];
+    $("cmp-table").replaceChildren(...rows.map((r) => {
+      const tr = document.createElement("tr");
+      tr.append(td(r.group), td(String(r.cases), "num"),
+        r.avg_24h == null ? td("in attesa", "num") : pctCell(r.avg_24h),
+        td(r.green_rate == null ? "—" : d3.format(".0%")(r.green_rate), "num"));
+      return tr;
+    }));
+  }
+
+  function renderAll() { renderKpis(); renderTicker(); renderRadar(); renderPositions(); renderTables(); renderChart(); renderBacktest(); renderComparison(); }
 
   // I prezzi cambiano più volte al secondo: KPI e radar subito, grafico al massimo ogni 5 s.
   let lastChart = 0;
@@ -423,5 +518,5 @@
   loadBot().then(() => { connect(); startPolling(); loadSparks(); });
   setInterval(loadBot, 60 * 1000);
   setInterval(loadSparks, 5 * 60 * 1000);
-  addEventListener("resize", () => renderChart());
+  addEventListener("resize", () => { renderChart(); renderBacktest(); });
 })();

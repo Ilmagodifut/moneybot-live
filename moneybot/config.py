@@ -14,9 +14,15 @@ SYMBOLS = [
 ]
 QUOTE = "USDT"
 
-# Dati di mercato: candele orarie, abbastanza per una EMA a 200.
+# Dati di mercato: candele orarie, abbastanza per una media a 800 ore.
 INTERVAL = "1h"
-CANDLE_LIMIT = 300
+CANDLE_LIMIT = 1500
+
+# Trend "lento" (scelto con il backtest): medie mobili a 80, 200 e 800 ore,
+# cioè circa 3 giorni, 8 giorni e 33 giorni.
+TREND_FAST = 80
+TREND_MID = 200
+TREND_SLOW = 800
 
 # Portafoglio simulato.
 STARTING_CASH = 1000.0
@@ -26,10 +32,10 @@ FEE_RATE = 0.001           # 0,1% per lato, come un exchange tipico
 SLIPPAGE_RATE = 0.0005     # 0,05% di prezzo peggiore a ogni esecuzione
 
 # Uscite.
-STOP_ATR = 2.0             # stop iniziale = entrata - 2 ATR...
-STOP_MIN_PCT = 0.03        # ...ma almeno il 3% sotto, per non uscire sul rumore
-TRAIL_ATR = 3.0            # trailing stop = massimo raggiunto - 3 ATR...
-TRAIL_MIN_PCT = 0.04       # ...ma almeno il 4% sotto il massimo
+STOP_ATR = 3.0             # stop iniziale = entrata - 3 ATR...
+STOP_MIN_PCT = 0.05        # ...ma almeno il 5% sotto, per non uscire sul rumore
+TRAIL_ATR = 4.0            # trailing stop = massimo raggiunto - 4 ATR...
+TRAIL_MIN_PCT = 0.06       # ...ma almeno il 6% sotto il massimo
 COOLDOWN_HOURS = 12        # dopo un'uscita, niente rientri sulla stessa moneta
 
 # Freni di sicurezza.
