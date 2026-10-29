@@ -1,0 +1,64 @@
+{
+  "benchmark_start": {
+    "ADA": 0.2038,
+    "APT": 0.687,
+    "ATOM": 1.62,
+    "AVAX": 8.898,
+    "BNB": 748.17,
+    "BTC": 81178.32,
+    "DOGE": 0.07988,
+    "DOT": 1.004,
+    "ETH": 2344.73,
+    "LINK": 11.797,
+    "LTC": 57.86,
+    "NEAR": 4.523,
+    "SOL": 101.79,
+    "SUI": 0.942,
+    "TON": 1.6,
+    "TRX": 0.3313,
+    "UNI": 7.278,
+    "XRP": 1.3028
+  },
+  "cash": 699.8593239690063,
+  "cooldowns": {},
+  "day": "2026-10-29",
+  "day_start_equity": 1000.0,
+  "halt_reason": "",
+  "halted": false,
+  "judge_calls_today": 0,
+  "judge_day": "2026-10-29",
+  "last_candle": 1793289599999,
+  "last_run": 1793290881042,
+  "peak_equity": 1001.4067603099375,
+  "positions": {
+    "BNB": {
+      "cost": 100.14067603099375,
+      "entry_price": 750.49506,
+      "entry_time": 1793289599999,
+      "highest": 750.49506,
+      "last_checked": 1793289599999,
+      "qty": 0.1332993922104734,
+      "stop": 727.9802082
+    },
+    "TRX": {
+      "cost": 100.0,
+      "entry_price": 0.33146564999999995,
+      "entry_time": 1793285999999,
+      "highest": 0.3315,
+      "last_checked": 1793289599999,
+      "qty": 301.38869593274603,
+      "stop": 0.32152168049999996
+    },
+    "UNI": {
+      "cost": 100.0,
+      "entry_price": 7.281638999999999,
+      "entry_time": 1793285999999,
+      "highest": 7.398,
+      "last_checked": 1793289599999,
+      "qty": 13.719438714278477,
+      "stop": 7.065385676394633
+    }
+  },
+  "runs": 5,
+  "start_time": 1793285999999
+}

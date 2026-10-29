@@ -1,0 +1,24 @@
+name: Pubblica web app
+
+on:
+  push:
+    branches: [main]
+    paths: ["site/**", "scripts/publish_site.sh"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: moneybot
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pubblica la web app
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: scripts/publish_site.sh

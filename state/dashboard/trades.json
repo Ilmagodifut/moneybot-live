@@ -1,0 +1,29 @@
+[
+ {
+  "time": "2026-10-29 14:59",
+  "symbol": "TRX",
+  "side": "BUY",
+  "price": 0.33146565,
+  "value": 100.0,
+  "pnl": null,
+  "reason": "regole"
+ },
+ {
+  "time": "2026-10-29 14:59",
+  "symbol": "UNI",
+  "side": "BUY",
+  "price": 7.281639,
+  "value": 100.0,
+  "pnl": null,
+  "reason": "regole"
+ },
+ {
+  "time": "2026-10-29 15:59",
+  "symbol": "BNB",
+  "side": "BUY",
+  "price": 750.49506,
+  "value": 100.14,
+  "pnl": null,
+  "reason": "regole"
+ }
+]

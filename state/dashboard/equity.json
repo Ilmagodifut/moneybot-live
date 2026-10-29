@@ -1,0 +1,16 @@
+[
+ {
+  "time": "2026-10-29 14:59",
+  "equity": 999.7,
+  "benchmark": 1000.0,
+  "cash": 800.0,
+  "positions": 2
+ },
+ {
+  "time": "2026-10-29 15:59",
+  "equity": 1001.26,
+  "benchmark": 1011.36,
+  "cash": 699.86,
+  "positions": 3
+ }
+]

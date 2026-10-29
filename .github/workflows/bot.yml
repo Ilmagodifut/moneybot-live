@@ -1,0 +1,48 @@
+name: MONEYBOT giro orario
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # ogni ora al minuto 17 (UTC)
+  workflow_dispatch:        # pulsante "Run workflow" per lanciarlo a mano
+
+permissions:
+  contents: write
+
+concurrency:
+  group: moneybot
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Un giro del bot
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MONEYBOT_MODEL: ${{ vars.MONEYBOT_MODEL }}
+        run: python -m moneybot run
+
+      - name: Salva stato e report nel repository
+        run: |
+          git config user.name "moneybot"
+          git config user.email "moneybot@users.noreply.github.com"
+          git add state REPORT.md
+          git diff --cached --quiet && exit 0
+          git commit -m "giro del bot $(date -u '+%Y-%m-%d %H:%M') UTC"
+          git pull --rebase
+          git push
+
+      - name: Pubblica la web app
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: scripts/publish_site.sh
