@@ -11,7 +11,7 @@ from pathlib import Path
 
 import anthropic
 
-from . import config, export, judge, report
+from . import config, export, fast, judge, report
 from .data import Candle, fetch_candles
 from .portfolio import Broker, State
 from .strategy import Snapshot, is_candidate, rules_only_gate, snapshot, trend_broken
@@ -72,6 +72,12 @@ def run() -> None:
     state.save(p["state"])
     export.write_all(state, snaps, p, p["dashboard"])
     report.write(state, snaps, p, config.REPORT_PATH)
+
+    # Il secondo capitale, separato: strategia rapida su BTC ed ETH.
+    try:
+        fast.run(candles, now, new_candle, config.STATE_DIR, p["dashboard"])
+    except Exception:
+        log.exception("capitale rapido: errore, il capitale lento non è toccato")
     log.info("giro completato: capitale %.2f$, posizioni aperte %d", state.equity(prices), len(state.positions))
 
 

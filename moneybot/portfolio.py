@@ -64,8 +64,9 @@ class Broker:
         self.state = state
         self.trades_path = trades_path
 
-    def buy(self, symbol: str, price: float, atr: float, time_ms: int, equity: float, reason: str) -> bool:
-        value = min(equity * config.POSITION_FRACTION, self.state.cash)
+    def buy(self, symbol: str, price: float, atr: float, time_ms: int, equity: float, reason: str,
+            fraction: float = config.POSITION_FRACTION) -> bool:
+        value = min(equity * fraction, self.state.cash)
         if value < 10:
             return False
         fill = price * (1 + config.SLIPPAGE_RATE)

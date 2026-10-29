@@ -288,13 +288,26 @@ def run(days: int = 730, out_dir: Path | None = None) -> dict:
     for p in VARIANTS:
         res = simulate(series, times, p)
         results.append({
-            "name": p.name, "description": p.description, "params": asdict(p),
+            "name": p.name, "family": "regole del bot", "description": p.description, "params": asdict(p),
             "train": stats(res, times[0], split),
             "test": stats(res, split, end),
             "full": stats(res, times[0], end),
         })
         curves[p.name] = res["curve"]
         log.info("%s: allenamento %+.1f%%, verifica %+.1f%%", p.name,
+                 100 * results[-1]["train"]["return"], 100 * results[-1]["test"]["return"])
+
+    from .strategies import STRATEGIES, simulate_weights
+    for strat in STRATEGIES:
+        res = simulate_weights(series, times, strat)
+        results.append({
+            "name": strat.name, "family": strat.family, "description": strat.description,
+            "train": stats(res, times[0], split),
+            "test": stats(res, split, end),
+            "full": stats(res, times[0], end),
+        })
+        curves[strat.name] = res["curve"]
+        log.info("%s: allenamento %+.1f%%, verifica %+.1f%%", strat.name,
                  100 * results[-1]["train"]["return"], 100 * results[-1]["test"]["return"])
 
     # La scelta usa SOLO il periodo di allenamento: vince il rendimento più alto.

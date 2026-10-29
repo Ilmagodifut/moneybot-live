@@ -285,3 +285,26 @@ def test_backtest_rules_match_live_rules():
     s = backtest.build_series(rows)
     snap = snapshot("X", candles)
     assert backtest.passes_rules(s, len(rows) - 1, backtest.LIVE) == rules_only_gate(snap)
+
+
+# --- capitale rapido ---
+
+def test_fast_capital_buys_dip_and_sells_rebound(tmp_path):
+    from moneybot import fast
+    base = [100.0] * 1300
+    dip = base + [91.0]                 # -9% sotto la media: compra
+    rebound = dip + [101.0]             # torna sopra la media: vende
+    out = tmp_path / "dash"
+    out.mkdir()
+    for k, closes in enumerate([dip, rebound]):
+        cs = make_candles(closes)
+        fast.run({"BTC": cs, "ETH": make_candles(base)}, cs[-1].close_time, True, tmp_path, out)
+        state = State.load(fast.paths(tmp_path)["state"])
+        if k == 0:
+            assert "BTC" in state.positions
+            assert state.positions["BTC"].stop == pytest.approx(state.positions["BTC"].entry_price * 0.9)
+    assert state.positions == {}
+    trades = read_trades(fast.paths(tmp_path)["trades"])
+    assert [x["side"] for x in trades] == ["BUY", "SELL"] and float(trades[-1]["pnl"]) > 0
+    assert json.loads((out / "fast_summary.json").read_text())[0]["closed_trades"] == 1
+    assert len(json.loads((out / "fast_watch.json").read_text())) == 2
