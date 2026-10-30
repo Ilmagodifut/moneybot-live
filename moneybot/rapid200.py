@@ -1,7 +1,8 @@
 """Il capitale "Rapido 200": compra i cali bruschi su tutti i 200 prodotti.
 
-Una volta al giorno, dopo la chiusura di Wall Street, guarda i 200 prodotti (azioni,
-ETF e crypto, prezzi giornalieri da Yahoo Finance):
+Una volta al giorno, poco dopo l'apertura di Wall Street, guarda i 200 prodotti (azioni,
+ETF e crypto, prezzi giornalieri da Yahoo Finance) sulla chiusura del giorno prima e compra
+o vende al prezzo del momento:
 - compra quelli in trend di fondo positivo (sopra la media di 200 giorni) che negli
   ultimi 2 giorni sono scesi bruscamente (RSI a 2 giorni sotto 10), i più "ipervenduti"
   per primi, fino a 10 posizioni da un decimo del capitale;
@@ -25,7 +26,7 @@ log = logging.getLogger(__name__)
 SLOTS = 10
 RSI_MAX = 10           # più attivo: compra con RSI a 2 giorni sotto 10
 MAX_DAYS = 14            # due settimane di calendario (circa 10 giorni di borsa)
-DECISION_HOUR_UTC = 21   # dopo la chiusura della borsa americana
+DECISION_HOUR_UTC = 15   # dopo l'apertura di Wall Street (16:00-17:00 italiane, secondo l'ora legale)
 
 
 def rsi2(values: list) -> list:
@@ -96,28 +97,39 @@ def run_live(state_dir: Path, out_dir: Path, now_s: int | None = None) -> None:
     if due:
         data = load_universe(UNIVERSE, fresh=True)
         days, series = matrix(data)
-        i = len(days) - 1
+        # Segnali sull'ultima chiusura completa (il giorno prima), esecuzione al prezzo di adesso.
+        midnight = now_s - now_s % DAY
+        i = max(k for k, d in enumerate(days) if d < midnight)
         candidates, mean5 = signals(series, i)
-        last = {s: series[s][i] for s in series if series[s][i]}
         t_ms = now_s * 1000
+
+        def live(sym: str) -> float | None:
+            if sym not in prices:
+                q = quote(sym)
+                if q:
+                    prices[sym] = q
+            return prices.get(sym)
+
         for sym in list(state.positions):
-            price = last.get(sym) or prices.get(sym)
+            close = series.get(sym, [None] * (i + 1))[i]
+            price = live(sym) or close
             if price is None:
                 continue
             pos = state.positions[sym]
-            if sym in mean5 and price > mean5[sym]:
+            if close is not None and sym in mean5 and close > mean5[sym]:
                 broker.sell(sym, price, t_ms, "rimbalzo: sopra la media di 5 giorni")
             elif now_s * 1000 - pos.entry_time >= MAX_DAYS * DAY * 1000:
                 broker.sell(sym, price, t_ms, "tempo scaduto (2 settimane)")
-        prices.update({s: last[s] for s in state.positions if s in last})
         for r, sym in candidates:
             if r >= RSI_MAX or len(state.positions) >= SLOTS:
                 break
-            if sym in state.positions or sym not in last:
+            if sym in state.positions:
                 continue
-            equity = state.equity({**prices, **{s: last[s] for s in last if s in state.positions}})
-            if broker.buy(sym, last[sym], 0.0, t_ms, equity, f"calo brusco (RSI 2 giorni {r:.1f})", fraction=1 / SLOTS):
-                prices[sym] = last[sym]
+            price = live(sym)
+            if not price:
+                continue
+            equity = state.equity(prices)
+            broker.buy(sym, price, 0.0, t_ms, equity, f"calo brusco (RSI 2 giorni {r:.1f})", fraction=1 / SLOTS)
         meta = {"last_day": today, "watch": [{"symbol": s, "kind": KIND.get(s, ""), "rsi": round(r, 1)} for r, s in candidates[:8]]}
         candidates = [c for c in candidates if c[0] < RSI_MAX]
         p["meta"].write_text(json.dumps(meta))
