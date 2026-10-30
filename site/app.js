@@ -184,14 +184,14 @@
     });
     if (!pos.length) {
       const watch = bot.rapid200_watch || [];
-      watch.slice(0, 4).forEach((x) => line(x.symbol, `${x.kind} · RSI ${x.rsi} · ${x.rsi < 10 ? "candidato per stasera" : "compra sotto 10"}`, x.rsi < 10 ? "up" : ""));
+      watch.slice(0, 4).forEach((x) => line(x.symbol, `${x.kind} · RSI ${x.rsi} · ${x.rsi < 10 ? "candidato" : "compra sotto 10"}`, x.rsi < 10 ? "up" : ""));
     }
     const s = bot.rapid200_summary;
     const note = document.createElement("p");
     note.className = "r200-note";
     note.textContent = s && s.last_decision
-      ? `Valori della chiusura del ${s.last_decision.split("-").reverse().join("/")}. Compra solo alla chiusura di Wall Street (22:00), con i prezzi del giorno.`
-      : "Prima decisione stasera dopo la chiusura di Wall Street (22:00 ora italiana).";
+      ? `Ultima decisione: ${s.last_decision.split("-").reverse().join("/")}. Compra e vende ogni giorno di borsa verso le 16:00, all'apertura di Wall Street.`
+      : "Compra e vende ogni giorno di borsa verso le 16:00, all'apertura di Wall Street.";
     rows.push(note);
     box.replaceChildren(...rows);
   }

@@ -49,7 +49,7 @@ Se no, il giudice non sta aggiungendo valore e le soglie vanno riviste.
 ## Due capitali da 1.000 $
 
 - **Lento**: la strategia descritta sopra, su 18 monete, con Claude come giudice.
-- **Rapido 200** (`moneybot/rapid200.py`): ogni sera, dopo la chiusura di Wall Street, compra sui
+- **Rapido 200** (`moneybot/rapid200.py`): ogni giorno di borsa, poco dopo l'apertura di Wall Street, compra sui
   200 prodotti quelli in trend di fondo positivo scesi bruscamente negli ultimi 2 giorni (RSI a 2 giorni
   sotto 10), fino a 10 posizioni; rivende al ritorno sopra la media di 5 giorni o dopo 2 settimane.
   Backtest su ~20 anni con soglia 10: circa +0,4%/anno nel 2006-2018 e +4,7% dopo (con soglia 5: +2% e +6%, ma meno operazioni).
