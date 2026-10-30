@@ -138,5 +138,12 @@
   "benchmark": 950.75,
   "cash": 997.53,
   "positions": 0
+ },
+ {
+  "time": "2026-10-30 10:59",
+  "equity": 997.53,
+  "benchmark": 958.69,
+  "cash": 997.53,
+  "positions": 0
  }
 ]
