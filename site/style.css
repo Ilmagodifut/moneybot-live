@@ -216,3 +216,33 @@ tbody tr:hover { background: rgba(62, 224, 255, 0.05); }
   .big { font-size: 1.45rem; }
   .kpi.main .big { font-size: 1.8rem; }
 }
+
+/* Terminale live: righe che scorrono con i controlli del bot. */
+.term { border-color: rgba(62, 224, 255, 0.35); }
+.term-live { margin-left: 8px; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--up); }
+.term-live .dot { display: inline-block; width: 7px; height: 7px; margin-right: 5px; border-radius: 50%; background: var(--up); box-shadow: 0 0 8px var(--up); animation: blink 1.2s ease-in-out infinite; }
+@keyframes blink { 50% { opacity: 0.25; } }
+.term-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: 10px; margin-bottom: 12px; }
+.term-stats div { display: grid; gap: 2px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: rgba(6, 10, 19, 0.5); }
+.term-stats span { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.term-stats b { font-family: var(--mono); font-size: 1rem; font-variant-numeric: tabular-nums; }
+.term-log {
+  height: 300px; overflow: hidden; padding: 10px 12px; border-radius: 10px; background: #03060c; border: 1px solid var(--line);
+  font-family: var(--mono); font-size: 0.72rem; line-height: 1.55; display: flex; flex-direction: column; justify-content: flex-end;
+  mask-image: linear-gradient(to bottom, transparent, #000 30%);
+}
+.term-line { overflow-wrap: anywhere; color: #9fb0cc; animation: term-in 0.35s ease-out; }
+.term-line time { color: #56627a; margin-right: 8px; }
+.term-line .tag { display: inline-block; min-width: 4.6em; margin-right: 6px; font-weight: 600; }
+.term-line .t-scan { color: var(--cyan); }
+.term-line .t-pos { color: var(--violet); }
+.term-line .t-buy { color: var(--up); }
+.term-line .t-sell { color: var(--down); }
+.term-line .t-sig { color: var(--warn); }
+.term-line .t-sys { color: var(--muted); }
+.term-line .up { color: var(--up); }
+.term-line .down { color: var(--down); }
+.term-line .hot { color: var(--warn); }
+.term-line:last-child::after { content: "▌"; margin-left: 4px; color: var(--cyan); animation: blink 1s steps(1) infinite; }
+@keyframes term-in { from { opacity: 0; transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .term-line, .term-line:last-child::after, .term-live .dot { animation: none; } }

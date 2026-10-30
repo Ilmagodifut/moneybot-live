@@ -647,13 +647,120 @@
     }));
   }
 
-  function renderAll() { renderMulti(); renderDuo(); renderKpis(); renderTicker(); renderRadar(); renderPositions(); renderTables(); renderChart(); renderBacktest(); renderComparison(); }
+  function renderAll() { termTrades(); renderMulti(); renderDuo(); renderKpis(); renderTicker(); renderRadar(); renderPositions(); renderTables(); renderChart(); renderBacktest(); renderComparison(); }
 
   // I prezzi cambiano più volte al secondo: KPI e radar subito, grafico al massimo ogni 5 s.
   let lastChart = 0;
   function onPrices() {
     renderDuo(); renderKpis(); renderTicker(); renderRadar(); renderPositions(); renderMulti();
     if (performance.now() - lastChart > 5000) { lastChart = performance.now(); renderChart(); }
+  }
+
+  // ---------- terminale live: cosa sta controllando il bot, riga per riga ----------
+  const CAPS = [["lento", "trades", "positions"], ["rapido", "fast_trades", "fast_positions"],
+    ["rapido 200", "rapid200_trades", "rapid200_positions"], ["200 prodotti", "multi_trades", "multi_positions"]];
+  const fmtClock = new Intl.DateTimeFormat("it-IT", { timeZone: ROME, hour: "2-digit", minute: "2-digit", second: "2-digit" });
+  const shortSym = (s) => s.replace("-USD", "");
+  const term = { queue: [], seen: new Set(), scans: 0, seeded: false };
+
+  function termLine(tag, cls, parts, when) {
+    const log = $("term-log");
+    const row = document.createElement("div");
+    row.className = "term-line";
+    const t = document.createElement("time");
+    t.textContent = when ? itTime(when) : fmtClock.format(new Date());
+    const b = document.createElement("span");
+    b.className = "tag " + cls; b.textContent = tag;
+    row.append(t, b);
+    for (const [text, c] of parts) {
+      const s = document.createElement("span");
+      s.textContent = text; if (c) s.className = c;
+      row.append(s);
+    }
+    log.append(row);
+    while (log.children.length > 40) log.firstChild.remove();
+  }
+
+  function allPositions() {
+    return CAPS.flatMap(([cap, , key]) => (bot[key] || []).map((p) => {
+      const price = key === "multi_positions" || key === "rapid200_positions" ? multiPrice(p) : (priceOf(p.symbol) ?? p.price);
+      return { cap, p, pnl: p.qty * price - p.invested };
+    }));
+  }
+
+  // Operazioni vere: all'avvio le ultime, poi ogni nuova appena il bot la registra.
+  function termTrades() {
+    const rows = CAPS.flatMap(([cap, key]) => (bot[key] || []).map((t) => ({ cap, t, k: cap + t.time + t.symbol + t.side })))
+      .sort((a, b) => parseT(a.t.time) - parseT(b.t.time));
+    const fresh = rows.filter((r) => !term.seen.has(r.k));
+    fresh.forEach((r) => term.seen.add(r.k));
+    (term.seeded ? fresh : fresh.slice(-6)).forEach(({ cap, t }) => {
+      const buy = t.side === "BUY";
+      const pnl = buy ? [] : [[` ${t.pnl >= 0 ? "+" : "-"}${usd2(Math.abs(t.pnl))}`, t.pnl >= 0 ? "up" : "down"]];
+      termLine(buy ? "COMPRA" : "VENDE", buy ? "t-buy" : "t-sell",
+        [[`${shortSym(t.symbol)} ${usd2(t.value)} a ${fmtPrice(t.price)} · ${cap}`], ...pnl, [` · ${t.reason}`]], t.time);
+    });
+    term.seeded = true;
+  }
+
+  // Le righe del prossimo giro di controlli, con i prezzi del momento.
+  function termJobs() {
+    const jobs = [];
+    const fastWatch = Object.fromEntries((bot.fast_watch || []).map((x) => [x.symbol, x]));
+    for (const m of bot.market) {
+      jobs.push(() => {
+        term.scans++;
+        const l = live[m.symbol], price = priceOf(m.symbol);
+        const ch = l && l.open24 ? l.price / l.open24 - 1 : m.change_24h;
+        const fw = fastWatch[m.symbol];
+        if (fw) {
+          const dist = price / fw.mean - 1, hit = dist <= fw.trigger;
+          termLine("CONTROLLO", "t-scan", [[`${m.symbol} ${fmtPrice(price)} `], [fmtPct(ch), ch >= 0 ? "up" : "down"],
+            [` · ${fmtPct(dist)} dalla media 200h · soglia ${d3.format(".0%")(fw.trigger)} → `],
+            [hit ? "SEGNALE: decide alla chiusura dell'ora" : "attesa", hit ? "hot" : ""]]);
+        } else {
+          termLine("CONTROLLO", "t-scan", [[`${m.symbol} ${fmtPrice(price)} `], [fmtPct(ch), ch >= 0 ? "up" : "down"],
+            [` · trend ${m.trend === "up" ? "▲" : m.trend === "down" ? "▼" : "■"} · RSI ${m.rsi} → `],
+            [m.held ? "in portafoglio" : m.candidate ? "candidato per Claude" : "nessun segnale", m.held || m.candidate ? "hot" : ""]]);
+        }
+      });
+    }
+    for (const x of allPositions()) {
+      jobs.push(() => {
+        const { cap, p } = allPositions().find((y) => y.cap === x.cap && y.p.symbol === x.p.symbol) || x;
+        const price = cap === "rapido 200" || cap === "200 prodotti" ? multiPrice(p) : (priceOf(p.symbol) ?? p.price);
+        const pnl = p.qty * price - p.invested;
+        termLine("POSIZIONE", "t-pos", [[`${shortSym(p.symbol)} ${fmtPrice(price)} · ${cap} · `],
+          [`${pnl >= 0 ? "+" : "-"}${usd2(Math.abs(pnl))} (${fmtPct(pnl / p.invested)})`, pnl >= 0 ? "up" : "down"]]);
+      });
+    }
+    (bot.rapid200_watch || []).slice(0, 5).forEach((x) => jobs.push(() => {
+      term.scans++;
+      termLine("RSI 2gg", "t-sig", [[`${shortSym(x.symbol)} (${x.kind}) RSI ${x.rsi} → `],
+        [x.rsi < 10 ? "candidato rapido 200 (decide alle 16:00)" : "sopra 10, non ancora", x.rsi < 10 ? "hot" : ""]]);
+    }));
+    jobs.push(() => termLine("SISTEMA", "t-sys", [[`prossimo giro del bot ${$("countdown").textContent} · prezzi ${wsOk ? "in diretta da Binance" : "ogni 5 s"}`]]));
+    // Mescola un po' i controlli, come uno scanner che gira su tutto.
+    for (let i = jobs.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [jobs[i], jobs[j]] = [jobs[j], jobs[i]]; }
+    return jobs;
+  }
+
+  function termStats() {
+    const pos = allPositions();
+    const pnl = d3.sum(pos, (x) => x.pnl);
+    $("term-scans").textContent = d3.format(",")(term.scans);
+    $("term-watched").textContent = "200";
+    $("term-open").textContent = pos.length;
+    const el = $("term-pnl");
+    el.textContent = (pnl >= 0 ? "+" : "-") + usd2(Math.abs(pnl));
+    el.className = pnl >= 0 ? "up" : "down";
+  }
+
+  function termTick() {
+    if (!bot.market.length) return;
+    if (!term.queue.length) term.queue = termJobs();
+    term.queue.shift()();
+    termStats();
   }
 
   // ---------- conto alla rovescia al prossimo giro ----------
@@ -711,6 +818,7 @@
   background();
   tickCountdown();
   setInterval(tickCountdown, 1000);
+  setInterval(termTick, reduce ? 3000 : 1100);
   loadBot().then(() => { connect(); startPolling(); loadSparks(); });
   setInterval(loadBot, 60 * 1000);
   setInterval(loadSparks, 5 * 60 * 1000);
