@@ -184,7 +184,7 @@
     });
     if (!pos.length) {
       const watch = bot.rapid200_watch || [];
-      watch.slice(0, 4).forEach((x) => line(x.symbol, `${x.kind} · RSI ${x.rsi} · ${x.rsi < 5 ? "da comprare" : "compra sotto 5"}`, x.rsi < 5 ? "up" : ""));
+      watch.slice(0, 4).forEach((x) => line(x.symbol, `${x.kind} · RSI ${x.rsi} · ${x.rsi < 10 ? "da comprare" : "compra sotto 10"}`, x.rsi < 10 ? "up" : ""));
     }
     const s = bot.rapid200_summary;
     const note = document.createElement("p");

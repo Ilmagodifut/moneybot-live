@@ -51,8 +51,8 @@ Se no, il giudice non sta aggiungendo valore e le soglie vanno riviste.
 - **Lento**: la strategia descritta sopra, su 18 monete, con Claude come giudice.
 - **Rapido 200** (`moneybot/rapid200.py`): ogni sera, dopo la chiusura di Wall Street, compra sui
   200 prodotti quelli in trend di fondo positivo scesi bruscamente negli ultimi 2 giorni (RSI a 2 giorni
-  sotto 5), fino a 10 posizioni; rivende al ritorno sopra la media di 5 giorni o dopo 2 settimane.
-  Backtest su ~20 anni: circa +2%/anno nel 2006-2018 e +6% dopo; in media 5 candidati al giorno.
+  sotto 10), fino a 10 posizioni; rivende al ritorno sopra la media di 5 giorni o dopo 2 settimane.
+  Backtest su ~20 anni con soglia 10: circa +0,4%/anno nel 2006-2018 e +4,7% dopo (con soglia 5: +2% e +6%, ma meno operazioni).
 - **Rapido** (`moneybot/fast.py`): compra BTC o ETH quando crollano del 4% sotto la loro media
   a 200 ore e rivende al rimbalzo, dopo al massimo 5 giorni o con uno stop del 10%. Solo regole.
 
