@@ -56,8 +56,8 @@
   "passed": true,
   "bought": true,
   "rules_passed": null,
-  "outcome_24h": null,
-  "green": null
+  "outcome_24h": -0.06650935850263956,
+  "green": false
  },
  {
   "time": "2026-10-29 15:59",
@@ -71,7 +71,7 @@
   "passed": false,
   "bought": false,
   "rules_passed": null,
-  "outcome_24h": null,
-  "green": null
+  "outcome_24h": -0.05950167348456673,
+  "green": false
  }
 ]
