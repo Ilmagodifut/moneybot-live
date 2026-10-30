@@ -8,7 +8,7 @@ from moneybot import bot, config, judge
 from moneybot.data import Candle
 from moneybot.indicators import atr, ema, rsi
 from moneybot.portfolio import Broker, State, read_trades
-from moneybot.strategy import rules_only_gate, snapshot
+from moneybot.strategy import rules_only_gate, snapshot, trend_broken
 
 HOUR = 3600 * 1000
 
@@ -285,6 +285,16 @@ def test_backtest_rules_match_live_rules():
     s = backtest.build_series(rows)
     snap = snapshot("X", candles)
     assert backtest.passes_rules(s, len(rows) - 1, backtest.LIVE) == rules_only_gate(snap)
+
+
+
+def test_trend_exit_needs_a_clear_cross():
+    snap = snapshot("X", make_candles([100.0] * 900))
+    snap.trend_mid = 100.0
+    snap.trend_fast = 99.8   # appena sotto: rumore, si resta dentro
+    assert not trend_broken(snap)
+    snap.trend_fast = 100.0 * (1 - config.TREND_EXIT_GAP) - 0.01
+    assert trend_broken(snap)
 
 
 # --- capitale rapido ---

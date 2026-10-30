@@ -13,7 +13,8 @@ Una volta all'ora il bot:
 
 1. scarica i prezzi orari di 18 monete (BTC, ETH, SOL, BNB, XRP, ADA, DOGE, AVAX,
    LINK, DOT, LTC, TRX, SUI, NEAR, ATOM, UNI, TON, APT) dal servizio pubblico di Binance;
-2. controlla le posizioni aperte: esce se scatta lo stop o se il trend si rompe;
+2. controlla le posizioni aperte: esce se scatta lo stop o se il trend si rompe davvero
+   (non basta un incrocio di pochi decimali tra le medie: vedi la tabella sotto);
 3. cerca nuove entrate:
    - **regole fisse** scelgono le candidate: trend rialzista su giorni e settimane
      (medie mobili a 80, 200 e 800 ore), RSI tra 50 e 70;
@@ -34,7 +35,7 @@ Senza chiave Claude il bot funziona lo stesso, usando solo le regole.
 | Commissioni + slippage simulati | 0,1% + 0,05% a ogni operazione |
 | Stop iniziale | 3 ATR sotto l'entrata (minimo 5%) |
 | Trailing stop | 4 ATR sotto il massimo raggiunto (minimo 6%) |
-| Uscita per trend | quando la media a 80 ore scende sotto quella a 200 ore |
+| Uscita per trend | quando la media a 80 ore scende di oltre lo 0,5% sotto quella a 200 ore |
 | Perdita giornaliera massima | -3%: niente nuovi acquisti fino al giorno dopo |
 | Perdita massima dal picco | -25%: bot fermo finché non lo riattivi (`python -m moneybot resume`) |
 
