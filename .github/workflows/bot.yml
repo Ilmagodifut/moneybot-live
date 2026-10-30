@@ -2,11 +2,12 @@ name: MONEYBOT giro orario
 
 on:
   schedule:
-    - cron: "7,37 * * * *"   # due volte all'ora (minuti 7 e 37, UTC)
+    - cron: "7,37 * * * *"   # due volte all'ora (minuti 7 e 37, UTC), di riserva all'orologio
   workflow_dispatch:        # pulsante "Run workflow" per lanciarlo a mano
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: moneybot
@@ -17,7 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      # Sempre l'ultima versione di main: un giro rimasto in coda non deve lavorare su dati vecchi.
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - uses: actions/setup-python@v5
         with:
@@ -46,3 +50,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: scripts/publish_site.sh
+
+      - name: Rimetti in moto l'orologio se si è fermato
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          active=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow orologio.yml --limit 5 --json status \
+            --jq '[.[] | select(.status != "completed")] | length')
+          if [ "$active" = "0" ]; then
+            echo "Orologio fermo: lo riavvio"
+            gh workflow run orologio.yml --repo "$GITHUB_REPOSITORY" --ref main
+          fi
