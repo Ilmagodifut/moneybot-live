@@ -11,8 +11,8 @@
   "passed": true,
   "bought": true,
   "rules_passed": null,
-  "outcome_24h": null,
-  "green": null
+  "outcome_24h": 0.007847872019317814,
+  "green": true
  },
  {
   "time": "2026-10-29 14:59",
@@ -26,8 +26,8 @@
   "passed": true,
   "bought": true,
   "rules_passed": null,
-  "outcome_24h": null,
-  "green": null
+  "outcome_24h": -0.043006320417697134,
+  "green": false
  },
  {
   "time": "2026-10-29 14:59",
@@ -41,8 +41,8 @@
   "passed": false,
   "bought": false,
   "rules_passed": null,
-  "outcome_24h": null,
-  "green": null
+  "outcome_24h": -0.051952929394091144,
+  "green": false
  },
  {
   "time": "2026-10-29 15:59",

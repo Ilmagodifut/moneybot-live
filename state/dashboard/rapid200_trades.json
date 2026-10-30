@@ -1,1 +1,38 @@
-[]
+[
+ {
+  "time": "2026-10-30 15:52",
+  "symbol": "CRM",
+  "side": "BUY",
+  "price": 232.02595,
+  "value": 100.0,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 6.4)"
+ },
+ {
+  "time": "2026-10-30 15:52",
+  "symbol": "EWW",
+  "side": "BUY",
+  "price": 74.547255,
+  "value": 99.99,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 6.7)"
+ },
+ {
+  "time": "2026-10-30 15:52",
+  "symbol": "NEAR-USD",
+  "side": "BUY",
+  "price": 4.3077528,
+  "value": 99.97,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 9.3)"
+ },
+ {
+  "time": "2026-10-30 15:52",
+  "symbol": "LIN",
+  "side": "BUY",
+  "price": 512.91633,
+  "value": 99.96,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 9.9)"
+ }
+]

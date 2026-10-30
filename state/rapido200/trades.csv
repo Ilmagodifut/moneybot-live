@@ -1,0 +1,5 @@
+time,symbol,side,price,qty,value,fee,pnl,reason
+2026-10-30 15:52,CRM,BUY,232.02595,0.43055528,100.00,0.1000,0.00,calo brusco (RSI 2 giorni 6.4)
+2026-10-30 15:52,EWW,BUY,74.547255,1.3398887,99.99,0.1000,0.00,calo brusco (RSI 2 giorni 6.7)
+2026-10-30 15:52,NEAR-USD,BUY,4.3077528,23.183793,99.97,0.1000,0.00,calo brusco (RSI 2 giorni 9.3)
+2026-10-30 15:52,LIN,BUY,512.91633,0.19468102,99.96,0.1000,0.00,calo brusco (RSI 2 giorni 9.9)

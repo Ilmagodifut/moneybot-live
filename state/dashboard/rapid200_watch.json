@@ -10,24 +10,24 @@
   "rsi": 6.7
  },
  {
+  "symbol": "NEAR-USD",
+  "kind": "crypto",
+  "rsi": 9.3
+ },
+ {
   "symbol": "LIN",
   "kind": "azione",
   "rsi": 9.9
  },
  {
-  "symbol": "NEAR-USD",
+  "symbol": "BTC-USD",
   "kind": "crypto",
   "rsi": 11.0
  },
  {
   "symbol": "BNB-USD",
   "kind": "crypto",
-  "rsi": 12.6
- },
- {
-  "symbol": "BTC-USD",
-  "kind": "crypto",
-  "rsi": 14.7
+  "rsi": 12.8
  },
  {
   "symbol": "ADP",

@@ -1,1 +1,38 @@
-[]
+[
+ {
+  "symbol": "CRM",
+  "kind": "azione",
+  "qty": 0.4305552799039229,
+  "opened": "2026-10-30 15:52",
+  "entry_price": 232.02595499999998,
+  "price": 231.91,
+  "invested": 100.0
+ },
+ {
+  "symbol": "EWW",
+  "kind": "ETF",
+  "qty": 1.3398886718063008,
+  "opened": "2026-10-30 15:52",
+  "entry_price": 74.547255,
+  "price": 74.51,
+  "invested": 99.99
+ },
+ {
+  "symbol": "NEAR-USD",
+  "kind": "crypto",
+  "qty": 23.18379253865616,
+  "opened": "2026-10-30 15:52",
+  "entry_price": 4.3077528,
+  "price": 4.3056,
+  "invested": 99.97
+ },
+ {
+  "symbol": "LIN",
+  "kind": "azione",
+  "qty": 0.1946810198116368,
+  "opened": "2026-10-30 15:52",
+  "entry_price": 512.9163299999999,
+  "price": 512.66,
+  "invested": 99.96
+ }
+]

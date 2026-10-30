@@ -1,15 +1,15 @@
 [
  {
   "group": "Tutte le candidate",
-  "cases": 0,
-  "avg_24h": null,
-  "green_rate": null
+  "cases": 3,
+  "avg_24h": -0.02904,
+  "green_rate": 0.333
  },
  {
   "group": "Via libera delle regole",
-  "cases": 0,
-  "avg_24h": null,
-  "green_rate": null
+  "cases": 2,
+  "avg_24h": -0.01758,
+  "green_rate": 0.5
  },
  {
   "group": "Via libera di Claude",
