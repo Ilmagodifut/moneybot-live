@@ -3,10 +3,10 @@
 Una volta al giorno, dopo la chiusura di Wall Street, guarda i 200 prodotti (azioni,
 ETF e crypto, prezzi giornalieri da Yahoo Finance):
 - compra quelli in trend di fondo positivo (sopra la media di 200 giorni) che negli
-  ultimi 2 giorni sono scesi bruscamente (RSI a 2 giorni sotto 5), i più "ipervenduti"
+  ultimi 2 giorni sono scesi bruscamente (RSI a 2 giorni sotto 10), i più "ipervenduti"
   per primi, fino a 10 posizioni da un decimo del capitale;
 - rivende quando il prezzo torna sopra la media degli ultimi 5 giorni, o dopo 2 settimane.
-Nel backtest su circa 20 anni: circa +2% all'anno nel 2006-2018 e +6% dopo, con più di
+Nel backtest su circa 20 anni (soglia 10): circa +0,4% all'anno nel 2006-2018 e +4,7% dopo, con più di
 un'operazione al giorno. Il valore delle posizioni si aggiorna a ogni giro.
 """
 
@@ -23,7 +23,7 @@ from .multi import DAY, KIND, UNIVERSE, ema_series, load_universe, matrix, quote
 log = logging.getLogger(__name__)
 
 SLOTS = 10
-RSI_MAX = 5
+RSI_MAX = 10           # più attivo: compra con RSI a 2 giorni sotto 10
 MAX_DAYS = 14            # due settimane di calendario (circa 10 giorni di borsa)
 DECISION_HOUR_UTC = 21   # dopo la chiusura della borsa americana
 
