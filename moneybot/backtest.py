@@ -42,6 +42,7 @@ class Params:
     mid: int = config.TREND_MID
     slow: int = config.TREND_SLOW
     btc_slow: int = 1200           # media lenta di BTC per il filtro di mercato (50 giorni)
+    exit_gap: float = config.TREND_EXIT_GAP  # uscita per trend: media veloce almeno così sotto quella media
 
 
 # Le regole con cui il bot gira adesso (vedi config.py).
@@ -51,6 +52,8 @@ HOURLY = replace(LIVE, name="orarie (prima)", description="Le prime regole del b
                  fast=20, mid=50, slow=200, stop_atr=2.0, stop_min_pct=0.03, trail_atr=3.0, trail_min_pct=0.04)
 VARIANTS = [
     LIVE,
+    replace(LIVE, name="lento, uscita al primo incrocio", description="Come le regole attuali, ma esce appena la media a 80 ore tocca quella a 200 (le regole fino al 30/10).",
+            exit_gap=0.0),
     replace(LIVE, name="lento + filtro BTC", description="Compra solo se BTC è sopra la sua media di 50 giorni.", btc_filter=True),
     replace(LIVE, name="lento + filtro BTC + solo trailing", description="Filtro BTC; esce solo con il trailing stop.",
             btc_filter=True, trend_exit=False),
@@ -181,7 +184,7 @@ def simulate(series: dict[str, Series], times: list[int], p: Params) -> dict:
             pos["high"] = max(pos["high"], s.close[i])
             trail = max(p.trail_atr * s.atr14[i], pos["high"] * p.trail_min_pct)
             pos["stop"] = max(pos["stop"], pos["high"] - trail)
-            if p.trend_exit and s.emas[p.fast][i] < s.emas[p.mid][i]:
+            if p.trend_exit and s.emas[p.fast][i] < s.emas[p.mid][i] * (1 - p.exit_gap):
                 sell(sym, s.close[i], t, "trend")
 
         # 2. capitale e freni di sicurezza

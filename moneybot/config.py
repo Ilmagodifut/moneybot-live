@@ -23,6 +23,9 @@ CANDLE_LIMIT = 1500
 TREND_FAST = 80
 TREND_MID = 200
 TREND_SLOW = 800
+# Uscita per trend solo quando la media veloce scende almeno dello 0,5% sotto quella media:
+# evita di vendere su un semplice incrocio di rumore (scelto con il backtest).
+TREND_EXIT_GAP = 0.005
 
 # Portafoglio simulato.
 STARTING_CASH = 1000.0
