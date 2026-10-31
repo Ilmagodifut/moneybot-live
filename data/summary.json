@@ -1,0 +1,19 @@
+[
+ {
+  "updated": "2026-10-31 18:59",
+  "last_run": "2026-10-31 19:26",
+  "runs": 203,
+  "mode": "claude",
+  "status": "active",
+  "halt_reason": "",
+  "start_cash": 1000.0,
+  "equity": 997.53,
+  "benchmark": 960.28,
+  "cash": 997.53,
+  "open_positions": 0,
+  "closed_trades": 3,
+  "winning_trades": 1,
+  "realized_pnl": -2.48,
+  "fees_paid": 0.6
+ }
+]

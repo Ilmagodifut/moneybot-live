@@ -1,0 +1,4854 @@
+{
+ "generated": "2026-10-29 17:45",
+ "start": "2024-12-18",
+ "split": "2026-01-30",
+ "end": "2026-10-29",
+ "symbols": [
+  "BTC",
+  "ETH",
+  "SOL",
+  "BNB",
+  "XRP",
+  "ADA",
+  "DOGE",
+  "AVAX",
+  "LINK",
+  "DOT",
+  "LTC",
+  "TRX",
+  "SUI",
+  "NEAR",
+  "ATOM",
+  "UNI",
+  "TON",
+  "APT"
+ ],
+ "buy_and_hold": {
+  "train": -0.5385,
+  "test": 0.0295,
+  "full": -0.5473,
+  "btc_test": -0.0202
+ },
+ "variants": [
+  {
+   "name": "lento (attuale)",
+   "family": "regole del bot",
+   "description": "Trend su giorni e settimane (medie a 80, 200 e 800 ore), stop larghi. Sono le regole del bot oggi.",
+   "params": {
+    "name": "lento (attuale)",
+    "description": "Trend su giorni e settimane (medie a 80, 200 e 800 ore), stop larghi. Sono le regole del bot oggi.",
+    "stop_atr": 3.0,
+    "stop_min_pct": 0.05,
+    "trail_atr": 4.0,
+    "trail_min_pct": 0.06,
+    "max_positions": 5,
+    "position_fraction": 0.1,
+    "btc_filter": false,
+    "trend_exit": true,
+    "fast": 80,
+    "mid": 200,
+    "slow": 800,
+    "btc_slow": 1200
+   },
+   "train": {
+    "return": -0.1487,
+    "max_drawdown": 0.1818,
+    "trades": 234,
+    "win_rate": 0.303,
+    "profit_factor": 0.75,
+    "avg_trade": -0.0063,
+    "score": -0.82
+   },
+   "test": {
+    "return": 0.0983,
+    "max_drawdown": 0.1047,
+    "trades": 173,
+    "win_rate": 0.312,
+    "profit_factor": 1.23,
+    "avg_trade": 0.0061,
+    "score": 0.94
+   },
+   "full": {
+    "return": -0.065,
+    "max_drawdown": 0.2087,
+    "trades": 407,
+    "win_rate": 0.307,
+    "profit_factor": 0.93,
+    "avg_trade": -0.001,
+    "score": -0.31
+   }
+  },
+  {
+   "name": "lento + filtro BTC",
+   "family": "regole del bot",
+   "description": "Compra solo se BTC \u00e8 sopra la sua media di 50 giorni.",
+   "params": {
+    "name": "lento + filtro BTC",
+    "description": "Compra solo se BTC \u00e8 sopra la sua media di 50 giorni.",
+    "stop_atr": 3.0,
+    "stop_min_pct": 0.05,
+    "trail_atr": 4.0,
+    "trail_min_pct": 0.06,
+    "max_positions": 5,
+    "position_fraction": 0.1,
+    "btc_filter": true,
+    "trend_exit": true,
+    "fast": 80,
+    "mid": 200,
+    "slow": 800,
+    "btc_slow": 1200
+   },
+   "train": {
+    "return": -0.1659,
+    "max_drawdown": 0.1783,
+    "trades": 189,
+    "win_rate": 0.27,
+    "profit_factor": 0.66,
+    "avg_trade": -0.0091,
+    "score": -0.93
+   },
+   "test": {
+    "return": 0.1201,
+    "max_drawdown": 0.1029,
+    "trades": 124,
+    "win_rate": 0.347,
+    "profit_factor": 1.41,
+    "avg_trade": 0.0098,
+    "score": 1.17
+   },
+   "full": {
+    "return": -0.0657,
+    "max_drawdown": 0.182,
+    "trades": 313,
+    "win_rate": 0.3,
+    "profit_factor": 0.91,
+    "avg_trade": -0.0016,
+    "score": -0.36
+   }
+  },
+  {
+   "name": "lento + filtro BTC + solo trailing",
+   "family": "regole del bot",
+   "description": "Filtro BTC; esce solo con il trailing stop.",
+   "params": {
+    "name": "lento + filtro BTC + solo trailing",
+    "description": "Filtro BTC; esce solo con il trailing stop.",
+    "stop_atr": 3.0,
+    "stop_min_pct": 0.05,
+    "trail_atr": 4.0,
+    "trail_min_pct": 0.06,
+    "max_positions": 5,
+    "position_fraction": 0.1,
+    "btc_filter": true,
+    "trend_exit": false,
+    "fast": 80,
+    "mid": 200,
+    "slow": 800,
+    "btc_slow": 1200
+   },
+   "train": {
+    "return": -0.1734,
+    "max_drawdown": 0.1757,
+    "trades": 177,
+    "win_rate": 0.277,
+    "profit_factor": 0.64,
+    "avg_trade": -0.0102,
+    "score": -0.99
+   },
+   "test": {
+    "return": 0.1302,
+    "max_drawdown": 0.0876,
+    "trades": 103,
+    "win_rate": 0.398,
+    "profit_factor": 1.47,
+    "avg_trade": 0.0126,
+    "score": 1.49
+   },
+   "full": {
+    "return": -0.0658,
+    "max_drawdown": 0.1894,
+    "trades": 280,
+    "win_rate": 0.321,
+    "profit_factor": 0.91,
+    "avg_trade": -0.0018,
+    "score": -0.35
+   }
+  },
+  {
+   "name": "lento + trailing stretto",
+   "family": "regole del bot",
+   "description": "Trailing al 4% per proteggere prima i guadagni.",
+   "params": {
+    "name": "lento + trailing stretto",
+    "description": "Trailing al 4% per proteggere prima i guadagni.",
+    "stop_atr": 3.0,
+    "stop_min_pct": 0.05,
+    "trail_atr": 3.0,
+    "trail_min_pct": 0.04,
+    "max_positions": 5,
+    "position_fraction": 0.1,
+    "btc_filter": false,
+    "trend_exit": true,
+    "fast": 80,
+    "mid": 200,
+    "slow": 800,
+    "btc_slow": 1200
+   },
+   "train": {
+    "return": -0.1629,
+    "max_drawdown": 0.1693,
+    "trades": 362,
+    "win_rate": 0.323,
+    "profit_factor": 0.77,
+    "avg_trade": -0.0046,
+    "score": -0.96
+   },
+   "test": {
+    "return": 0.0339,
+    "max_drawdown": 0.0963,
+    "trades": 252,
+    "win_rate": 0.286,
+    "profit_factor": 1.07,
+    "avg_trade": 0.0018,
+    "score": 0.35
+   },
+   "full": {
+    "return": -0.1345,
+    "max_drawdown": 0.2221,
+    "trades": 614,
+    "win_rate": 0.308,
+    "profit_factor": 0.88,
+    "avg_trade": -0.002,
+    "score": -0.61
+   }
+  },
+  {
+   "name": "lento + 3 posizioni",
+   "family": "regole del bot",
+   "description": "Al massimo 3 posizioni da 15%.",
+   "params": {
+    "name": "lento + 3 posizioni",
+    "description": "Al massimo 3 posizioni da 15%.",
+    "stop_atr": 3.0,
+    "stop_min_pct": 0.05,
+    "trail_atr": 4.0,
+    "trail_min_pct": 0.06,
+    "max_positions": 3,
+    "position_fraction": 0.15,
+    "btc_filter": false,
+    "trend_exit": true,
+    "fast": 80,
+    "mid": 200,
+    "slow": 800,
+    "btc_slow": 1200
+   },
+   "train": {
+    "return": -0.2591,
+    "max_drawdown": 0.2722,
+    "trades": 165,
+    "win_rate": 0.261,
+    "profit_factor": 0.59,
+    "avg_trade": -0.0115,
+    "score": -0.95
+   },
+   "test": {
+    "return": 0.0999,
+    "max_drawdown": 0.1168,
+    "trades": 122,
+    "win_rate": 0.311,
+    "profit_factor": 1.21,
+    "avg_trade": 0.0061,
+    "score": 0.86
+   },
+   "full": {
+    "return": -0.185,
+    "max_drawdown": 0.3125,
+    "trades": 287,
+    "win_rate": 0.282,
+    "profit_factor": 0.81,
+    "avg_trade": -0.004,
+    "score": -0.59
+   }
+  },
+  {
+   "name": "orarie (prima)",
+   "family": "regole del bot",
+   "description": "Le prime regole del bot: trend su medie a 20, 50 e 200 ore, stop stretti.",
+   "params": {
+    "name": "orarie (prima)",
+    "description": "Le prime regole del bot: trend su medie a 20, 50 e 200 ore, stop stretti.",
+    "stop_atr": 2.0,
+    "stop_min_pct": 0.03,
+    "trail_atr": 3.0,
+    "trail_min_pct": 0.04,
+    "max_positions": 5,
+    "position_fraction": 0.1,
+    "btc_filter": false,
+    "trend_exit": true,
+    "fast": 20,
+    "mid": 50,
+    "slow": 200,
+    "btc_slow": 1200
+   },
+   "train": {
+    "return": -0.2934,
+    "max_drawdown": 0.3318,
+    "trades": 592,
+    "win_rate": 0.272,
+    "profit_factor": 0.69,
+    "avg_trade": -0.0056,
+    "score": -0.88
+   },
+   "test": {
+    "return": -0.1366,
+    "max_drawdown": 0.2155,
+    "trades": 458,
+    "win_rate": 0.258,
+    "profit_factor": 0.81,
+    "avg_trade": -0.0029,
+    "score": -0.63
+   },
+   "full": {
+    "return": -0.3899,
+    "max_drawdown": 0.4608,
+    "trades": 1050,
+    "win_rate": 0.266,
+    "profit_factor": 0.73,
+    "avg_trade": -0.0044,
+    "score": -0.85
+   }
+  },
+  {
+   "name": "orarie + filtro BTC",
+   "family": "regole del bot",
+   "description": "Regole orarie, ma solo quando BTC \u00e8 in trend rialzista.",
+   "params": {
+    "name": "orarie + filtro BTC",
+    "description": "Regole orarie, ma solo quando BTC \u00e8 in trend rialzista.",
+    "stop_atr": 2.0,
+    "stop_min_pct": 0.03,
+    "trail_atr": 3.0,
+    "trail_min_pct": 0.04,
+    "max_positions": 5,
+    "position_fraction": 0.1,
+    "btc_filter": true,
+    "trend_exit": true,
+    "fast": 20,
+    "mid": 50,
+    "slow": 200,
+    "btc_slow": 200
+   },
+   "train": {
+    "return": -0.2026,
+    "max_drawdown": 0.2592,
+    "trades": 462,
+    "win_rate": 0.279,
+    "profit_factor": 0.74,
+    "avg_trade": -0.0046,
+    "score": -0.78
+   },
+   "test": {
+    "return": -0.1573,
+    "max_drawdown": 0.1961,
+    "trades": 327,
+    "win_rate": 0.248,
+    "profit_factor": 0.7,
+    "avg_trade": -0.0049,
+    "score": -0.8
+   },
+   "full": {
+    "return": -0.328,
+    "max_drawdown": 0.3968,
+    "trades": 789,
+    "win_rate": 0.266,
+    "profit_factor": 0.73,
+    "avg_trade": -0.0047,
+    "score": -0.83
+   }
+  },
+  {
+   "name": "orarie + stop larghi",
+   "family": "regole del bot",
+   "description": "Regole orarie con stop e trailing larghi.",
+   "params": {
+    "name": "orarie + stop larghi",
+    "description": "Regole orarie con stop e trailing larghi.",
+    "stop_atr": 3.0,
+    "stop_min_pct": 0.05,
+    "trail_atr": 4.0,
+    "trail_min_pct": 0.06,
+    "max_positions": 5,
+    "position_fraction": 0.1,
+    "btc_filter": false,
+    "trend_exit": true,
+    "fast": 20,
+    "mid": 50,
+    "slow": 200,
+    "btc_slow": 1200
+   },
+   "train": {
+    "return": -0.2747,
+    "max_drawdown": 0.3162,
+    "trades": 460,
+    "win_rate": 0.274,
+    "profit_factor": 0.68,
+    "avg_trade": -0.0066,
+    "score": -0.87
+   },
+   "test": {
+    "return": -0.1126,
+    "max_drawdown": 0.1718,
+    "trades": 370,
+    "win_rate": 0.257,
+    "profit_factor": 0.84,
+    "avg_trade": -0.0028,
+    "score": -0.66
+   },
+   "full": {
+    "return": -0.3563,
+    "max_drawdown": 0.4266,
+    "trades": 830,
+    "win_rate": 0.266,
+    "profit_factor": 0.74,
+    "avg_trade": -0.0049,
+    "score": -0.84
+   }
+  },
+  {
+   "name": "solo BTC in trend",
+   "family": "trend su BTC",
+   "description": "Tiene BTC solo quando \u00e8 sopra la sua media di 50 giorni; altrimenti contanti.",
+   "train": {
+    "return": -0.2015,
+    "max_drawdown": 0.2471,
+    "trades": 17,
+    "win_rate": 0.176,
+    "profit_factor": 0.48,
+    "avg_trade": -0.0116,
+    "score": -0.82
+   },
+   "test": {
+    "return": 0.199,
+    "max_drawdown": 0.1415,
+    "trades": 8,
+    "win_rate": 0.25,
+    "profit_factor": 2.86,
+    "avg_trade": 0.0262,
+    "score": 1.41
+   },
+   "full": {
+    "return": -0.0426,
+    "max_drawdown": 0.2638,
+    "trades": 25,
+    "win_rate": 0.2,
+    "profit_factor": 0.9,
+    "avg_trade": 0.0005,
+    "score": -0.16
+   }
+  },
+  {
+   "name": "BTC+ETH in trend",
+   "family": "trend su BTC",
+   "description": "BTC ed ETH met\u00e0 e met\u00e0, ciascuno solo quando \u00e8 sopra la sua media di 50 giorni.",
+   "train": {
+    "return": -0.0624,
+    "max_drawdown": 0.2605,
+    "trades": 45,
+    "win_rate": 0.356,
+    "profit_factor": 0.87,
+    "avg_trade": 0.0704,
+    "score": -0.24
+   },
+   "test": {
+    "return": 0.1106,
+    "max_drawdown": 0.1475,
+    "trades": 20,
+    "win_rate": 0.35,
+    "profit_factor": 1.61,
+    "avg_trade": 0.0444,
+    "score": 0.75
+   },
+   "full": {
+    "return": 0.0413,
+    "max_drawdown": 0.331,
+    "trades": 65,
+    "win_rate": 0.354,
+    "profit_factor": 1.06,
+    "avg_trade": 0.0624,
+    "score": 0.12
+   }
+  },
+  {
+   "name": "BTC+ETH trend veloce",
+   "family": "trend su BTC",
+   "description": "Come sopra ma con la media di 8 giorni: entra ed esce prima.",
+   "train": {
+    "return": -0.4098,
+    "max_drawdown": 0.4098,
+    "trades": 108,
+    "win_rate": 0.269,
+    "profit_factor": 0.53,
+    "avg_trade": 0.0142,
+    "score": -1.0
+   },
+   "test": {
+    "return": -0.2122,
+    "max_drawdown": 0.2988,
+    "trades": 54,
+    "win_rate": 0.259,
+    "profit_factor": 0.61,
+    "avg_trade": -0.0054,
+    "score": -0.71
+   },
+   "full": {
+    "return": -0.5351,
+    "max_drawdown": 0.5831,
+    "trades": 162,
+    "win_rate": 0.265,
+    "profit_factor": 0.55,
+    "avg_trade": 0.0077,
+    "score": -0.92
+   }
+  },
+  {
+   "name": "momentum 3 su 30 giorni",
+   "family": "momentum",
+   "description": "Ogni settimana tiene le 3 monete salite di pi\u00f9 in 30 giorni, solo se BTC \u00e8 in trend.",
+   "train": {
+    "return": -0.0494,
+    "max_drawdown": 0.3267,
+    "trades": 44,
+    "win_rate": 0.455,
+    "profit_factor": 0.93,
+    "avg_trade": 0.0443,
+    "score": -0.15
+   },
+   "test": {
+    "return": 0.5813,
+    "max_drawdown": 0.2556,
+    "trades": 32,
+    "win_rate": 0.594,
+    "profit_factor": 2.27,
+    "avg_trade": 0.1441,
+    "score": 2.27
+   },
+   "full": {
+    "return": 0.5032,
+    "max_drawdown": 0.3267,
+    "trades": 76,
+    "win_rate": 0.513,
+    "profit_factor": 1.43,
+    "avg_trade": 0.0863,
+    "score": 1.54
+   }
+  },
+  {
+   "name": "momentum 3 su 14 giorni",
+   "family": "momentum",
+   "description": "Ogni settimana tiene le 3 monete salite di pi\u00f9 in 14 giorni, solo se BTC \u00e8 in trend.",
+   "train": {
+    "return": -0.181,
+    "max_drawdown": 0.3271,
+    "trades": 54,
+    "win_rate": 0.5,
+    "profit_factor": 0.76,
+    "avg_trade": 0.0109,
+    "score": -0.55
+   },
+   "test": {
+    "return": 0.8612,
+    "max_drawdown": 0.2339,
+    "trades": 34,
+    "win_rate": 0.618,
+    "profit_factor": 2.58,
+    "avg_trade": 0.1233,
+    "score": 3.68
+   },
+   "full": {
+    "return": 0.5242,
+    "max_drawdown": 0.3271,
+    "trades": 88,
+    "win_rate": 0.545,
+    "profit_factor": 1.43,
+    "avg_trade": 0.0543,
+    "score": 1.6
+   }
+  },
+  {
+   "name": "momentum 5 senza filtro",
+   "family": "momentum",
+   "description": "Ogni settimana tiene le 5 monete salite di pi\u00f9 in 30 giorni, sempre.",
+   "train": {
+    "return": -0.5029,
+    "max_drawdown": 0.5257,
+    "trades": 92,
+    "win_rate": 0.38,
+    "profit_factor": 0.42,
+    "avg_trade": 0.0221,
+    "score": -0.96
+   },
+   "test": {
+    "return": 0.2296,
+    "max_drawdown": 0.2189,
+    "trades": 61,
+    "win_rate": 0.541,
+    "profit_factor": 1.3,
+    "avg_trade": 0.0878,
+    "score": 1.05
+   },
+   "full": {
+    "return": -0.3892,
+    "max_drawdown": 0.6098,
+    "trades": 153,
+    "win_rate": 0.444,
+    "profit_factor": 0.64,
+    "avg_trade": 0.0483,
+    "score": -0.64
+   }
+  },
+  {
+   "name": "compra i ribassi BTC/ETH",
+   "family": "ribassi",
+   "description": "Compra BTC/ETH quando scendono del 4% sotto la media a 200 ore; esce al ritorno alla media. \u00c8 il capitale rapido.",
+   "train": {
+    "return": 0.1102,
+    "max_drawdown": 0.1305,
+    "trades": 47,
+    "win_rate": 0.745,
+    "profit_factor": 1.24,
+    "avg_trade": 0.0054,
+    "score": 0.84
+   },
+   "test": {
+    "return": -0.0218,
+    "max_drawdown": 0.1074,
+    "trades": 14,
+    "win_rate": 0.571,
+    "profit_factor": 0.77,
+    "avg_trade": -0.0035,
+    "score": -0.2
+   },
+   "full": {
+    "return": 0.0847,
+    "max_drawdown": 0.1741,
+    "trades": 61,
+    "win_rate": 0.705,
+    "profit_factor": 1.12,
+    "avg_trade": 0.0033,
+    "score": 0.49
+   }
+  },
+  {
+   "name": "compra i ribassi BTC/ETH al -6%",
+   "family": "ribassi",
+   "description": "Come sopra ma con soglia al 6%: la prima versione del capitale rapido.",
+   "train": {
+    "return": -0.0075,
+    "max_drawdown": 0.126,
+    "trades": 28,
+    "win_rate": 0.679,
+    "profit_factor": 1.01,
+    "avg_trade": 0.0057,
+    "score": -0.06
+   },
+   "test": {
+    "return": -0.0799,
+    "max_drawdown": 0.1283,
+    "trades": 8,
+    "win_rate": 0.5,
+    "profit_factor": 0.41,
+    "avg_trade": -0.0217,
+    "score": -0.62
+   },
+   "full": {
+    "return": -0.0904,
+    "max_drawdown": 0.2077,
+    "trades": 36,
+    "win_rate": 0.639,
+    "profit_factor": 0.83,
+    "avg_trade": -0.0004,
+    "score": -0.44
+   }
+  },
+  {
+   "name": "compra i ribassi (8 monete)",
+   "family": "ribassi",
+   "description": "Come sopra sulle 8 monete pi\u00f9 grandi, ribasso del 8%.",
+   "train": {
+    "return": -0.0273,
+    "max_drawdown": 0.1754,
+    "trades": 119,
+    "win_rate": 0.563,
+    "profit_factor": 0.96,
+    "avg_trade": 0.0004,
+    "score": -0.16
+   },
+   "test": {
+    "return": -0.1263,
+    "max_drawdown": 0.1886,
+    "trades": 26,
+    "win_rate": 0.346,
+    "profit_factor": 0.25,
+    "avg_trade": -0.0416,
+    "score": -0.67
+   },
+   "full": {
+    "return": -0.1518,
+    "max_drawdown": 0.2859,
+    "trades": 145,
+    "win_rate": 0.524,
+    "profit_factor": 0.8,
+    "avg_trade": -0.0071,
+    "score": -0.53
+   }
+  },
+  {
+   "name": "veloce: trend 4 ore",
+   "family": "veloce",
+   "description": "Ogni 4 ore tiene le 3 monete con trend orario rialzista pi\u00f9 forte.",
+   "train": {
+    "return": -0.934,
+    "max_drawdown": 0.934,
+    "trades": 1492,
+    "win_rate": 0.34,
+    "profit_factor": 0.61,
+    "avg_trade": -0.0019,
+    "score": -1.0
+   },
+   "test": {
+    "return": -0.4852,
+    "max_drawdown": 0.5537,
+    "trades": 1030,
+    "win_rate": 0.331,
+    "profit_factor": 0.82,
+    "avg_trade": 0.0079,
+    "score": -0.88
+   },
+   "full": {
+    "return": -0.966,
+    "max_drawdown": 0.9681,
+    "trades": 2522,
+    "win_rate": 0.337,
+    "profit_factor": 0.62,
+    "avg_trade": 0.0021,
+    "score": -1.0
+   }
+  },
+  {
+   "name": "veloce: le migliori di ieri",
+   "family": "veloce",
+   "description": "Ogni giorno compra le 3 monete salite di pi\u00f9 nelle ultime 24 ore.",
+   "train": {
+    "return": -0.8138,
+    "max_drawdown": 0.8138,
+    "trades": 720,
+    "win_rate": 0.4,
+    "profit_factor": 0.63,
+    "avg_trade": -0.0036,
+    "score": -1.0
+   },
+   "test": {
+    "return": -0.2502,
+    "max_drawdown": 0.4142,
+    "trades": 473,
+    "win_rate": 0.416,
+    "profit_factor": 0.89,
+    "avg_trade": 0.0099,
+    "score": -0.6
+   },
+   "full": {
+    "return": -0.8604,
+    "max_drawdown": 0.8711,
+    "trades": 1193,
+    "win_rate": 0.407,
+    "profit_factor": 0.68,
+    "avg_trade": 0.0017,
+    "score": -0.99
+   }
+  }
+ ],
+ "best": "compra i ribassi BTC/ETH",
+ "live": "lento (attuale)",
+ "curve": [
+  {
+   "time": "2024-12-18",
+   "attuale": 1000.0,
+   "orarie": 1000.0,
+   "compra_e_tieni": 1000.0
+  },
+  {
+   "time": "2024-12-19",
+   "attuale": 970.33,
+   "orarie": 1000.0,
+   "compra_e_tieni": 874.33
+  },
+  {
+   "time": "2024-12-20",
+   "attuale": 970.33,
+   "orarie": 1000.0,
+   "compra_e_tieni": 859.24
+  },
+  {
+   "time": "2024-12-21",
+   "attuale": 965.11,
+   "orarie": 994.64,
+   "compra_e_tieni": 848.03
+  },
+  {
+   "time": "2024-12-22",
+   "attuale": 960.54,
+   "orarie": 988.88,
+   "compra_e_tieni": 847.35
+  },
+  {
+   "time": "2024-12-23",
+   "attuale": 958.02,
+   "orarie": 988.88,
+   "compra_e_tieni": 841.94
+  },
+  {
+   "time": "2024-12-24",
+   "attuale": 957.86,
+   "orarie": 989.79,
+   "compra_e_tieni": 905.32
+  },
+  {
+   "time": "2024-12-25",
+   "attuale": 954.04,
+   "orarie": 985.25,
+   "compra_e_tieni": 894.81
+  },
+  {
+   "time": "2024-12-26",
+   "attuale": 952.04,
+   "orarie": 985.25,
+   "compra_e_tieni": 849.02
+  },
+  {
+   "time": "2024-12-27",
+   "attuale": 952.06,
+   "orarie": 985.25,
+   "compra_e_tieni": 855.22
+  },
+  {
+   "time": "2024-12-28",
+   "attuale": 956.42,
+   "orarie": 982.93,
+   "compra_e_tieni": 857.32
+  },
+  {
+   "time": "2024-12-29",
+   "attuale": 952.77,
+   "orarie": 979.71,
+   "compra_e_tieni": 843.16
+  },
+  {
+   "time": "2024-12-30",
+   "attuale": 953.66,
+   "orarie": 978.48,
+   "compra_e_tieni": 847.38
+  },
+  {
+   "time": "2024-12-31",
+   "attuale": 953.15,
+   "orarie": 978.31,
+   "compra_e_tieni": 836.16
+  },
+  {
+   "time": "2025-01-01",
+   "attuale": 953.41,
+   "orarie": 978.57,
+   "compra_e_tieni": 857.2
+  },
+  {
+   "time": "2025-01-02",
+   "attuale": 955.41,
+   "orarie": 981.77,
+   "compra_e_tieni": 888.14
+  },
+  {
+   "time": "2025-01-03",
+   "attuale": 967.99,
+   "orarie": 1017.86,
+   "compra_e_tieni": 939.07
+  },
+  {
+   "time": "2025-01-04",
+   "attuale": 977.87,
+   "orarie": 1011.33,
+   "compra_e_tieni": 940.43
+  },
+  {
+   "time": "2025-01-05",
+   "attuale": 971.21,
+   "orarie": 1007.6,
+   "compra_e_tieni": 939.27
+  },
+  {
+   "time": "2025-01-06",
+   "attuale": 977.06,
+   "orarie": 1017.25,
+   "compra_e_tieni": 957.8
+  },
+  {
+   "time": "2025-01-07",
+   "attuale": 953.68,
+   "orarie": 996.59,
+   "compra_e_tieni": 890.64
+  },
+  {
+   "time": "2025-01-08",
+   "attuale": 952.87,
+   "orarie": 996.59,
+   "compra_e_tieni": 849.03
+  },
+  {
+   "time": "2025-01-09",
+   "attuale": 942.6,
+   "orarie": 996.59,
+   "compra_e_tieni": 841.0
+  },
+  {
+   "time": "2025-01-10",
+   "attuale": 950.68,
+   "orarie": 992.66,
+   "compra_e_tieni": 861.5
+  },
+  {
+   "time": "2025-01-11",
+   "attuale": 949.19,
+   "orarie": 992.59,
+   "compra_e_tieni": 858.59
+  },
+  {
+   "time": "2025-01-12",
+   "attuale": 950.4,
+   "orarie": 991.47,
+   "compra_e_tieni": 860.85
+  },
+  {
+   "time": "2025-01-13",
+   "attuale": 946.06,
+   "orarie": 988.25,
+   "compra_e_tieni": 801.18
+  },
+  {
+   "time": "2025-01-14",
+   "attuale": 952.47,
+   "orarie": 993.99,
+   "compra_e_tieni": 857.41
+  },
+  {
+   "time": "2025-01-15",
+   "attuale": 967.21,
+   "orarie": 992.36,
+   "compra_e_tieni": 900.14
+  },
+  {
+   "time": "2025-01-16",
+   "attuale": 989.3,
+   "orarie": 1010.63,
+   "compra_e_tieni": 936.21
+  },
+  {
+   "time": "2025-01-17",
+   "attuale": 996.39,
+   "orarie": 1024.17,
+   "compra_e_tieni": 956.6
+  },
+  {
+   "time": "2025-01-18",
+   "attuale": 982.32,
+   "orarie": 1019.3,
+   "compra_e_tieni": 931.89
+  },
+  {
+   "time": "2025-01-19",
+   "attuale": 985.75,
+   "orarie": 1020.8,
+   "compra_e_tieni": 952.14
+  },
+  {
+   "time": "2025-01-20",
+   "attuale": 939.3,
+   "orarie": 979.13,
+   "compra_e_tieni": 908.89
+  },
+  {
+   "time": "2025-01-21",
+   "attuale": 948.98,
+   "orarie": 976.23,
+   "compra_e_tieni": 932.23
+  },
+  {
+   "time": "2025-01-22",
+   "attuale": 931.18,
+   "orarie": 972.59,
+   "compra_e_tieni": 905.37
+  },
+  {
+   "time": "2025-01-23",
+   "attuale": 926.36,
+   "orarie": 969.1,
+   "compra_e_tieni": 887.92
+  },
+  {
+   "time": "2025-01-24",
+   "attuale": 927.17,
+   "orarie": 972.88,
+   "compra_e_tieni": 911.48
+  },
+  {
+   "time": "2025-01-25",
+   "attuale": 928.07,
+   "orarie": 969.4,
+   "compra_e_tieni": 899.36
+  },
+  {
+   "time": "2025-01-26",
+   "attuale": 924.5,
+   "orarie": 966.63,
+   "compra_e_tieni": 900.57
+  },
+  {
+   "time": "2025-01-27",
+   "attuale": 920.27,
+   "orarie": 964.13,
+   "compra_e_tieni": 817.23
+  },
+  {
+   "time": "2025-01-28",
+   "attuale": 920.27,
+   "orarie": 964.13,
+   "compra_e_tieni": 838.1
+  },
+  {
+   "time": "2025-01-29",
+   "attuale": 918.1,
+   "orarie": 961.0,
+   "compra_e_tieni": 838.57
+  },
+  {
+   "time": "2025-01-30",
+   "attuale": 918.52,
+   "orarie": 961.88,
+   "compra_e_tieni": 878.61
+  },
+  {
+   "time": "2025-01-31",
+   "attuale": 908.94,
+   "orarie": 949.66,
+   "compra_e_tieni": 870.28
+  },
+  {
+   "time": "2025-02-01",
+   "attuale": 903.73,
+   "orarie": 938.7,
+   "compra_e_tieni": 845.54
+  },
+  {
+   "time": "2025-02-02",
+   "attuale": 899.96,
+   "orarie": 937.06,
+   "compra_e_tieni": 735.46
+  },
+  {
+   "time": "2025-02-03",
+   "attuale": 899.96,
+   "orarie": 937.06,
+   "compra_e_tieni": 738.25
+  },
+  {
+   "time": "2025-02-04",
+   "attuale": 899.96,
+   "orarie": 937.06,
+   "compra_e_tieni": 734.15
+  },
+  {
+   "time": "2025-02-05",
+   "attuale": 899.96,
+   "orarie": 937.06,
+   "compra_e_tieni": 696.06
+  },
+  {
+   "time": "2025-02-06",
+   "attuale": 899.96,
+   "orarie": 937.06,
+   "compra_e_tieni": 678.84
+  },
+  {
+   "time": "2025-02-07",
+   "attuale": 899.96,
+   "orarie": 937.06,
+   "compra_e_tieni": 699.29
+  },
+  {
+   "time": "2025-02-08",
+   "attuale": 899.96,
+   "orarie": 937.06,
+   "compra_e_tieni": 691.84
+  },
+  {
+   "time": "2025-02-09",
+   "attuale": 899.96,
+   "orarie": 936.93,
+   "compra_e_tieni": 697.54
+  },
+  {
+   "time": "2025-02-10",
+   "attuale": 899.96,
+   "orarie": 936.81,
+   "compra_e_tieni": 716.04
+  },
+  {
+   "time": "2025-02-11",
+   "attuale": 899.96,
+   "orarie": 937.25,
+   "compra_e_tieni": 710.02
+  },
+  {
+   "time": "2025-02-12",
+   "attuale": 900.73,
+   "orarie": 948.17,
+   "compra_e_tieni": 728.07
+  },
+  {
+   "time": "2025-02-13",
+   "attuale": 904.73,
+   "orarie": 943.45,
+   "compra_e_tieni": 728.61
+  },
+  {
+   "time": "2025-02-14",
+   "attuale": 906.18,
+   "orarie": 951.85,
+   "compra_e_tieni": 757.28
+  },
+  {
+   "time": "2025-02-15",
+   "attuale": 908.95,
+   "orarie": 939.74,
+   "compra_e_tieni": 743.78
+  },
+  {
+   "time": "2025-02-16",
+   "attuale": 906.14,
+   "orarie": 933.5,
+   "compra_e_tieni": 730.63
+  },
+  {
+   "time": "2025-02-17",
+   "attuale": 906.14,
+   "orarie": 928.41,
+   "compra_e_tieni": 715.12
+  },
+  {
+   "time": "2025-02-18",
+   "attuale": 906.25,
+   "orarie": 922.88,
+   "compra_e_tieni": 690.09
+  },
+  {
+   "time": "2025-02-19",
+   "attuale": 913.6,
+   "orarie": 927.97,
+   "compra_e_tieni": 714.03
+  },
+  {
+   "time": "2025-02-20",
+   "attuale": 909.09,
+   "orarie": 921.31,
+   "compra_e_tieni": 730.42
+  },
+  {
+   "time": "2025-02-21",
+   "attuale": 903.0,
+   "orarie": 904.46,
+   "compra_e_tieni": 714.64
+  },
+  {
+   "time": "2025-02-22",
+   "attuale": 901.99,
+   "orarie": 905.31,
+   "compra_e_tieni": 724.61
+  },
+  {
+   "time": "2025-02-23",
+   "attuale": 899.63,
+   "orarie": 896.22,
+   "compra_e_tieni": 715.78
+  },
+  {
+   "time": "2025-02-24",
+   "attuale": 897.83,
+   "orarie": 893.0,
+   "compra_e_tieni": 678.83
+  },
+  {
+   "time": "2025-02-25",
+   "attuale": 892.72,
+   "orarie": 889.68,
+   "compra_e_tieni": 631.94
+  },
+  {
+   "time": "2025-02-26",
+   "attuale": 892.72,
+   "orarie": 889.68,
+   "compra_e_tieni": 625.31
+  },
+  {
+   "time": "2025-02-27",
+   "attuale": 892.72,
+   "orarie": 888.52,
+   "compra_e_tieni": 646.89
+  },
+  {
+   "time": "2025-02-28",
+   "attuale": 892.72,
+   "orarie": 881.83,
+   "compra_e_tieni": 636.69
+  },
+  {
+   "time": "2025-03-01",
+   "attuale": 890.65,
+   "orarie": 878.9,
+   "compra_e_tieni": 635.47
+  },
+  {
+   "time": "2025-03-02",
+   "attuale": 888.9,
+   "orarie": 881.29,
+   "compra_e_tieni": 715.07
+  },
+  {
+   "time": "2025-03-03",
+   "attuale": 883.23,
+   "orarie": 836.61,
+   "compra_e_tieni": 649.1
+  },
+  {
+   "time": "2025-03-04",
+   "attuale": 883.23,
+   "orarie": 836.61,
+   "compra_e_tieni": 628.68
+  },
+  {
+   "time": "2025-03-05",
+   "attuale": 886.76,
+   "orarie": 841.08,
+   "compra_e_tieni": 645.99
+  },
+  {
+   "time": "2025-03-06",
+   "attuale": 879.88,
+   "orarie": 834.49,
+   "compra_e_tieni": 644.57
+  },
+  {
+   "time": "2025-03-07",
+   "attuale": 879.88,
+   "orarie": 825.33,
+   "compra_e_tieni": 651.28
+  },
+  {
+   "time": "2025-03-08",
+   "attuale": 878.76,
+   "orarie": 820.31,
+   "compra_e_tieni": 623.61
+  },
+  {
+   "time": "2025-03-09",
+   "attuale": 875.27,
+   "orarie": 818.83,
+   "compra_e_tieni": 571.5
+  },
+  {
+   "time": "2025-03-10",
+   "attuale": 875.27,
+   "orarie": 818.83,
+   "compra_e_tieni": 526.45
+  },
+  {
+   "time": "2025-03-11",
+   "attuale": 875.27,
+   "orarie": 818.83,
+   "compra_e_tieni": 569.29
+  },
+  {
+   "time": "2025-03-12",
+   "attuale": 875.27,
+   "orarie": 818.83,
+   "compra_e_tieni": 561.57
+  },
+  {
+   "time": "2025-03-13",
+   "attuale": 875.27,
+   "orarie": 818.83,
+   "compra_e_tieni": 555.38
+  },
+  {
+   "time": "2025-03-14",
+   "attuale": 875.27,
+   "orarie": 818.83,
+   "compra_e_tieni": 583.58
+  },
+  {
+   "time": "2025-03-15",
+   "attuale": 875.27,
+   "orarie": 818.83,
+   "compra_e_tieni": 596.45
+  },
+  {
+   "time": "2025-03-16",
+   "attuale": 875.27,
+   "orarie": 814.58,
+   "compra_e_tieni": 581.86
+  },
+  {
+   "time": "2025-03-17",
+   "attuale": 875.27,
+   "orarie": 816.84,
+   "compra_e_tieni": 598.99
+  },
+  {
+   "time": "2025-03-18",
+   "attuale": 875.27,
+   "orarie": 820.53,
+   "compra_e_tieni": 582.28
+  },
+  {
+   "time": "2025-03-19",
+   "attuale": 875.27,
+   "orarie": 822.24,
+   "compra_e_tieni": 616.67
+  },
+  {
+   "time": "2025-03-20",
+   "attuale": 875.27,
+   "orarie": 811.44,
+   "compra_e_tieni": 603.5
+  },
+  {
+   "time": "2025-03-21",
+   "attuale": 875.54,
+   "orarie": 812.16,
+   "compra_e_tieni": 603.92
+  },
+  {
+   "time": "2025-03-22",
+   "attuale": 874.13,
+   "orarie": 813.25,
+   "compra_e_tieni": 608.57
+  },
+  {
+   "time": "2025-03-23",
+   "attuale": 870.15,
+   "orarie": 804.95,
+   "compra_e_tieni": 602.49
+  },
+  {
+   "time": "2025-03-24",
+   "attuale": 876.31,
+   "orarie": 819.39,
+   "compra_e_tieni": 632.11
+  },
+  {
+   "time": "2025-03-25",
+   "attuale": 873.64,
+   "orarie": 819.17,
+   "compra_e_tieni": 631.93
+  },
+  {
+   "time": "2025-03-26",
+   "attuale": 872.61,
+   "orarie": 811.09,
+   "compra_e_tieni": 621.66
+  },
+  {
+   "time": "2025-03-27",
+   "attuale": 879.51,
+   "orarie": 813.53,
+   "compra_e_tieni": 632.89
+  },
+  {
+   "time": "2025-03-28",
+   "attuale": 872.97,
+   "orarie": 803.74,
+   "compra_e_tieni": 596.35
+  },
+  {
+   "time": "2025-03-29",
+   "attuale": 869.39,
+   "orarie": 804.31,
+   "compra_e_tieni": 574.31
+  },
+  {
+   "time": "2025-03-30",
+   "attuale": 873.73,
+   "orarie": 801.17,
+   "compra_e_tieni": 582.19
+  },
+  {
+   "time": "2025-03-31",
+   "attuale": 876.99,
+   "orarie": 804.67,
+   "compra_e_tieni": 579.37
+  },
+  {
+   "time": "2025-04-01",
+   "attuale": 874.99,
+   "orarie": 802.51,
+   "compra_e_tieni": 588.91
+  },
+  {
+   "time": "2025-04-02",
+   "attuale": 875.16,
+   "orarie": 801.41,
+   "compra_e_tieni": 591.64
+  },
+  {
+   "time": "2025-04-03",
+   "attuale": 873.16,
+   "orarie": 796.99,
+   "compra_e_tieni": 558.07
+  },
+  {
+   "time": "2025-04-04",
+   "attuale": 874.71,
+   "orarie": 801.03,
+   "compra_e_tieni": 569.65
+  },
+  {
+   "time": "2025-04-05",
+   "attuale": 873.09,
+   "orarie": 797.26,
+   "compra_e_tieni": 562.46
+  },
+  {
+   "time": "2025-04-06",
+   "attuale": 867.62,
+   "orarie": 797.26,
+   "compra_e_tieni": 518.57
+  },
+  {
+   "time": "2025-04-07",
+   "attuale": 865.02,
+   "orarie": 797.26,
+   "compra_e_tieni": 507.84
+  },
+  {
+   "time": "2025-04-08",
+   "attuale": 865.02,
+   "orarie": 797.26,
+   "compra_e_tieni": 499.46
+  },
+  {
+   "time": "2025-04-09",
+   "attuale": 865.02,
+   "orarie": 797.26,
+   "compra_e_tieni": 538.61
+  },
+  {
+   "time": "2025-04-10",
+   "attuale": 863.99,
+   "orarie": 795.89,
+   "compra_e_tieni": 518.19
+  },
+  {
+   "time": "2025-04-11",
+   "attuale": 866.16,
+   "orarie": 799.39,
+   "compra_e_tieni": 539.92
+  },
+  {
+   "time": "2025-04-12",
+   "attuale": 867.45,
+   "orarie": 810.49,
+   "compra_e_tieni": 560.28
+  },
+  {
+   "time": "2025-04-13",
+   "attuale": 870.01,
+   "orarie": 805.48,
+   "compra_e_tieni": 559.81
+  },
+  {
+   "time": "2025-04-14",
+   "attuale": 869.76,
+   "orarie": 798.62,
+   "compra_e_tieni": 552.18
+  },
+  {
+   "time": "2025-04-15",
+   "attuale": 868.86,
+   "orarie": 791.9,
+   "compra_e_tieni": 539.66
+  },
+  {
+   "time": "2025-04-16",
+   "attuale": 869.11,
+   "orarie": 790.82,
+   "compra_e_tieni": 532.43
+  },
+  {
+   "time": "2025-04-17",
+   "attuale": 868.46,
+   "orarie": 791.08,
+   "compra_e_tieni": 543.73
+  },
+  {
+   "time": "2025-04-18",
+   "attuale": 866.05,
+   "orarie": 791.54,
+   "compra_e_tieni": 544.27
+  },
+  {
+   "time": "2025-04-19",
+   "attuale": 866.05,
+   "orarie": 793.69,
+   "compra_e_tieni": 548.69
+  },
+  {
+   "time": "2025-04-20",
+   "attuale": 866.05,
+   "orarie": 793.52,
+   "compra_e_tieni": 548.3
+  },
+  {
+   "time": "2025-04-21",
+   "attuale": 863.93,
+   "orarie": 785.3,
+   "compra_e_tieni": 549.29
+  },
+  {
+   "time": "2025-04-22",
+   "attuale": 879.24,
+   "orarie": 811.05,
+   "compra_e_tieni": 578.52
+  },
+  {
+   "time": "2025-04-23",
+   "attuale": 886.09,
+   "orarie": 835.43,
+   "compra_e_tieni": 604.52
+  },
+  {
+   "time": "2025-04-24",
+   "attuale": 885.74,
+   "orarie": 848.31,
+   "compra_e_tieni": 609.88
+  },
+  {
+   "time": "2025-04-25",
+   "attuale": 886.81,
+   "orarie": 861.46,
+   "compra_e_tieni": 617.11
+  },
+  {
+   "time": "2025-04-26",
+   "attuale": 881.81,
+   "orarie": 858.47,
+   "compra_e_tieni": 616.88
+  },
+  {
+   "time": "2025-04-27",
+   "attuale": 877.13,
+   "orarie": 849.55,
+   "compra_e_tieni": 612.72
+  },
+  {
+   "time": "2025-04-28",
+   "attuale": 875.67,
+   "orarie": 834.77,
+   "compra_e_tieni": 611.58
+  },
+  {
+   "time": "2025-04-29",
+   "attuale": 877.32,
+   "orarie": 829.28,
+   "compra_e_tieni": 617.14
+  },
+  {
+   "time": "2025-04-30",
+   "attuale": 865.68,
+   "orarie": 816.64,
+   "compra_e_tieni": 597.21
+  },
+  {
+   "time": "2025-05-01",
+   "attuale": 878.56,
+   "orarie": 823.97,
+   "compra_e_tieni": 618.17
+  },
+  {
+   "time": "2025-05-02",
+   "attuale": 873.79,
+   "orarie": 820.59,
+   "compra_e_tieni": 610.26
+  },
+  {
+   "time": "2025-05-03",
+   "attuale": 862.55,
+   "orarie": 814.01,
+   "compra_e_tieni": 597.75
+  },
+  {
+   "time": "2025-05-04",
+   "attuale": 855.93,
+   "orarie": 811.99,
+   "compra_e_tieni": 589.42
+  },
+  {
+   "time": "2025-05-05",
+   "attuale": 852.59,
+   "orarie": 811.67,
+   "compra_e_tieni": 591.51
+  },
+  {
+   "time": "2025-05-06",
+   "attuale": 841.33,
+   "orarie": 805.97,
+   "compra_e_tieni": 582.92
+  },
+  {
+   "time": "2025-05-07",
+   "attuale": 838.6,
+   "orarie": 801.72,
+   "compra_e_tieni": 585.29
+  },
+  {
+   "time": "2025-05-08",
+   "attuale": 860.64,
+   "orarie": 821.94,
+   "compra_e_tieni": 636.23
+  },
+  {
+   "time": "2025-05-09",
+   "attuale": 886.33,
+   "orarie": 846.07,
+   "compra_e_tieni": 674.26
+  },
+  {
+   "time": "2025-05-10",
+   "attuale": 899.35,
+   "orarie": 858.38,
+   "compra_e_tieni": 700.18
+  },
+  {
+   "time": "2025-05-11",
+   "attuale": 899.2,
+   "orarie": 854.2,
+   "compra_e_tieni": 702.27
+  },
+  {
+   "time": "2025-05-12",
+   "attuale": 892.09,
+   "orarie": 843.29,
+   "compra_e_tieni": 692.12
+  },
+  {
+   "time": "2025-05-13",
+   "attuale": 901.6,
+   "orarie": 851.13,
+   "compra_e_tieni": 720.91
+  },
+  {
+   "time": "2025-05-14",
+   "attuale": 895.8,
+   "orarie": 844.26,
+   "compra_e_tieni": 705.43
+  },
+  {
+   "time": "2025-05-15",
+   "attuale": 882.2,
+   "orarie": 835.82,
+   "compra_e_tieni": 677.14
+  },
+  {
+   "time": "2025-05-16",
+   "attuale": 880.04,
+   "orarie": 834.38,
+   "compra_e_tieni": 681.92
+  },
+  {
+   "time": "2025-05-17",
+   "attuale": 869.67,
+   "orarie": 833.1,
+   "compra_e_tieni": 657.95
+  },
+  {
+   "time": "2025-05-18",
+   "attuale": 869.49,
+   "orarie": 833.1,
+   "compra_e_tieni": 669.56
+  },
+  {
+   "time": "2025-05-19",
+   "attuale": 851.4,
+   "orarie": 823.03,
+   "compra_e_tieni": 663.45
+  },
+  {
+   "time": "2025-05-20",
+   "attuale": 851.45,
+   "orarie": 818.6,
+   "compra_e_tieni": 657.45
+  },
+  {
+   "time": "2025-05-21",
+   "attuale": 857.69,
+   "orarie": 813.47,
+   "compra_e_tieni": 671.69
+  },
+  {
+   "time": "2025-05-22",
+   "attuale": 879.79,
+   "orarie": 829.15,
+   "compra_e_tieni": 709.12
+  },
+  {
+   "time": "2025-05-23",
+   "attuale": 863.09,
+   "orarie": 820.77,
+   "compra_e_tieni": 685.33
+  },
+  {
+   "time": "2025-05-24",
+   "attuale": 861.86,
+   "orarie": 819.19,
+   "compra_e_tieni": 674.53
+  },
+  {
+   "time": "2025-05-25",
+   "attuale": 852.98,
+   "orarie": 819.19,
+   "compra_e_tieni": 660.0
+  },
+  {
+   "time": "2025-05-26",
+   "attuale": 854.0,
+   "orarie": 817.53,
+   "compra_e_tieni": 668.54
+  },
+  {
+   "time": "2025-05-27",
+   "attuale": 860.08,
+   "orarie": 816.77,
+   "compra_e_tieni": 684.75
+  },
+  {
+   "time": "2025-05-28",
+   "attuale": 850.54,
+   "orarie": 809.79,
+   "compra_e_tieni": 672.41
+  },
+  {
+   "time": "2025-05-29",
+   "attuale": 851.8,
+   "orarie": 801.56,
+   "compra_e_tieni": 670.14
+  },
+  {
+   "time": "2025-05-30",
+   "attuale": 846.26,
+   "orarie": 796.66,
+   "compra_e_tieni": 642.77
+  },
+  {
+   "time": "2025-05-31",
+   "attuale": 837.18,
+   "orarie": 793.94,
+   "compra_e_tieni": 628.13
+  },
+  {
+   "time": "2025-06-01",
+   "attuale": 837.18,
+   "orarie": 793.94,
+   "compra_e_tieni": 625.31
+  },
+  {
+   "time": "2025-06-02",
+   "attuale": 837.18,
+   "orarie": 793.94,
+   "compra_e_tieni": 627.3
+  },
+  {
+   "time": "2025-06-03",
+   "attuale": 836.78,
+   "orarie": 793.4,
+   "compra_e_tieni": 643.61
+  },
+  {
+   "time": "2025-06-04",
+   "attuale": 833.59,
+   "orarie": 792.16,
+   "compra_e_tieni": 633.66
+  },
+  {
+   "time": "2025-06-05",
+   "attuale": 831.3,
+   "orarie": 789.79,
+   "compra_e_tieni": 617.24
+  },
+  {
+   "time": "2025-06-06",
+   "attuale": 830.3,
+   "orarie": 787.77,
+   "compra_e_tieni": 614.75
+  },
+  {
+   "time": "2025-06-07",
+   "attuale": 832.21,
+   "orarie": 789.55,
+   "compra_e_tieni": 626.18
+  },
+  {
+   "time": "2025-06-08",
+   "attuale": 832.12,
+   "orarie": 789.24,
+   "compra_e_tieni": 633.4
+  },
+  {
+   "time": "2025-06-09",
+   "attuale": 837.02,
+   "orarie": 795.04,
+   "compra_e_tieni": 643.33
+  },
+  {
+   "time": "2025-06-10",
+   "attuale": 862.77,
+   "orarie": 816.8,
+   "compra_e_tieni": 667.97
+  },
+  {
+   "time": "2025-06-11",
+   "attuale": 858.22,
+   "orarie": 810.43,
+   "compra_e_tieni": 665.15
+  },
+  {
+   "time": "2025-06-12",
+   "attuale": 848.72,
+   "orarie": 798.04,
+   "compra_e_tieni": 643.66
+  },
+  {
+   "time": "2025-06-13",
+   "attuale": 841.55,
+   "orarie": 796.35,
+   "compra_e_tieni": 607.11
+  },
+  {
+   "time": "2025-06-14",
+   "attuale": 837.65,
+   "orarie": 796.35,
+   "compra_e_tieni": 601.12
+  },
+  {
+   "time": "2025-06-15",
+   "attuale": 837.65,
+   "orarie": 796.35,
+   "compra_e_tieni": 610.43
+  },
+  {
+   "time": "2025-06-16",
+   "attuale": 840.25,
+   "orarie": 798.82,
+   "compra_e_tieni": 635.85
+  },
+  {
+   "time": "2025-06-17",
+   "attuale": 832.82,
+   "orarie": 788.34,
+   "compra_e_tieni": 602.67
+  },
+  {
+   "time": "2025-06-18",
+   "attuale": 830.31,
+   "orarie": 788.34,
+   "compra_e_tieni": 591.06
+  },
+  {
+   "time": "2025-06-19",
+   "attuale": 832.87,
+   "orarie": 787.45,
+   "compra_e_tieni": 599.74
+  },
+  {
+   "time": "2025-06-20",
+   "attuale": 830.66,
+   "orarie": 786.72,
+   "compra_e_tieni": 584.25
+  },
+  {
+   "time": "2025-06-21",
+   "attuale": 830.66,
+   "orarie": 786.72,
+   "compra_e_tieni": 573.88
+  },
+  {
+   "time": "2025-06-22",
+   "attuale": 830.66,
+   "orarie": 786.72,
+   "compra_e_tieni": 540.61
+  },
+  {
+   "time": "2025-06-23",
+   "attuale": 830.66,
+   "orarie": 786.72,
+   "compra_e_tieni": 568.73
+  },
+  {
+   "time": "2025-06-24",
+   "attuale": 830.66,
+   "orarie": 786.72,
+   "compra_e_tieni": 596.85
+  },
+  {
+   "time": "2025-06-25",
+   "attuale": 830.54,
+   "orarie": 780.51,
+   "compra_e_tieni": 592.96
+  },
+  {
+   "time": "2025-06-26",
+   "attuale": 830.52,
+   "orarie": 776.42,
+   "compra_e_tieni": 583.83
+  },
+  {
+   "time": "2025-06-27",
+   "attuale": 830.0,
+   "orarie": 773.49,
+   "compra_e_tieni": 581.12
+  },
+  {
+   "time": "2025-06-28",
+   "attuale": 830.47,
+   "orarie": 777.1,
+   "compra_e_tieni": 598.14
+  },
+  {
+   "time": "2025-06-29",
+   "attuale": 830.72,
+   "orarie": 777.95,
+   "compra_e_tieni": 600.76
+  },
+  {
+   "time": "2025-06-30",
+   "attuale": 827.73,
+   "orarie": 779.4,
+   "compra_e_tieni": 604.56
+  },
+  {
+   "time": "2025-07-01",
+   "attuale": 824.91,
+   "orarie": 770.47,
+   "compra_e_tieni": 584.56
+  },
+  {
+   "time": "2025-07-02",
+   "attuale": 829.72,
+   "orarie": 773.38,
+   "compra_e_tieni": 617.2
+  },
+  {
+   "time": "2025-07-03",
+   "attuale": 832.57,
+   "orarie": 774.18,
+   "compra_e_tieni": 619.65
+  },
+  {
+   "time": "2025-07-04",
+   "attuale": 822.93,
+   "orarie": 767.46,
+   "compra_e_tieni": 595.6
+  },
+  {
+   "time": "2025-07-05",
+   "attuale": 823.51,
+   "orarie": 767.01,
+   "compra_e_tieni": 595.52
+  },
+  {
+   "time": "2025-07-06",
+   "attuale": 826.42,
+   "orarie": 765.69,
+   "compra_e_tieni": 608.5
+  },
+  {
+   "time": "2025-07-07",
+   "attuale": 826.12,
+   "orarie": 764.69,
+   "compra_e_tieni": 606.17
+  },
+  {
+   "time": "2025-07-08",
+   "attuale": 834.71,
+   "orarie": 768.99,
+   "compra_e_tieni": 617.7
+  },
+  {
+   "time": "2025-07-09",
+   "attuale": 844.94,
+   "orarie": 778.81,
+   "compra_e_tieni": 628.71
+  },
+  {
+   "time": "2025-07-10",
+   "attuale": 852.54,
+   "orarie": 791.08,
+   "compra_e_tieni": 654.98
+  },
+  {
+   "time": "2025-07-11",
+   "attuale": 874.45,
+   "orarie": 819.63,
+   "compra_e_tieni": 698.99
+  },
+  {
+   "time": "2025-07-12",
+   "attuale": 864.13,
+   "orarie": 804.18,
+   "compra_e_tieni": 677.99
+  },
+  {
+   "time": "2025-07-13",
+   "attuale": 872.68,
+   "orarie": 812.13,
+   "compra_e_tieni": 697.41
+  },
+  {
+   "time": "2025-07-14",
+   "attuale": 873.57,
+   "orarie": 809.57,
+   "compra_e_tieni": 698.48
+  },
+  {
+   "time": "2025-07-15",
+   "attuale": 871.42,
+   "orarie": 807.43,
+   "compra_e_tieni": 700.65
+  },
+  {
+   "time": "2025-07-16",
+   "attuale": 886.69,
+   "orarie": 823.58,
+   "compra_e_tieni": 729.56
+  },
+  {
+   "time": "2025-07-17",
+   "attuale": 893.45,
+   "orarie": 833.15,
+   "compra_e_tieni": 748.02
+  },
+  {
+   "time": "2025-07-18",
+   "attuale": 901.93,
+   "orarie": 842.63,
+   "compra_e_tieni": 764.76
+  },
+  {
+   "time": "2025-07-19",
+   "attuale": 898.89,
+   "orarie": 836.7,
+   "compra_e_tieni": 763.62
+  },
+  {
+   "time": "2025-07-20",
+   "attuale": 910.27,
+   "orarie": 863.38,
+   "compra_e_tieni": 799.91
+  },
+  {
+   "time": "2025-07-21",
+   "attuale": 913.42,
+   "orarie": 859.77,
+   "compra_e_tieni": 801.0
+  },
+  {
+   "time": "2025-07-22",
+   "attuale": 912.65,
+   "orarie": 849.86,
+   "compra_e_tieni": 806.17
+  },
+  {
+   "time": "2025-07-23",
+   "attuale": 900.23,
+   "orarie": 836.32,
+   "compra_e_tieni": 766.22
+  },
+  {
+   "time": "2025-07-24",
+   "attuale": 903.87,
+   "orarie": 833.48,
+   "compra_e_tieni": 771.2
+  },
+  {
+   "time": "2025-07-25",
+   "attuale": 894.42,
+   "orarie": 828.58,
+   "compra_e_tieni": 750.93
+  },
+  {
+   "time": "2025-07-26",
+   "attuale": 904.38,
+   "orarie": 832.98,
+   "compra_e_tieni": 779.02
+  },
+  {
+   "time": "2025-07-27",
+   "attuale": 915.51,
+   "orarie": 837.12,
+   "compra_e_tieni": 791.83
+  },
+  {
+   "time": "2025-07-28",
+   "attuale": 906.47,
+   "orarie": 829.27,
+   "compra_e_tieni": 770.2
+  },
+  {
+   "time": "2025-07-29",
+   "attuale": 901.68,
+   "orarie": 825.58,
+   "compra_e_tieni": 761.85
+  },
+  {
+   "time": "2025-07-30",
+   "attuale": 896.42,
+   "orarie": 823.52,
+   "compra_e_tieni": 740.87
+  },
+  {
+   "time": "2025-07-31",
+   "attuale": 899.54,
+   "orarie": 821.74,
+   "compra_e_tieni": 748.52
+  },
+  {
+   "time": "2025-08-01",
+   "attuale": 886.09,
+   "orarie": 818.72,
+   "compra_e_tieni": 717.38
+  },
+  {
+   "time": "2025-08-02",
+   "attuale": 881.64,
+   "orarie": 817.06,
+   "compra_e_tieni": 687.86
+  },
+  {
+   "time": "2025-08-03",
+   "attuale": 885.98,
+   "orarie": 815.04,
+   "compra_e_tieni": 713.63
+  },
+  {
+   "time": "2025-08-04",
+   "attuale": 883.96,
+   "orarie": 812.99,
+   "compra_e_tieni": 735.25
+  },
+  {
+   "time": "2025-08-05",
+   "attuale": 883.18,
+   "orarie": 813.65,
+   "compra_e_tieni": 720.26
+  },
+  {
+   "time": "2025-08-06",
+   "attuale": 884.27,
+   "orarie": 813.65,
+   "compra_e_tieni": 732.6
+  },
+  {
+   "time": "2025-08-07",
+   "attuale": 887.47,
+   "orarie": 814.76,
+   "compra_e_tieni": 749.69
+  },
+  {
+   "time": "2025-08-08",
+   "attuale": 905.13,
+   "orarie": 826.56,
+   "compra_e_tieni": 781.77
+  },
+  {
+   "time": "2025-08-09",
+   "attuale": 914.84,
+   "orarie": 835.76,
+   "compra_e_tieni": 798.59
+  },
+  {
+   "time": "2025-08-10",
+   "attuale": 919.73,
+   "orarie": 828.58,
+   "compra_e_tieni": 795.31
+  },
+  {
+   "time": "2025-08-11",
+   "attuale": 920.77,
+   "orarie": 825.39,
+   "compra_e_tieni": 792.29
+  },
+  {
+   "time": "2025-08-12",
+   "attuale": 922.76,
+   "orarie": 830.05,
+   "compra_e_tieni": 814.32
+  },
+  {
+   "time": "2025-08-13",
+   "attuale": 939.48,
+   "orarie": 835.52,
+   "compra_e_tieni": 838.16
+  },
+  {
+   "time": "2025-08-14",
+   "attuale": 915.36,
+   "orarie": 820.56,
+   "compra_e_tieni": 805.78
+  },
+  {
+   "time": "2025-08-15",
+   "attuale": 906.25,
+   "orarie": 805.27,
+   "compra_e_tieni": 789.33
+  },
+  {
+   "time": "2025-08-16",
+   "attuale": 905.11,
+   "orarie": 803.28,
+   "compra_e_tieni": 801.92
+  },
+  {
+   "time": "2025-08-17",
+   "attuale": 911.8,
+   "orarie": 803.17,
+   "compra_e_tieni": 820.18
+  },
+  {
+   "time": "2025-08-18",
+   "attuale": 904.3,
+   "orarie": 797.49,
+   "compra_e_tieni": 799.6
+  },
+  {
+   "time": "2025-08-19",
+   "attuale": 891.98,
+   "orarie": 793.24,
+   "compra_e_tieni": 762.94
+  },
+  {
+   "time": "2025-08-20",
+   "attuale": 899.66,
+   "orarie": 794.22,
+   "compra_e_tieni": 783.42
+  },
+  {
+   "time": "2025-08-21",
+   "attuale": 896.49,
+   "orarie": 789.22,
+   "compra_e_tieni": 778.22
+  },
+  {
+   "time": "2025-08-22",
+   "attuale": 904.33,
+   "orarie": 795.54,
+   "compra_e_tieni": 831.51
+  },
+  {
+   "time": "2025-08-23",
+   "attuale": 902.73,
+   "orarie": 794.59,
+   "compra_e_tieni": 828.02
+  },
+  {
+   "time": "2025-08-24",
+   "attuale": 911.18,
+   "orarie": 795.37,
+   "compra_e_tieni": 843.17
+  },
+  {
+   "time": "2025-08-25",
+   "attuale": 887.87,
+   "orarie": 764.11,
+   "compra_e_tieni": 784.96
+  },
+  {
+   "time": "2025-08-26",
+   "attuale": 886.89,
+   "orarie": 764.11,
+   "compra_e_tieni": 781.66
+  },
+  {
+   "time": "2025-08-27",
+   "attuale": 898.37,
+   "orarie": 765.42,
+   "compra_e_tieni": 792.25
+  },
+  {
+   "time": "2025-08-28",
+   "attuale": 896.9,
+   "orarie": 759.87,
+   "compra_e_tieni": 790.22
+  },
+  {
+   "time": "2025-08-29",
+   "attuale": 881.72,
+   "orarie": 752.12,
+   "compra_e_tieni": 756.42
+  },
+  {
+   "time": "2025-08-30",
+   "attuale": 882.19,
+   "orarie": 752.12,
+   "compra_e_tieni": 762.97
+  },
+  {
+   "time": "2025-08-31",
+   "attuale": 882.89,
+   "orarie": 752.12,
+   "compra_e_tieni": 773.25
+  },
+  {
+   "time": "2025-09-01",
+   "attuale": 880.85,
+   "orarie": 752.12,
+   "compra_e_tieni": 754.54
+  },
+  {
+   "time": "2025-09-02",
+   "attuale": 880.85,
+   "orarie": 752.12,
+   "compra_e_tieni": 761.1
+  },
+  {
+   "time": "2025-09-03",
+   "attuale": 883.24,
+   "orarie": 754.98,
+   "compra_e_tieni": 778.93
+  },
+  {
+   "time": "2025-09-04",
+   "attuale": 877.41,
+   "orarie": 748.37,
+   "compra_e_tieni": 754.3
+  },
+  {
+   "time": "2025-09-05",
+   "attuale": 873.87,
+   "orarie": 746.02,
+   "compra_e_tieni": 764.29
+  },
+  {
+   "time": "2025-09-06",
+   "attuale": 871.89,
+   "orarie": 743.09,
+   "compra_e_tieni": 757.41
+  },
+  {
+   "time": "2025-09-07",
+   "attuale": 872.18,
+   "orarie": 743.55,
+   "compra_e_tieni": 766.48
+  },
+  {
+   "time": "2025-09-08",
+   "attuale": 880.88,
+   "orarie": 752.97,
+   "compra_e_tieni": 788.6
+  },
+  {
+   "time": "2025-09-09",
+   "attuale": 882.01,
+   "orarie": 751.54,
+   "compra_e_tieni": 786.29
+  },
+  {
+   "time": "2025-09-10",
+   "attuale": 900.01,
+   "orarie": 759.26,
+   "compra_e_tieni": 806.04
+  },
+  {
+   "time": "2025-09-11",
+   "attuale": 904.19,
+   "orarie": 761.55,
+   "compra_e_tieni": 812.45
+  },
+  {
+   "time": "2025-09-12",
+   "attuale": 921.53,
+   "orarie": 774.36,
+   "compra_e_tieni": 836.39
+  },
+  {
+   "time": "2025-09-13",
+   "attuale": 931.12,
+   "orarie": 778.12,
+   "compra_e_tieni": 845.05
+  },
+  {
+   "time": "2025-09-14",
+   "attuale": 924.82,
+   "orarie": 772.82,
+   "compra_e_tieni": 829.92
+  },
+  {
+   "time": "2025-09-15",
+   "attuale": 908.24,
+   "orarie": 763.33,
+   "compra_e_tieni": 809.29
+  },
+  {
+   "time": "2025-09-16",
+   "attuale": 909.54,
+   "orarie": 764.77,
+   "compra_e_tieni": 821.66
+  },
+  {
+   "time": "2025-09-17",
+   "attuale": 905.42,
+   "orarie": 759.28,
+   "compra_e_tieni": 812.25
+  },
+  {
+   "time": "2025-09-18",
+   "attuale": 937.82,
+   "orarie": 765.58,
+   "compra_e_tieni": 863.56
+  },
+  {
+   "time": "2025-09-19",
+   "attuale": 927.34,
+   "orarie": 752.02,
+   "compra_e_tieni": 831.27
+  },
+  {
+   "time": "2025-09-20",
+   "attuale": 931.28,
+   "orarie": 753.82,
+   "compra_e_tieni": 833.84
+  },
+  {
+   "time": "2025-09-21",
+   "attuale": 933.93,
+   "orarie": 754.37,
+   "compra_e_tieni": 835.41
+  },
+  {
+   "time": "2025-09-22",
+   "attuale": 916.18,
+   "orarie": 750.41,
+   "compra_e_tieni": 778.56
+  },
+  {
+   "time": "2025-09-23",
+   "attuale": 923.56,
+   "orarie": 748.21,
+   "compra_e_tieni": 783.43
+  },
+  {
+   "time": "2025-09-24",
+   "attuale": 920.94,
+   "orarie": 744.21,
+   "compra_e_tieni": 792.59
+  },
+  {
+   "time": "2025-09-25",
+   "attuale": 909.14,
+   "orarie": 738.09,
+   "compra_e_tieni": 750.9
+  },
+  {
+   "time": "2025-09-26",
+   "attuale": 909.14,
+   "orarie": 738.09,
+   "compra_e_tieni": 757.42
+  },
+  {
+   "time": "2025-09-27",
+   "attuale": 909.14,
+   "orarie": 738.09,
+   "compra_e_tieni": 751.85
+  },
+  {
+   "time": "2025-09-28",
+   "attuale": 909.14,
+   "orarie": 738.09,
+   "compra_e_tieni": 759.1
+  },
+  {
+   "time": "2025-09-29",
+   "attuale": 909.14,
+   "orarie": 738.09,
+   "compra_e_tieni": 772.71
+  },
+  {
+   "time": "2025-09-30",
+   "attuale": 909.14,
+   "orarie": 736.13,
+   "compra_e_tieni": 761.73
+  },
+  {
+   "time": "2025-10-01",
+   "attuale": 908.99,
+   "orarie": 745.72,
+   "compra_e_tieni": 799.8
+  },
+  {
+   "time": "2025-10-02",
+   "attuale": 917.28,
+   "orarie": 764.37,
+   "compra_e_tieni": 829.78
+  },
+  {
+   "time": "2025-10-03",
+   "attuale": 936.0,
+   "orarie": 769.28,
+   "compra_e_tieni": 843.26
+  },
+  {
+   "time": "2025-10-04",
+   "attuale": 920.46,
+   "orarie": 758.66,
+   "compra_e_tieni": 819.15
+  },
+  {
+   "time": "2025-10-05",
+   "attuale": 926.15,
+   "orarie": 763.93,
+   "compra_e_tieni": 830.04
+  },
+  {
+   "time": "2025-10-06",
+   "attuale": 939.8,
+   "orarie": 771.0,
+   "compra_e_tieni": 857.29
+  },
+  {
+   "time": "2025-10-07",
+   "attuale": 924.96,
+   "orarie": 759.12,
+   "compra_e_tieni": 819.96
+  },
+  {
+   "time": "2025-10-08",
+   "attuale": 931.12,
+   "orarie": 761.91,
+   "compra_e_tieni": 839.01
+  },
+  {
+   "time": "2025-10-09",
+   "attuale": 904.54,
+   "orarie": 757.6,
+   "compra_e_tieni": 805.75
+  },
+  {
+   "time": "2025-10-10",
+   "attuale": 910.52,
+   "orarie": 758.03,
+   "compra_e_tieni": 789.66
+  },
+  {
+   "time": "2025-10-11",
+   "attuale": 904.07,
+   "orarie": 758.03,
+   "compra_e_tieni": 690.49
+  },
+  {
+   "time": "2025-10-12",
+   "attuale": 900.9,
+   "orarie": 758.03,
+   "compra_e_tieni": 725.84
+  },
+  {
+   "time": "2025-10-13",
+   "attuale": 898.76,
+   "orarie": 757.74,
+   "compra_e_tieni": 742.69
+  },
+  {
+   "time": "2025-10-14",
+   "attuale": 898.76,
+   "orarie": 754.83,
+   "compra_e_tieni": 719.91
+  },
+  {
+   "time": "2025-10-15",
+   "attuale": 898.76,
+   "orarie": 754.83,
+   "compra_e_tieni": 701.33
+  },
+  {
+   "time": "2025-10-16",
+   "attuale": 898.76,
+   "orarie": 754.83,
+   "compra_e_tieni": 680.66
+  },
+  {
+   "time": "2025-10-17",
+   "attuale": 898.76,
+   "orarie": 754.83,
+   "compra_e_tieni": 654.64
+  },
+  {
+   "time": "2025-10-18",
+   "attuale": 898.76,
+   "orarie": 754.83,
+   "compra_e_tieni": 663.99
+  },
+  {
+   "time": "2025-10-19",
+   "attuale": 898.76,
+   "orarie": 754.83,
+   "compra_e_tieni": 683.49
+  },
+  {
+   "time": "2025-10-20",
+   "attuale": 898.76,
+   "orarie": 754.83,
+   "compra_e_tieni": 686.84
+  },
+  {
+   "time": "2025-10-21",
+   "attuale": 898.76,
+   "orarie": 754.83,
+   "compra_e_tieni": 692.2
+  },
+  {
+   "time": "2025-10-22",
+   "attuale": 898.76,
+   "orarie": 754.04,
+   "compra_e_tieni": 661.22
+  },
+  {
+   "time": "2025-10-23",
+   "attuale": 898.76,
+   "orarie": 752.14,
+   "compra_e_tieni": 674.58
+  },
+  {
+   "time": "2025-10-24",
+   "attuale": 898.76,
+   "orarie": 752.14,
+   "compra_e_tieni": 676.79
+  },
+  {
+   "time": "2025-10-25",
+   "attuale": 898.76,
+   "orarie": 756.32,
+   "compra_e_tieni": 685.07
+  },
+  {
+   "time": "2025-10-26",
+   "attuale": 898.76,
+   "orarie": 759.33,
+   "compra_e_tieni": 698.13
+  },
+  {
+   "time": "2025-10-27",
+   "attuale": 898.19,
+   "orarie": 763.06,
+   "compra_e_tieni": 709.86
+  },
+  {
+   "time": "2025-10-28",
+   "attuale": 897.96,
+   "orarie": 755.59,
+   "compra_e_tieni": 700.04
+  },
+  {
+   "time": "2025-10-29",
+   "attuale": 895.07,
+   "orarie": 742.68,
+   "compra_e_tieni": 682.84
+  },
+  {
+   "time": "2025-10-30",
+   "attuale": 895.07,
+   "orarie": 738.55,
+   "compra_e_tieni": 639.1
+  },
+  {
+   "time": "2025-10-31",
+   "attuale": 895.07,
+   "orarie": 738.55,
+   "compra_e_tieni": 656.65
+  },
+  {
+   "time": "2025-11-01",
+   "attuale": 895.07,
+   "orarie": 739.7,
+   "compra_e_tieni": 666.0
+  },
+  {
+   "time": "2025-11-02",
+   "attuale": 895.07,
+   "orarie": 737.53,
+   "compra_e_tieni": 658.57
+  },
+  {
+   "time": "2025-11-03",
+   "attuale": 895.07,
+   "orarie": 735.58,
+   "compra_e_tieni": 609.61
+  },
+  {
+   "time": "2025-11-04",
+   "attuale": 895.07,
+   "orarie": 735.58,
+   "compra_e_tieni": 574.38
+  },
+  {
+   "time": "2025-11-05",
+   "attuale": 895.07,
+   "orarie": 735.58,
+   "compra_e_tieni": 600.06
+  },
+  {
+   "time": "2025-11-06",
+   "attuale": 895.07,
+   "orarie": 735.58,
+   "compra_e_tieni": 585.57
+  },
+  {
+   "time": "2025-11-07",
+   "attuale": 895.07,
+   "orarie": 752.07,
+   "compra_e_tieni": 633.14
+  },
+  {
+   "time": "2025-11-08",
+   "attuale": 895.07,
+   "orarie": 752.52,
+   "compra_e_tieni": 627.41
+  },
+  {
+   "time": "2025-11-09",
+   "attuale": 894.06,
+   "orarie": 747.63,
+   "compra_e_tieni": 644.08
+  },
+  {
+   "time": "2025-11-10",
+   "attuale": 891.05,
+   "orarie": 747.37,
+   "compra_e_tieni": 648.96
+  },
+  {
+   "time": "2025-11-11",
+   "attuale": 884.7,
+   "orarie": 756.39,
+   "compra_e_tieni": 638.73
+  },
+  {
+   "time": "2025-11-12",
+   "attuale": 876.2,
+   "orarie": 748.56,
+   "compra_e_tieni": 616.67
+  },
+  {
+   "time": "2025-11-13",
+   "attuale": 869.23,
+   "orarie": 744.17,
+   "compra_e_tieni": 598.75
+  },
+  {
+   "time": "2025-11-14",
+   "attuale": 863.98,
+   "orarie": 744.17,
+   "compra_e_tieni": 589.35
+  },
+  {
+   "time": "2025-11-15",
+   "attuale": 865.4,
+   "orarie": 744.02,
+   "compra_e_tieni": 597.79
+  },
+  {
+   "time": "2025-11-16",
+   "attuale": 861.99,
+   "orarie": 742.18,
+   "compra_e_tieni": 571.9
+  },
+  {
+   "time": "2025-11-17",
+   "attuale": 861.99,
+   "orarie": 742.18,
+   "compra_e_tieni": 564.02
+  },
+  {
+   "time": "2025-11-18",
+   "attuale": 861.99,
+   "orarie": 742.18,
+   "compra_e_tieni": 582.68
+  },
+  {
+   "time": "2025-11-19",
+   "attuale": 861.99,
+   "orarie": 742.18,
+   "compra_e_tieni": 544.48
+  },
+  {
+   "time": "2025-11-20",
+   "attuale": 861.99,
+   "orarie": 739.27,
+   "compra_e_tieni": 534.66
+  },
+  {
+   "time": "2025-11-21",
+   "attuale": 861.99,
+   "orarie": 739.27,
+   "compra_e_tieni": 515.29
+  },
+  {
+   "time": "2025-11-22",
+   "attuale": 861.99,
+   "orarie": 739.27,
+   "compra_e_tieni": 506.75
+  },
+  {
+   "time": "2025-11-23",
+   "attuale": 861.99,
+   "orarie": 739.27,
+   "compra_e_tieni": 518.08
+  },
+  {
+   "time": "2025-11-24",
+   "attuale": 861.99,
+   "orarie": 739.27,
+   "compra_e_tieni": 537.72
+  },
+  {
+   "time": "2025-11-25",
+   "attuale": 861.99,
+   "orarie": 736.87,
+   "compra_e_tieni": 528.55
+  },
+  {
+   "time": "2025-11-26",
+   "attuale": 861.99,
+   "orarie": 736.87,
+   "compra_e_tieni": 547.63
+  },
+  {
+   "time": "2025-11-27",
+   "attuale": 861.99,
+   "orarie": 737.0,
+   "compra_e_tieni": 549.61
+  },
+  {
+   "time": "2025-11-28",
+   "attuale": 861.99,
+   "orarie": 733.94,
+   "compra_e_tieni": 536.92
+  },
+  {
+   "time": "2025-11-29",
+   "attuale": 861.99,
+   "orarie": 733.82,
+   "compra_e_tieni": 532.52
+  },
+  {
+   "time": "2025-11-30",
+   "attuale": 861.99,
+   "orarie": 734.44,
+   "compra_e_tieni": 539.05
+  },
+  {
+   "time": "2025-12-01",
+   "attuale": 861.99,
+   "orarie": 732.1,
+   "compra_e_tieni": 491.31
+  },
+  {
+   "time": "2025-12-02",
+   "attuale": 861.99,
+   "orarie": 732.1,
+   "compra_e_tieni": 535.07
+  },
+  {
+   "time": "2025-12-03",
+   "attuale": 861.99,
+   "orarie": 729.61,
+   "compra_e_tieni": 544.96
+  },
+  {
+   "time": "2025-12-04",
+   "attuale": 861.99,
+   "orarie": 730.08,
+   "compra_e_tieni": 541.73
+  },
+  {
+   "time": "2025-12-05",
+   "attuale": 861.99,
+   "orarie": 721.54,
+   "compra_e_tieni": 516.59
+  },
+  {
+   "time": "2025-12-06",
+   "attuale": 861.99,
+   "orarie": 721.8,
+   "compra_e_tieni": 525.21
+  },
+  {
+   "time": "2025-12-07",
+   "attuale": 861.99,
+   "orarie": 721.17,
+   "compra_e_tieni": 533.82
+  },
+  {
+   "time": "2025-12-08",
+   "attuale": 861.99,
+   "orarie": 714.28,
+   "compra_e_tieni": 527.85
+  },
+  {
+   "time": "2025-12-09",
+   "attuale": 861.99,
+   "orarie": 738.13,
+   "compra_e_tieni": 555.36
+  },
+  {
+   "time": "2025-12-10",
+   "attuale": 861.99,
+   "orarie": 730.13,
+   "compra_e_tieni": 542.8
+  },
+  {
+   "time": "2025-12-11",
+   "attuale": 861.99,
+   "orarie": 718.94,
+   "compra_e_tieni": 521.28
+  },
+  {
+   "time": "2025-12-12",
+   "attuale": 861.99,
+   "orarie": 708.58,
+   "compra_e_tieni": 515.86
+  },
+  {
+   "time": "2025-12-13",
+   "attuale": 861.99,
+   "orarie": 708.58,
+   "compra_e_tieni": 519.27
+  },
+  {
+   "time": "2025-12-14",
+   "attuale": 861.99,
+   "orarie": 708.58,
+   "compra_e_tieni": 512.96
+  },
+  {
+   "time": "2025-12-15",
+   "attuale": 861.99,
+   "orarie": 708.58,
+   "compra_e_tieni": 491.82
+  },
+  {
+   "time": "2025-12-16",
+   "attuale": 861.99,
+   "orarie": 708.35,
+   "compra_e_tieni": 501.86
+  },
+  {
+   "time": "2025-12-17",
+   "attuale": 861.99,
+   "orarie": 708.0,
+   "compra_e_tieni": 481.33
+  },
+  {
+   "time": "2025-12-18",
+   "attuale": 861.99,
+   "orarie": 707.34,
+   "compra_e_tieni": 477.6
+  },
+  {
+   "time": "2025-12-19",
+   "attuale": 861.99,
+   "orarie": 706.85,
+   "compra_e_tieni": 492.01
+  },
+  {
+   "time": "2025-12-20",
+   "attuale": 861.99,
+   "orarie": 706.72,
+   "compra_e_tieni": 499.09
+  },
+  {
+   "time": "2025-12-21",
+   "attuale": 861.99,
+   "orarie": 707.51,
+   "compra_e_tieni": 496.08
+  },
+  {
+   "time": "2025-12-22",
+   "attuale": 861.99,
+   "orarie": 705.56,
+   "compra_e_tieni": 502.66
+  },
+  {
+   "time": "2025-12-23",
+   "attuale": 861.99,
+   "orarie": 702.22,
+   "compra_e_tieni": 493.01
+  },
+  {
+   "time": "2025-12-24",
+   "attuale": 861.99,
+   "orarie": 702.22,
+   "compra_e_tieni": 488.19
+  },
+  {
+   "time": "2025-12-25",
+   "attuale": 861.99,
+   "orarie": 700.82,
+   "compra_e_tieni": 492.45
+  },
+  {
+   "time": "2025-12-26",
+   "attuale": 861.99,
+   "orarie": 696.81,
+   "compra_e_tieni": 486.98
+  },
+  {
+   "time": "2025-12-27",
+   "attuale": 861.99,
+   "orarie": 704.49,
+   "compra_e_tieni": 493.75
+  },
+  {
+   "time": "2025-12-28",
+   "attuale": 859.41,
+   "orarie": 707.47,
+   "compra_e_tieni": 498.17
+  },
+  {
+   "time": "2025-12-29",
+   "attuale": 857.47,
+   "orarie": 701.65,
+   "compra_e_tieni": 494.29
+  },
+  {
+   "time": "2025-12-30",
+   "attuale": 857.47,
+   "orarie": 699.48,
+   "compra_e_tieni": 497.4
+  },
+  {
+   "time": "2025-12-31",
+   "attuale": 856.33,
+   "orarie": 697.01,
+   "compra_e_tieni": 490.2
+  },
+  {
+   "time": "2026-01-01",
+   "attuale": 857.04,
+   "orarie": 699.06,
+   "compra_e_tieni": 501.58
+  },
+  {
+   "time": "2026-01-02",
+   "attuale": 864.42,
+   "orarie": 713.36,
+   "compra_e_tieni": 522.12
+  },
+  {
+   "time": "2026-01-03",
+   "attuale": 864.68,
+   "orarie": 716.1,
+   "compra_e_tieni": 528.66
+  },
+  {
+   "time": "2026-01-04",
+   "attuale": 867.05,
+   "orarie": 718.01,
+   "compra_e_tieni": 538.4
+  },
+  {
+   "time": "2026-01-05",
+   "attuale": 870.75,
+   "orarie": 726.09,
+   "compra_e_tieni": 551.9
+  },
+  {
+   "time": "2026-01-06",
+   "attuale": 872.93,
+   "orarie": 719.82,
+   "compra_e_tieni": 546.75
+  },
+  {
+   "time": "2026-01-07",
+   "attuale": 869.97,
+   "orarie": 714.58,
+   "compra_e_tieni": 541.46
+  },
+  {
+   "time": "2026-01-08",
+   "attuale": 862.91,
+   "orarie": 713.55,
+   "compra_e_tieni": 536.28
+  },
+  {
+   "time": "2026-01-09",
+   "attuale": 860.25,
+   "orarie": 715.72,
+   "compra_e_tieni": 534.53
+  },
+  {
+   "time": "2026-01-10",
+   "attuale": 859.22,
+   "orarie": 716.75,
+   "compra_e_tieni": 535.6
+  },
+  {
+   "time": "2026-01-11",
+   "attuale": 865.24,
+   "orarie": 715.8,
+   "compra_e_tieni": 538.13
+  },
+  {
+   "time": "2026-01-12",
+   "attuale": 859.1,
+   "orarie": 709.09,
+   "compra_e_tieni": 532.73
+  },
+  {
+   "time": "2026-01-13",
+   "attuale": 867.24,
+   "orarie": 717.54,
+   "compra_e_tieni": 547.74
+  },
+  {
+   "time": "2026-01-14",
+   "attuale": 872.03,
+   "orarie": 719.91,
+   "compra_e_tieni": 555.55
+  },
+  {
+   "time": "2026-01-15",
+   "attuale": 866.16,
+   "orarie": 716.28,
+   "compra_e_tieni": 539.95
+  },
+  {
+   "time": "2026-01-16",
+   "attuale": 865.86,
+   "orarie": 714.28,
+   "compra_e_tieni": 537.61
+  },
+  {
+   "time": "2026-01-17",
+   "attuale": 872.34,
+   "orarie": 716.9,
+   "compra_e_tieni": 549.18
+  },
+  {
+   "time": "2026-01-18",
+   "attuale": 873.65,
+   "orarie": 711.27,
+   "compra_e_tieni": 548.28
+  },
+  {
+   "time": "2026-01-19",
+   "attuale": 859.33,
+   "orarie": 708.88,
+   "compra_e_tieni": 521.04
+  },
+  {
+   "time": "2026-01-20",
+   "attuale": 851.34,
+   "orarie": 708.88,
+   "compra_e_tieni": 495.99
+  },
+  {
+   "time": "2026-01-21",
+   "attuale": 851.34,
+   "orarie": 708.88,
+   "compra_e_tieni": 494.03
+  },
+  {
+   "time": "2026-01-22",
+   "attuale": 851.34,
+   "orarie": 708.88,
+   "compra_e_tieni": 497.94
+  },
+  {
+   "time": "2026-01-23",
+   "attuale": 851.34,
+   "orarie": 708.88,
+   "compra_e_tieni": 503.28
+  },
+  {
+   "time": "2026-01-24",
+   "attuale": 851.34,
+   "orarie": 708.88,
+   "compra_e_tieni": 496.73
+  },
+  {
+   "time": "2026-01-25",
+   "attuale": 851.34,
+   "orarie": 708.88,
+   "compra_e_tieni": 481.35
+  },
+  {
+   "time": "2026-01-26",
+   "attuale": 851.34,
+   "orarie": 708.88,
+   "compra_e_tieni": 491.78
+  },
+  {
+   "time": "2026-01-27",
+   "attuale": 851.34,
+   "orarie": 708.88,
+   "compra_e_tieni": 493.19
+  },
+  {
+   "time": "2026-01-28",
+   "attuale": 851.34,
+   "orarie": 708.74,
+   "compra_e_tieni": 495.27
+  },
+  {
+   "time": "2026-01-29",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 462.52
+  },
+  {
+   "time": "2026-01-30",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 464.81
+  },
+  {
+   "time": "2026-01-31",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 416.55
+  },
+  {
+   "time": "2026-02-01",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 420.56
+  },
+  {
+   "time": "2026-02-02",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 426.22
+  },
+  {
+   "time": "2026-02-03",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 402.07
+  },
+  {
+   "time": "2026-02-04",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 403.95
+  },
+  {
+   "time": "2026-02-05",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 367.44
+  },
+  {
+   "time": "2026-02-06",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 381.9
+  },
+  {
+   "time": "2026-02-07",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 385.74
+  },
+  {
+   "time": "2026-02-08",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 383.43
+  },
+  {
+   "time": "2026-02-09",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 381.44
+  },
+  {
+   "time": "2026-02-10",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 368.79
+  },
+  {
+   "time": "2026-02-11",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 363.79
+  },
+  {
+   "time": "2026-02-12",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 360.9
+  },
+  {
+   "time": "2026-02-13",
+   "attuale": 851.34,
+   "orarie": 706.58,
+   "compra_e_tieni": 378.41
+  },
+  {
+   "time": "2026-02-14",
+   "attuale": 851.34,
+   "orarie": 710.97,
+   "compra_e_tieni": 390.91
+  },
+  {
+   "time": "2026-02-15",
+   "attuale": 851.34,
+   "orarie": 698.79,
+   "compra_e_tieni": 378.46
+  },
+  {
+   "time": "2026-02-16",
+   "attuale": 851.34,
+   "orarie": 696.83,
+   "compra_e_tieni": 379.07
+  },
+  {
+   "time": "2026-02-17",
+   "attuale": 851.34,
+   "orarie": 692.3,
+   "compra_e_tieni": 382.29
+  },
+  {
+   "time": "2026-02-18",
+   "attuale": 851.34,
+   "orarie": 694.0,
+   "compra_e_tieni": 374.18
+  },
+  {
+   "time": "2026-02-19",
+   "attuale": 847.74,
+   "orarie": 691.03,
+   "compra_e_tieni": 371.45
+  },
+  {
+   "time": "2026-02-20",
+   "attuale": 844.92,
+   "orarie": 690.73,
+   "compra_e_tieni": 380.79
+  },
+  {
+   "time": "2026-02-21",
+   "attuale": 844.78,
+   "orarie": 691.26,
+   "compra_e_tieni": 383.57
+  },
+  {
+   "time": "2026-02-22",
+   "attuale": 841.79,
+   "orarie": 680.33,
+   "compra_e_tieni": 372.9
+  },
+  {
+   "time": "2026-02-23",
+   "attuale": 837.38,
+   "orarie": 678.89,
+   "compra_e_tieni": 360.75
+  },
+  {
+   "time": "2026-02-24",
+   "attuale": 837.38,
+   "orarie": 678.89,
+   "compra_e_tieni": 358.35
+  },
+  {
+   "time": "2026-02-25",
+   "attuale": 837.38,
+   "orarie": 678.72,
+   "compra_e_tieni": 393.44
+  },
+  {
+   "time": "2026-02-26",
+   "attuale": 837.38,
+   "orarie": 665.52,
+   "compra_e_tieni": 378.06
+  },
+  {
+   "time": "2026-02-27",
+   "attuale": 837.38,
+   "orarie": 659.05,
+   "compra_e_tieni": 370.26
+  },
+  {
+   "time": "2026-02-28",
+   "attuale": 837.38,
+   "orarie": 659.05,
+   "compra_e_tieni": 369.39
+  },
+  {
+   "time": "2026-03-01",
+   "attuale": 837.38,
+   "orarie": 646.04,
+   "compra_e_tieni": 371.9
+  },
+  {
+   "time": "2026-03-02",
+   "attuale": 837.38,
+   "orarie": 648.16,
+   "compra_e_tieni": 382.25
+  },
+  {
+   "time": "2026-03-03",
+   "attuale": 837.38,
+   "orarie": 649.57,
+   "compra_e_tieni": 377.98
+  },
+  {
+   "time": "2026-03-04",
+   "attuale": 834.07,
+   "orarie": 657.14,
+   "compra_e_tieni": 397.3
+  },
+  {
+   "time": "2026-03-05",
+   "attuale": 832.68,
+   "orarie": 644.92,
+   "compra_e_tieni": 386.1
+  },
+  {
+   "time": "2026-03-06",
+   "attuale": 832.68,
+   "orarie": 636.87,
+   "compra_e_tieni": 374.95
+  },
+  {
+   "time": "2026-03-07",
+   "attuale": 832.68,
+   "orarie": 634.4,
+   "compra_e_tieni": 372.46
+  },
+  {
+   "time": "2026-03-08",
+   "attuale": 832.68,
+   "orarie": 634.4,
+   "compra_e_tieni": 368.39
+  },
+  {
+   "time": "2026-03-09",
+   "attuale": 831.49,
+   "orarie": 634.16,
+   "compra_e_tieni": 377.63
+  },
+  {
+   "time": "2026-03-10",
+   "attuale": 829.37,
+   "orarie": 635.7,
+   "compra_e_tieni": 382.32
+  },
+  {
+   "time": "2026-03-11",
+   "attuale": 831.54,
+   "orarie": 634.38,
+   "compra_e_tieni": 387.91
+  },
+  {
+   "time": "2026-03-12",
+   "attuale": 833.58,
+   "orarie": 632.45,
+   "compra_e_tieni": 383.18
+  },
+  {
+   "time": "2026-03-13",
+   "attuale": 830.89,
+   "orarie": 637.24,
+   "compra_e_tieni": 389.87
+  },
+  {
+   "time": "2026-03-14",
+   "attuale": 829.33,
+   "orarie": 635.43,
+   "compra_e_tieni": 387.07
+  },
+  {
+   "time": "2026-03-15",
+   "attuale": 829.79,
+   "orarie": 634.76,
+   "compra_e_tieni": 390.2
+  },
+  {
+   "time": "2026-03-16",
+   "attuale": 831.57,
+   "orarie": 645.28,
+   "compra_e_tieni": 411.06
+  },
+  {
+   "time": "2026-03-17",
+   "attuale": 833.78,
+   "orarie": 644.57,
+   "compra_e_tieni": 412.83
+  },
+  {
+   "time": "2026-03-18",
+   "attuale": 820.78,
+   "orarie": 633.79,
+   "compra_e_tieni": 393.46
+  },
+  {
+   "time": "2026-03-19",
+   "attuale": 820.29,
+   "orarie": 633.34,
+   "compra_e_tieni": 386.63
+  },
+  {
+   "time": "2026-03-20",
+   "attuale": 820.95,
+   "orarie": 634.28,
+   "compra_e_tieni": 388.36
+  },
+  {
+   "time": "2026-03-21",
+   "attuale": 822.56,
+   "orarie": 635.18,
+   "compra_e_tieni": 391.19
+  },
+  {
+   "time": "2026-03-22",
+   "attuale": 820.93,
+   "orarie": 635.14,
+   "compra_e_tieni": 382.28
+  },
+  {
+   "time": "2026-03-23",
+   "attuale": 816.94,
+   "orarie": 632.79,
+   "compra_e_tieni": 390.7
+  },
+  {
+   "time": "2026-03-24",
+   "attuale": 818.72,
+   "orarie": 630.15,
+   "compra_e_tieni": 386.11
+  },
+  {
+   "time": "2026-03-25",
+   "attuale": 818.04,
+   "orarie": 629.69,
+   "compra_e_tieni": 393.62
+  },
+  {
+   "time": "2026-03-26",
+   "attuale": 807.49,
+   "orarie": 620.4,
+   "compra_e_tieni": 378.11
+  },
+  {
+   "time": "2026-03-27",
+   "attuale": 806.51,
+   "orarie": 619.89,
+   "compra_e_tieni": 368.65
+  },
+  {
+   "time": "2026-03-28",
+   "attuale": 809.01,
+   "orarie": 620.33,
+   "compra_e_tieni": 374.74
+  },
+  {
+   "time": "2026-03-29",
+   "attuale": 809.41,
+   "orarie": 620.6,
+   "compra_e_tieni": 369.25
+  },
+  {
+   "time": "2026-03-30",
+   "attuale": 809.75,
+   "orarie": 620.84,
+   "compra_e_tieni": 371.84
+  },
+  {
+   "time": "2026-03-31",
+   "attuale": 807.48,
+   "orarie": 619.8,
+   "compra_e_tieni": 374.61
+  },
+  {
+   "time": "2026-04-01",
+   "attuale": 808.4,
+   "orarie": 619.03,
+   "compra_e_tieni": 377.36
+  },
+  {
+   "time": "2026-04-02",
+   "attuale": 808.09,
+   "orarie": 614.08,
+   "compra_e_tieni": 364.96
+  },
+  {
+   "time": "2026-04-03",
+   "attuale": 807.94,
+   "orarie": 614.08,
+   "compra_e_tieni": 368.56
+  },
+  {
+   "time": "2026-04-04",
+   "attuale": 808.83,
+   "orarie": 614.08,
+   "compra_e_tieni": 370.9
+  },
+  {
+   "time": "2026-04-05",
+   "attuale": 809.35,
+   "orarie": 612.49,
+   "compra_e_tieni": 368.79
+  },
+  {
+   "time": "2026-04-06",
+   "attuale": 808.37,
+   "orarie": 610.93,
+   "compra_e_tieni": 377.38
+  },
+  {
+   "time": "2026-04-07",
+   "attuale": 807.8,
+   "orarie": 601.28,
+   "compra_e_tieni": 369.49
+  },
+  {
+   "time": "2026-04-08",
+   "attuale": 806.39,
+   "orarie": 601.99,
+   "compra_e_tieni": 380.29
+  },
+  {
+   "time": "2026-04-09",
+   "attuale": 808.47,
+   "orarie": 601.29,
+   "compra_e_tieni": 383.03
+  },
+  {
+   "time": "2026-04-10",
+   "attuale": 811.53,
+   "orarie": 604.69,
+   "compra_e_tieni": 386.76
+  },
+  {
+   "time": "2026-04-11",
+   "attuale": 816.38,
+   "orarie": 607.08,
+   "compra_e_tieni": 390.59
+  },
+  {
+   "time": "2026-04-12",
+   "attuale": 805.23,
+   "orarie": 601.49,
+   "compra_e_tieni": 379.37
+  },
+  {
+   "time": "2026-04-13",
+   "attuale": 805.8,
+   "orarie": 600.56,
+   "compra_e_tieni": 381.56
+  },
+  {
+   "time": "2026-04-14",
+   "attuale": 807.21,
+   "orarie": 599.89,
+   "compra_e_tieni": 385.87
+  },
+  {
+   "time": "2026-04-15",
+   "attuale": 809.54,
+   "orarie": 603.33,
+   "compra_e_tieni": 392.88
+  },
+  {
+   "time": "2026-04-16",
+   "attuale": 813.13,
+   "orarie": 607.24,
+   "compra_e_tieni": 401.92
+  },
+  {
+   "time": "2026-04-17",
+   "attuale": 817.55,
+   "orarie": 610.53,
+   "compra_e_tieni": 406.56
+  },
+  {
+   "time": "2026-04-18",
+   "attuale": 808.02,
+   "orarie": 601.82,
+   "compra_e_tieni": 395.61
+  },
+  {
+   "time": "2026-04-19",
+   "attuale": 801.71,
+   "orarie": 602.23,
+   "compra_e_tieni": 391.93
+  },
+  {
+   "time": "2026-04-20",
+   "attuale": 805.04,
+   "orarie": 601.18,
+   "compra_e_tieni": 396.22
+  },
+  {
+   "time": "2026-04-21",
+   "attuale": 803.22,
+   "orarie": 599.32,
+   "compra_e_tieni": 395.49
+  },
+  {
+   "time": "2026-04-22",
+   "attuale": 812.31,
+   "orarie": 607.56,
+   "compra_e_tieni": 403.7
+  },
+  {
+   "time": "2026-04-23",
+   "attuale": 808.07,
+   "orarie": 599.58,
+   "compra_e_tieni": 395.99
+  },
+  {
+   "time": "2026-04-24",
+   "attuale": 815.79,
+   "orarie": 604.36,
+   "compra_e_tieni": 399.24
+  },
+  {
+   "time": "2026-04-25",
+   "attuale": 814.05,
+   "orarie": 603.46,
+   "compra_e_tieni": 396.4
+  },
+  {
+   "time": "2026-04-26",
+   "attuale": 818.58,
+   "orarie": 605.55,
+   "compra_e_tieni": 400.01
+  },
+  {
+   "time": "2026-04-27",
+   "attuale": 810.09,
+   "orarie": 597.71,
+   "compra_e_tieni": 393.03
+  },
+  {
+   "time": "2026-04-28",
+   "attuale": 810.01,
+   "orarie": 597.55,
+   "compra_e_tieni": 392.21
+  },
+  {
+   "time": "2026-04-29",
+   "attuale": 809.3,
+   "orarie": 597.37,
+   "compra_e_tieni": 387.31
+  },
+  {
+   "time": "2026-04-30",
+   "attuale": 811.23,
+   "orarie": 595.91,
+   "compra_e_tieni": 390.92
+  },
+  {
+   "time": "2026-05-01",
+   "attuale": 814.59,
+   "orarie": 598.19,
+   "compra_e_tieni": 395.33
+  },
+  {
+   "time": "2026-05-02",
+   "attuale": 815.37,
+   "orarie": 598.72,
+   "compra_e_tieni": 395.78
+  },
+  {
+   "time": "2026-05-03",
+   "attuale": 815.48,
+   "orarie": 598.46,
+   "compra_e_tieni": 397.78
+  },
+  {
+   "time": "2026-05-04",
+   "attuale": 819.36,
+   "orarie": 601.26,
+   "compra_e_tieni": 402.78
+  },
+  {
+   "time": "2026-05-05",
+   "attuale": 826.6,
+   "orarie": 606.21,
+   "compra_e_tieni": 411.14
+  },
+  {
+   "time": "2026-05-06",
+   "attuale": 827.63,
+   "orarie": 606.46,
+   "compra_e_tieni": 423.88
+  },
+  {
+   "time": "2026-05-07",
+   "attuale": 828.72,
+   "orarie": 604.12,
+   "compra_e_tieni": 422.71
+  },
+  {
+   "time": "2026-05-08",
+   "attuale": 833.48,
+   "orarie": 611.81,
+   "compra_e_tieni": 430.24
+  },
+  {
+   "time": "2026-05-09",
+   "attuale": 831.17,
+   "orarie": 608.28,
+   "compra_e_tieni": 430.67
+  },
+  {
+   "time": "2026-05-10",
+   "attuale": 862.3,
+   "orarie": 631.94,
+   "compra_e_tieni": 444.1
+  },
+  {
+   "time": "2026-05-11",
+   "attuale": 850.46,
+   "orarie": 623.76,
+   "compra_e_tieni": 439.24
+  },
+  {
+   "time": "2026-05-12",
+   "attuale": 844.28,
+   "orarie": 612.94,
+   "compra_e_tieni": 432.79
+  },
+  {
+   "time": "2026-05-13",
+   "attuale": 839.07,
+   "orarie": 605.32,
+   "compra_e_tieni": 428.37
+  },
+  {
+   "time": "2026-05-14",
+   "attuale": 852.18,
+   "orarie": 607.07,
+   "compra_e_tieni": 439.98
+  },
+  {
+   "time": "2026-05-15",
+   "attuale": 836.53,
+   "orarie": 594.65,
+   "compra_e_tieni": 423.9
+  },
+  {
+   "time": "2026-05-16",
+   "attuale": 830.43,
+   "orarie": 593.93,
+   "compra_e_tieni": 415.98
+  },
+  {
+   "time": "2026-05-17",
+   "attuale": 830.95,
+   "orarie": 594.56,
+   "compra_e_tieni": 416.3
+  },
+  {
+   "time": "2026-05-18",
+   "attuale": 828.01,
+   "orarie": 592.92,
+   "compra_e_tieni": 405.0
+  },
+  {
+   "time": "2026-05-19",
+   "attuale": 831.81,
+   "orarie": 594.31,
+   "compra_e_tieni": 410.17
+  },
+  {
+   "time": "2026-05-20",
+   "attuale": 832.15,
+   "orarie": 594.22,
+   "compra_e_tieni": 414.15
+  },
+  {
+   "time": "2026-05-21",
+   "attuale": 843.14,
+   "orarie": 599.2,
+   "compra_e_tieni": 419.85
+  },
+  {
+   "time": "2026-05-22",
+   "attuale": 861.16,
+   "orarie": 607.35,
+   "compra_e_tieni": 417.57
+  },
+  {
+   "time": "2026-05-23",
+   "attuale": 864.05,
+   "orarie": 612.66,
+   "compra_e_tieni": 414.92
+  },
+  {
+   "time": "2026-05-24",
+   "attuale": 866.99,
+   "orarie": 614.76,
+   "compra_e_tieni": 416.63
+  },
+  {
+   "time": "2026-05-25",
+   "attuale": 880.87,
+   "orarie": 624.57,
+   "compra_e_tieni": 426.66
+  },
+  {
+   "time": "2026-05-26",
+   "attuale": 877.35,
+   "orarie": 620.86,
+   "compra_e_tieni": 419.0
+  },
+  {
+   "time": "2026-05-27",
+   "attuale": 874.82,
+   "orarie": 617.78,
+   "compra_e_tieni": 416.7
+  },
+  {
+   "time": "2026-05-28",
+   "attuale": 858.58,
+   "orarie": 617.62,
+   "compra_e_tieni": 404.59
+  },
+  {
+   "time": "2026-05-29",
+   "attuale": 856.38,
+   "orarie": 616.6,
+   "compra_e_tieni": 401.18
+  },
+  {
+   "time": "2026-05-30",
+   "attuale": 849.3,
+   "orarie": 614.05,
+   "compra_e_tieni": 410.04
+  },
+  {
+   "time": "2026-05-31",
+   "attuale": 847.98,
+   "orarie": 613.1,
+   "compra_e_tieni": 404.45
+  },
+  {
+   "time": "2026-06-01",
+   "attuale": 856.25,
+   "orarie": 620.24,
+   "compra_e_tieni": 405.9
+  },
+  {
+   "time": "2026-06-02",
+   "attuale": 845.61,
+   "orarie": 611.94,
+   "compra_e_tieni": 386.57
+  },
+  {
+   "time": "2026-06-03",
+   "attuale": 855.98,
+   "orarie": 616.67,
+   "compra_e_tieni": 383.02
+  },
+  {
+   "time": "2026-06-04",
+   "attuale": 842.34,
+   "orarie": 610.83,
+   "compra_e_tieni": 365.01
+  },
+  {
+   "time": "2026-06-05",
+   "attuale": 842.34,
+   "orarie": 610.83,
+   "compra_e_tieni": 330.02
+  },
+  {
+   "time": "2026-06-06",
+   "attuale": 842.34,
+   "orarie": 610.83,
+   "compra_e_tieni": 333.5
+  },
+  {
+   "time": "2026-06-07",
+   "attuale": 842.34,
+   "orarie": 610.83,
+   "compra_e_tieni": 344.73
+  },
+  {
+   "time": "2026-06-08",
+   "attuale": 842.34,
+   "orarie": 610.83,
+   "compra_e_tieni": 354.48
+  },
+  {
+   "time": "2026-06-09",
+   "attuale": 842.34,
+   "orarie": 610.83,
+   "compra_e_tieni": 347.31
+  },
+  {
+   "time": "2026-06-10",
+   "attuale": 842.34,
+   "orarie": 610.83,
+   "compra_e_tieni": 341.75
+  },
+  {
+   "time": "2026-06-11",
+   "attuale": 842.34,
+   "orarie": 614.12,
+   "compra_e_tieni": 348.68
+  },
+  {
+   "time": "2026-06-12",
+   "attuale": 842.34,
+   "orarie": 612.98,
+   "compra_e_tieni": 348.21
+  },
+  {
+   "time": "2026-06-13",
+   "attuale": 842.34,
+   "orarie": 611.64,
+   "compra_e_tieni": 352.78
+  },
+  {
+   "time": "2026-06-14",
+   "attuale": 842.34,
+   "orarie": 611.0,
+   "compra_e_tieni": 349.75
+  },
+  {
+   "time": "2026-06-15",
+   "attuale": 842.34,
+   "orarie": 613.37,
+   "compra_e_tieni": 371.22
+  },
+  {
+   "time": "2026-06-16",
+   "attuale": 836.99,
+   "orarie": 613.95,
+   "compra_e_tieni": 364.75
+  },
+  {
+   "time": "2026-06-17",
+   "attuale": 836.99,
+   "orarie": 609.84,
+   "compra_e_tieni": 363.81
+  },
+  {
+   "time": "2026-06-18",
+   "attuale": 832.11,
+   "orarie": 602.14,
+   "compra_e_tieni": 346.87
+  },
+  {
+   "time": "2026-06-19",
+   "attuale": 832.11,
+   "orarie": 602.18,
+   "compra_e_tieni": 347.62
+  },
+  {
+   "time": "2026-06-20",
+   "attuale": 832.11,
+   "orarie": 602.39,
+   "compra_e_tieni": 350.35
+  },
+  {
+   "time": "2026-06-21",
+   "attuale": 832.11,
+   "orarie": 604.84,
+   "compra_e_tieni": 354.57
+  },
+  {
+   "time": "2026-06-22",
+   "attuale": 832.11,
+   "orarie": 602.1,
+   "compra_e_tieni": 353.86
+  },
+  {
+   "time": "2026-06-23",
+   "attuale": 832.11,
+   "orarie": 597.92,
+   "compra_e_tieni": 340.89
+  },
+  {
+   "time": "2026-06-24",
+   "attuale": 832.11,
+   "orarie": 597.73,
+   "compra_e_tieni": 329.1
+  },
+  {
+   "time": "2026-06-25",
+   "attuale": 832.11,
+   "orarie": 597.73,
+   "compra_e_tieni": 328.25
+  },
+  {
+   "time": "2026-06-26",
+   "attuale": 832.11,
+   "orarie": 597.73,
+   "compra_e_tieni": 331.89
+  },
+  {
+   "time": "2026-06-27",
+   "attuale": 832.11,
+   "orarie": 596.61,
+   "compra_e_tieni": 334.06
+  },
+  {
+   "time": "2026-06-28",
+   "attuale": 832.11,
+   "orarie": 594.74,
+   "compra_e_tieni": 330.26
+  },
+  {
+   "time": "2026-06-29",
+   "attuale": 832.11,
+   "orarie": 596.99,
+   "compra_e_tieni": 336.2
+  },
+  {
+   "time": "2026-06-30",
+   "attuale": 832.11,
+   "orarie": 588.51,
+   "compra_e_tieni": 330.68
+  },
+  {
+   "time": "2026-07-01",
+   "attuale": 832.11,
+   "orarie": 591.43,
+   "compra_e_tieni": 336.93
+  },
+  {
+   "time": "2026-07-02",
+   "attuale": 832.5,
+   "orarie": 599.13,
+   "compra_e_tieni": 346.54
+  },
+  {
+   "time": "2026-07-03",
+   "attuale": 834.11,
+   "orarie": 610.88,
+   "compra_e_tieni": 353.52
+  },
+  {
+   "time": "2026-07-04",
+   "attuale": 833.75,
+   "orarie": 615.55,
+   "compra_e_tieni": 360.61
+  },
+  {
+   "time": "2026-07-05",
+   "attuale": 830.77,
+   "orarie": 607.32,
+   "compra_e_tieni": 358.92
+  },
+  {
+   "time": "2026-07-06",
+   "attuale": 829.65,
+   "orarie": 604.57,
+   "compra_e_tieni": 359.93
+  },
+  {
+   "time": "2026-07-07",
+   "attuale": 830.85,
+   "orarie": 601.87,
+   "compra_e_tieni": 357.0
+  },
+  {
+   "time": "2026-07-08",
+   "attuale": 830.51,
+   "orarie": 596.32,
+   "compra_e_tieni": 348.18
+  },
+  {
+   "time": "2026-07-09",
+   "attuale": 831.4,
+   "orarie": 596.73,
+   "compra_e_tieni": 351.92
+  },
+  {
+   "time": "2026-07-10",
+   "attuale": 834.07,
+   "orarie": 599.07,
+   "compra_e_tieni": 353.67
+  },
+  {
+   "time": "2026-07-11",
+   "attuale": 840.24,
+   "orarie": 602.43,
+   "compra_e_tieni": 358.78
+  },
+  {
+   "time": "2026-07-12",
+   "attuale": 835.77,
+   "orarie": 596.84,
+   "compra_e_tieni": 355.92
+  },
+  {
+   "time": "2026-07-13",
+   "attuale": 832.44,
+   "orarie": 591.32,
+   "compra_e_tieni": 346.13
+  },
+  {
+   "time": "2026-07-14",
+   "attuale": 840.65,
+   "orarie": 593.88,
+   "compra_e_tieni": 357.93
+  },
+  {
+   "time": "2026-07-15",
+   "attuale": 843.21,
+   "orarie": 593.75,
+   "compra_e_tieni": 359.22
+  },
+  {
+   "time": "2026-07-16",
+   "attuale": 840.57,
+   "orarie": 590.48,
+   "compra_e_tieni": 355.84
+  },
+  {
+   "time": "2026-07-17",
+   "attuale": 830.95,
+   "orarie": 584.44,
+   "compra_e_tieni": 352.83
+  },
+  {
+   "time": "2026-07-18",
+   "attuale": 834.12,
+   "orarie": 586.3,
+   "compra_e_tieni": 354.41
+  },
+  {
+   "time": "2026-07-19",
+   "attuale": 834.91,
+   "orarie": 586.33,
+   "compra_e_tieni": 354.08
+  },
+  {
+   "time": "2026-07-20",
+   "attuale": 838.44,
+   "orarie": 586.18,
+   "compra_e_tieni": 358.58
+  },
+  {
+   "time": "2026-07-21",
+   "attuale": 843.71,
+   "orarie": 588.44,
+   "compra_e_tieni": 362.34
+  },
+  {
+   "time": "2026-07-22",
+   "attuale": 845.95,
+   "orarie": 587.61,
+   "compra_e_tieni": 360.91
+  },
+  {
+   "time": "2026-07-23",
+   "attuale": 839.83,
+   "orarie": 580.42,
+   "compra_e_tieni": 355.06
+  },
+  {
+   "time": "2026-07-24",
+   "attuale": 837.13,
+   "orarie": 579.03,
+   "compra_e_tieni": 351.79
+  },
+  {
+   "time": "2026-07-25",
+   "attuale": 833.24,
+   "orarie": 577.26,
+   "compra_e_tieni": 354.2
+  },
+  {
+   "time": "2026-07-26",
+   "attuale": 840.03,
+   "orarie": 575.7,
+   "compra_e_tieni": 357.56
+  },
+  {
+   "time": "2026-07-27",
+   "attuale": 835.95,
+   "orarie": 569.96,
+   "compra_e_tieni": 354.18
+  },
+  {
+   "time": "2026-07-28",
+   "attuale": 829.11,
+   "orarie": 564.35,
+   "compra_e_tieni": 348.19
+  },
+  {
+   "time": "2026-07-29",
+   "attuale": 829.51,
+   "orarie": 562.5,
+   "compra_e_tieni": 350.83
+  },
+  {
+   "time": "2026-07-30",
+   "attuale": 837.99,
+   "orarie": 569.85,
+   "compra_e_tieni": 355.77
+  },
+  {
+   "time": "2026-07-31",
+   "attuale": 831.46,
+   "orarie": 567.6,
+   "compra_e_tieni": 350.29
+  },
+  {
+   "time": "2026-08-01",
+   "attuale": 829.62,
+   "orarie": 564.14,
+   "compra_e_tieni": 344.82
+  },
+  {
+   "time": "2026-08-02",
+   "attuale": 832.75,
+   "orarie": 570.1,
+   "compra_e_tieni": 353.15
+  },
+  {
+   "time": "2026-08-03",
+   "attuale": 831.13,
+   "orarie": 568.79,
+   "compra_e_tieni": 353.76
+  },
+  {
+   "time": "2026-08-04",
+   "attuale": 830.04,
+   "orarie": 570.26,
+   "compra_e_tieni": 354.68
+  },
+  {
+   "time": "2026-08-05",
+   "attuale": 830.25,
+   "orarie": 569.06,
+   "compra_e_tieni": 356.59
+  },
+  {
+   "time": "2026-08-06",
+   "attuale": 832.72,
+   "orarie": 564.17,
+   "compra_e_tieni": 353.17
+  },
+  {
+   "time": "2026-08-07",
+   "attuale": 830.87,
+   "orarie": 562.67,
+   "compra_e_tieni": 351.94
+  },
+  {
+   "time": "2026-08-08",
+   "attuale": 832.77,
+   "orarie": 564.84,
+   "compra_e_tieni": 356.89
+  },
+  {
+   "time": "2026-08-09",
+   "attuale": 831.54,
+   "orarie": 565.94,
+   "compra_e_tieni": 357.95
+  },
+  {
+   "time": "2026-08-10",
+   "attuale": 826.0,
+   "orarie": 560.72,
+   "compra_e_tieni": 353.16
+  },
+  {
+   "time": "2026-08-11",
+   "attuale": 830.54,
+   "orarie": 563.75,
+   "compra_e_tieni": 353.19
+  },
+  {
+   "time": "2026-08-12",
+   "attuale": 832.52,
+   "orarie": 563.73,
+   "compra_e_tieni": 353.94
+  },
+  {
+   "time": "2026-08-13",
+   "attuale": 832.38,
+   "orarie": 561.66,
+   "compra_e_tieni": 353.44
+  },
+  {
+   "time": "2026-08-14",
+   "attuale": 831.92,
+   "orarie": 561.35,
+   "compra_e_tieni": 349.89
+  },
+  {
+   "time": "2026-08-15",
+   "attuale": 838.96,
+   "orarie": 562.45,
+   "compra_e_tieni": 352.45
+  },
+  {
+   "time": "2026-08-16",
+   "attuale": 836.43,
+   "orarie": 560.22,
+   "compra_e_tieni": 351.36
+  },
+  {
+   "time": "2026-08-17",
+   "attuale": 836.38,
+   "orarie": 560.12,
+   "compra_e_tieni": 352.54
+  },
+  {
+   "time": "2026-08-18",
+   "attuale": 838.76,
+   "orarie": 561.66,
+   "compra_e_tieni": 353.36
+  },
+  {
+   "time": "2026-08-19",
+   "attuale": 856.33,
+   "orarie": 574.78,
+   "compra_e_tieni": 366.58
+  },
+  {
+   "time": "2026-08-20",
+   "attuale": 882.19,
+   "orarie": 593.06,
+   "compra_e_tieni": 388.5
+  },
+  {
+   "time": "2026-08-21",
+   "attuale": 905.98,
+   "orarie": 609.43,
+   "compra_e_tieni": 410.76
+  },
+  {
+   "time": "2026-08-22",
+   "attuale": 906.05,
+   "orarie": 610.51,
+   "compra_e_tieni": 422.66
+  },
+  {
+   "time": "2026-08-23",
+   "attuale": 909.49,
+   "orarie": 613.6,
+   "compra_e_tieni": 424.64
+  },
+  {
+   "time": "2026-08-24",
+   "attuale": 894.92,
+   "orarie": 606.99,
+   "compra_e_tieni": 421.53
+  },
+  {
+   "time": "2026-08-25",
+   "attuale": 888.65,
+   "orarie": 600.25,
+   "compra_e_tieni": 419.58
+  },
+  {
+   "time": "2026-08-26",
+   "attuale": 883.77,
+   "orarie": 596.28,
+   "compra_e_tieni": 411.14
+  },
+  {
+   "time": "2026-08-27",
+   "attuale": 904.43,
+   "orarie": 598.74,
+   "compra_e_tieni": 424.64
+  },
+  {
+   "time": "2026-08-28",
+   "attuale": 884.96,
+   "orarie": 590.63,
+   "compra_e_tieni": 410.72
+  },
+  {
+   "time": "2026-08-29",
+   "attuale": 885.76,
+   "orarie": 589.88,
+   "compra_e_tieni": 414.7
+  },
+  {
+   "time": "2026-08-30",
+   "attuale": 900.32,
+   "orarie": 597.2,
+   "compra_e_tieni": 423.68
+  },
+  {
+   "time": "2026-08-31",
+   "attuale": 890.71,
+   "orarie": 594.29,
+   "compra_e_tieni": 415.43
+  },
+  {
+   "time": "2026-09-01",
+   "attuale": 894.23,
+   "orarie": 596.98,
+   "compra_e_tieni": 409.48
+  },
+  {
+   "time": "2026-09-02",
+   "attuale": 890.45,
+   "orarie": 598.32,
+   "compra_e_tieni": 410.07
+  },
+  {
+   "time": "2026-09-03",
+   "attuale": 909.08,
+   "orarie": 611.67,
+   "compra_e_tieni": 432.62
+  },
+  {
+   "time": "2026-09-04",
+   "attuale": 899.64,
+   "orarie": 599.81,
+   "compra_e_tieni": 424.91
+  },
+  {
+   "time": "2026-09-05",
+   "attuale": 936.29,
+   "orarie": 625.35,
+   "compra_e_tieni": 442.79
+  },
+  {
+   "time": "2026-09-06",
+   "attuale": 943.47,
+   "orarie": 629.11,
+   "compra_e_tieni": 444.56
+  },
+  {
+   "time": "2026-09-07",
+   "attuale": 933.69,
+   "orarie": 633.5,
+   "compra_e_tieni": 443.72
+  },
+  {
+   "time": "2026-09-08",
+   "attuale": 958.88,
+   "orarie": 640.51,
+   "compra_e_tieni": 446.52
+  },
+  {
+   "time": "2026-09-09",
+   "attuale": 956.0,
+   "orarie": 636.01,
+   "compra_e_tieni": 444.95
+  },
+  {
+   "time": "2026-09-10",
+   "attuale": 931.27,
+   "orarie": 629.25,
+   "compra_e_tieni": 432.91
+  },
+  {
+   "time": "2026-09-11",
+   "attuale": 923.17,
+   "orarie": 625.42,
+   "compra_e_tieni": 431.31
+  },
+  {
+   "time": "2026-09-12",
+   "attuale": 915.43,
+   "orarie": 622.95,
+   "compra_e_tieni": 432.58
+  },
+  {
+   "time": "2026-09-13",
+   "attuale": 910.54,
+   "orarie": 622.22,
+   "compra_e_tieni": 432.7
+  },
+  {
+   "time": "2026-09-14",
+   "attuale": 910.97,
+   "orarie": 621.93,
+   "compra_e_tieni": 441.75
+  },
+  {
+   "time": "2026-09-15",
+   "attuale": 894.54,
+   "orarie": 613.7,
+   "compra_e_tieni": 421.61
+  },
+  {
+   "time": "2026-09-16",
+   "attuale": 893.88,
+   "orarie": 614.32,
+   "compra_e_tieni": 419.45
+  },
+  {
+   "time": "2026-09-17",
+   "attuale": 928.87,
+   "orarie": 634.49,
+   "compra_e_tieni": 437.1
+  },
+  {
+   "time": "2026-09-18",
+   "attuale": 978.67,
+   "orarie": 676.67,
+   "compra_e_tieni": 472.11
+  },
+  {
+   "time": "2026-09-19",
+   "attuale": 988.28,
+   "orarie": 684.29,
+   "compra_e_tieni": 476.37
+  },
+  {
+   "time": "2026-09-20",
+   "attuale": 1001.75,
+   "orarie": 685.18,
+   "compra_e_tieni": 481.92
+  },
+  {
+   "time": "2026-09-21",
+   "attuale": 1007.57,
+   "orarie": 690.6,
+   "compra_e_tieni": 502.59
+  },
+  {
+   "time": "2026-09-22",
+   "attuale": 1012.15,
+   "orarie": 688.26,
+   "compra_e_tieni": 507.82
+  },
+  {
+   "time": "2026-09-23",
+   "attuale": 1000.17,
+   "orarie": 677.93,
+   "compra_e_tieni": 494.58
+  },
+  {
+   "time": "2026-09-24",
+   "attuale": 1022.73,
+   "orarie": 683.16,
+   "compra_e_tieni": 511.5
+  },
+  {
+   "time": "2026-09-25",
+   "attuale": 1030.08,
+   "orarie": 694.66,
+   "compra_e_tieni": 520.03
+  },
+  {
+   "time": "2026-09-26",
+   "attuale": 1034.05,
+   "orarie": 693.17,
+   "compra_e_tieni": 518.44
+  },
+  {
+   "time": "2026-09-27",
+   "attuale": 1033.92,
+   "orarie": 692.68,
+   "compra_e_tieni": 529.28
+  },
+  {
+   "time": "2026-09-28",
+   "attuale": 1016.58,
+   "orarie": 681.86,
+   "compra_e_tieni": 515.87
+  },
+  {
+   "time": "2026-09-29",
+   "attuale": 1006.76,
+   "orarie": 674.18,
+   "compra_e_tieni": 513.09
+  },
+  {
+   "time": "2026-09-30",
+   "attuale": 1004.37,
+   "orarie": 669.03,
+   "compra_e_tieni": 515.44
+  },
+  {
+   "time": "2026-10-01",
+   "attuale": 998.61,
+   "orarie": 661.57,
+   "compra_e_tieni": 513.31
+  },
+  {
+   "time": "2026-10-02",
+   "attuale": 992.32,
+   "orarie": 654.69,
+   "compra_e_tieni": 502.85
+  },
+  {
+   "time": "2026-10-03",
+   "attuale": 997.53,
+   "orarie": 650.5,
+   "compra_e_tieni": 512.29
+  },
+  {
+   "time": "2026-10-04",
+   "attuale": 1003.15,
+   "orarie": 652.67,
+   "compra_e_tieni": 519.54
+  },
+  {
+   "time": "2026-10-05",
+   "attuale": 1000.84,
+   "orarie": 652.76,
+   "compra_e_tieni": 520.92
+  },
+  {
+   "time": "2026-10-06",
+   "attuale": 998.53,
+   "orarie": 645.95,
+   "compra_e_tieni": 518.28
+  },
+  {
+   "time": "2026-10-07",
+   "attuale": 986.66,
+   "orarie": 639.48,
+   "compra_e_tieni": 502.06
+  },
+  {
+   "time": "2026-10-08",
+   "attuale": 968.83,
+   "orarie": 633.78,
+   "compra_e_tieni": 472.69
+  },
+  {
+   "time": "2026-10-09",
+   "attuale": 972.68,
+   "orarie": 637.38,
+   "compra_e_tieni": 484.23
+  },
+  {
+   "time": "2026-10-10",
+   "attuale": 975.59,
+   "orarie": 635.41,
+   "compra_e_tieni": 496.37
+  },
+  {
+   "time": "2026-10-11",
+   "attuale": 979.37,
+   "orarie": 641.15,
+   "compra_e_tieni": 502.96
+  },
+  {
+   "time": "2026-10-12",
+   "attuale": 966.96,
+   "orarie": 633.43,
+   "compra_e_tieni": 489.54
+  },
+  {
+   "time": "2026-10-13",
+   "attuale": 964.74,
+   "orarie": 633.43,
+   "compra_e_tieni": 486.32
+  },
+  {
+   "time": "2026-10-14",
+   "attuale": 949.43,
+   "orarie": 633.43,
+   "compra_e_tieni": 473.44
+  },
+  {
+   "time": "2026-10-15",
+   "attuale": 949.43,
+   "orarie": 633.43,
+   "compra_e_tieni": 482.16
+  },
+  {
+   "time": "2026-10-16",
+   "attuale": 944.15,
+   "orarie": 628.28,
+   "compra_e_tieni": 471.79
+  },
+  {
+   "time": "2026-10-17",
+   "attuale": 944.15,
+   "orarie": 628.31,
+   "compra_e_tieni": 469.92
+  },
+  {
+   "time": "2026-10-18",
+   "attuale": 944.15,
+   "orarie": 628.01,
+   "compra_e_tieni": 461.71
+  },
+  {
+   "time": "2026-10-19",
+   "attuale": 944.15,
+   "orarie": 628.01,
+   "compra_e_tieni": 470.34
+  },
+  {
+   "time": "2026-10-20",
+   "attuale": 944.15,
+   "orarie": 628.01,
+   "compra_e_tieni": 475.6
+  },
+  {
+   "time": "2026-10-21",
+   "attuale": 945.05,
+   "orarie": 631.03,
+   "compra_e_tieni": 488.46
+  },
+  {
+   "time": "2026-10-22",
+   "attuale": 935.86,
+   "orarie": 620.06,
+   "compra_e_tieni": 465.98
+  },
+  {
+   "time": "2026-10-23",
+   "attuale": 935.77,
+   "orarie": 616.8,
+   "compra_e_tieni": 468.44
+  },
+  {
+   "time": "2026-10-24",
+   "attuale": 935.77,
+   "orarie": 614.8,
+   "compra_e_tieni": 454.65
+  },
+  {
+   "time": "2026-10-25",
+   "attuale": 935.77,
+   "orarie": 614.63,
+   "compra_e_tieni": 458.85
+  },
+  {
+   "time": "2026-10-26",
+   "attuale": 935.77,
+   "orarie": 614.63,
+   "compra_e_tieni": 454.83
+  },
+  {
+   "time": "2026-10-27",
+   "attuale": 935.77,
+   "orarie": 614.01,
+   "compra_e_tieni": 459.23
+  },
+  {
+   "time": "2026-10-28",
+   "attuale": 935.77,
+   "orarie": 613.6,
+   "compra_e_tieni": 463.15
+  }
+ ]
+}

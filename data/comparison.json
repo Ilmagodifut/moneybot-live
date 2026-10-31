@@ -1,0 +1,26 @@
+[
+ {
+  "group": "Tutte le candidate",
+  "cases": 5,
+  "avg_24h": -0.04262,
+  "green_rate": 0.2
+ },
+ {
+  "group": "Via libera delle regole",
+  "cases": 3,
+  "avg_24h": -0.03389,
+  "green_rate": 0.333
+ },
+ {
+  "group": "Via libera di Claude",
+  "cases": 0,
+  "avg_24h": null,
+  "green_rate": null
+ },
+ {
+  "group": "Scartate da Claude",
+  "cases": 0,
+  "avg_24h": null,
+  "green_rate": null
+ }
+]

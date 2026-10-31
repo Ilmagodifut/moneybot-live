@@ -1,0 +1,13 @@
+[
+ {
+  "updated": "2026-10-31 19:26",
+  "start_cash": 1000.0,
+  "equity": 977.52,
+  "cash": 0.0,
+  "open_positions": 10,
+  "closed_trades": 0,
+  "fees_paid": 1.0,
+  "next_rebalance": "2026-11-26",
+  "strategy": "top 10 su 12 mesi, mensile, senza filtro"
+ }
+]
