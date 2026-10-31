@@ -31,10 +31,10 @@
   "halted": false,
   "judge_calls_today": 0,
   "judge_day": "2026-10-31",
-  "last_candle": 1793465999999,
-  "last_run": 1793469403449,
+  "last_candle": 1793469599999,
+  "last_run": 1793470256627,
   "peak_equity": 1001.4067603099375,
   "positions": {},
-  "runs": 197,
+  "runs": 198,
   "start_time": 1793285999999
 }
