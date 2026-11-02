@@ -5,7 +5,7 @@
   "qty": 0.4305552799039229,
   "opened": "2026-10-30 15:52",
   "entry_price": 232.02595499999998,
-  "price": 231.355,
+  "price": 231.325,
   "invested": 100.0
  },
  {
@@ -14,17 +14,8 @@
   "qty": 1.3398886718063008,
   "opened": "2026-10-30 15:52",
   "entry_price": 74.547255,
-  "price": 75.855,
+  "price": 75.94,
   "invested": 99.99
- },
- {
-  "symbol": "LIN",
-  "kind": "azione",
-  "qty": 0.1946810198116368,
-  "opened": "2026-10-30 15:52",
-  "entry_price": 512.9163299999999,
-  "price": 518.99,
-  "invested": 99.96
  },
  {
   "symbol": "NEAR-USD",
@@ -32,7 +23,70 @@
   "qty": 23.18379253865616,
   "opened": "2026-10-30 15:52",
   "entry_price": 4.3077528,
-  "price": 4.0678,
+  "price": 4.075,
   "invested": 99.97
+ },
+ {
+  "symbol": "SHOP",
+  "kind": "azione",
+  "qty": 0.6243816549514246,
+  "opened": "2026-11-02 15:10",
+  "entry_price": 159.46969499999997,
+  "price": 159.39,
+  "invested": 99.67
+ },
+ {
+  "symbol": "EWJ",
+  "kind": "ETF",
+  "qty": 1.063715553094173,
+  "opened": "2026-11-02 15:10",
+  "entry_price": 93.59177249999999,
+  "price": 93.545,
+  "invested": 99.65
+ },
+ {
+  "symbol": "MSFT",
+  "kind": "azione",
+  "qty": 0.189483779154093,
+  "opened": "2026-11-02 15:10",
+  "entry_price": 525.3225299999999,
+  "price": 525.06,
+  "invested": 99.64
+ },
+ {
+  "symbol": "DIA",
+  "kind": "ETF",
+  "qty": 0.19044375159185795,
+  "opened": "2026-11-02 15:10",
+  "entry_price": 522.5961675,
+  "price": 522.335,
+  "invested": 99.62
+ },
+ {
+  "symbol": "CSCO",
+  "kind": "azione",
+  "qty": 0.9581938644423341,
+  "opened": "2026-11-02 15:10",
+  "entry_price": 103.85189999999999,
+  "price": 103.8,
+  "invested": 99.61
+ },
+ {
+  "symbol": "QQQ",
+  "kind": "ETF",
+  "qty": 0.14292269546774397,
+  "opened": "2026-11-02 15:10",
+  "entry_price": 696.1478999999999,
+  "price": 695.8,
+  "invested": 99.59
+ },
+ {
+  "symbol": "XLK",
+  "kind": "ETF",
+  "qty": 0.5539623495427254,
+  "opened": "2026-11-02 15:10",
+  "entry_price": 179.579745,
+  "price": 179.49,
+  "invested": 99.58
  }
 ]

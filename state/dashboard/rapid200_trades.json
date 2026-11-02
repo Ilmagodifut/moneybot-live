@@ -34,5 +34,77 @@
   "value": 99.96,
   "pnl": null,
   "reason": "calo brusco (RSI 2 giorni 9.9)"
+ },
+ {
+  "time": "2026-11-02 15:10",
+  "symbol": "LIN",
+  "side": "SELL",
+  "price": 518.20077,
+  "value": 100.78,
+  "pnl": 0.83,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-02 15:10",
+  "symbol": "SHOP",
+  "side": "BUY",
+  "price": 159.46969,
+  "value": 99.67,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 5.6)"
+ },
+ {
+  "time": "2026-11-02 15:10",
+  "symbol": "EWJ",
+  "side": "BUY",
+  "price": 93.591772,
+  "value": 99.65,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 6.0)"
+ },
+ {
+  "time": "2026-11-02 15:10",
+  "symbol": "MSFT",
+  "side": "BUY",
+  "price": 525.32253,
+  "value": 99.64,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 6.5)"
+ },
+ {
+  "time": "2026-11-02 15:10",
+  "symbol": "DIA",
+  "side": "BUY",
+  "price": 522.59617,
+  "value": 99.62,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 7.4)"
+ },
+ {
+  "time": "2026-11-02 15:10",
+  "symbol": "CSCO",
+  "side": "BUY",
+  "price": 103.8519,
+  "value": 99.61,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 7.6)"
+ },
+ {
+  "time": "2026-11-02 15:10",
+  "symbol": "QQQ",
+  "side": "BUY",
+  "price": 696.1479,
+  "value": 99.59,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 8.4)"
+ },
+ {
+  "time": "2026-11-02 15:10",
+  "symbol": "XLK",
+  "side": "BUY",
+  "price": 179.57975,
+  "value": 99.58,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 8.9)"
  }
 ]

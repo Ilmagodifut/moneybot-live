@@ -1,13 +1,13 @@
 [
  {
-  "updated": "2026-11-02 14:54",
+  "updated": "2026-11-02 15:10",
   "start_cash": 1000.0,
-  "equity": 996.68,
-  "cash": 600.09,
-  "open_positions": 4,
-  "closed_trades": 0,
-  "winning_trades": 0,
-  "fees_paid": 0.4,
-  "last_decision": "2026-10-30"
+  "equity": 995.65,
+  "cash": 3.5,
+  "open_positions": 10,
+  "closed_trades": 1,
+  "winning_trades": 1,
+  "fees_paid": 1.2,
+  "last_decision": "2026-11-02"
  }
 ]
