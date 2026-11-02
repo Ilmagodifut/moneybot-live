@@ -8,7 +8,7 @@
   "halted": false,
   "judge_calls_today": 0,
   "judge_day": "",
-  "last_candle": 1793574000000,
+  "last_candle": 1793577600000,
   "last_run": 0,
   "peak_equity": 1000.0,
   "positions": {
@@ -49,6 +49,6 @@
       "stop": 4.09236516
     }
   },
-  "runs": 310,
+  "runs": 311,
   "start_time": 0
 }
