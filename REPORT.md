@@ -1,6 +1,6 @@
 # MONEYBOT – report (paper trading, soldi finti)
 
-Aggiornato: 2026-11-02 18:59 UTC · giri eseguiti: 402 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
+Aggiornato: 2026-11-02 19:59 UTC · giri eseguiti: 403 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
 
 ## Capitale
 
@@ -56,7 +56,7 @@ Valutati: 5 · superato il cancello: 3 · comprati: 3
 | ATOM | 1.412 | -3.35% | -13.64% | 23 | giù |  |
 | UNI | 7.11 | +0.07% | +1.07% | 41 | laterale |  |
 | TON | 1.6 | +1.01% | -3.21% | 50 | giù |  |
-| APT | 0.6194 | -1.64% | -10.57% | 36 | giù |  |
+| APT | 0.6194 | -1.21% | -10.83% | 36 | giù |  |
 
 ---
 Questo è un esperimento con soldi finti. Nessun risultato passato garantisce risultati futuri.
