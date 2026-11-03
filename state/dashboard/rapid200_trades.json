@@ -106,5 +106,23 @@
   "value": 99.58,
   "pnl": null,
   "reason": "calo brusco (RSI 2 giorni 8.9)"
+ },
+ {
+  "time": "2026-11-03 15:14",
+  "symbol": "EWW",
+  "side": "SELL",
+  "price": 76.116923,
+  "value": 101.89,
+  "pnl": 1.9,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-03 15:14",
+  "symbol": "DBC",
+  "side": "BUY",
+  "price": 32.486235,
+  "value": 96.57,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 2.6)"
  }
 ]

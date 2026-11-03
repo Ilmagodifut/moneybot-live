@@ -11,3 +11,5 @@ time,symbol,side,price,qty,value,fee,pnl,reason
 2026-11-02 15:10,CSCO,BUY,103.8519,0.95819386,99.61,0.0996,0.00,calo brusco (RSI 2 giorni 7.6)
 2026-11-02 15:10,QQQ,BUY,696.1479,0.1429227,99.59,0.0996,0.00,calo brusco (RSI 2 giorni 8.4)
 2026-11-02 15:10,XLK,BUY,179.57975,0.55396235,99.58,0.0996,0.00,calo brusco (RSI 2 giorni 8.9)
+2026-11-03 15:14,EWW,SELL,76.116923,1.3398887,101.89,0.1020,1.90,rimbalzo: sopra la media di 5 giorni
+2026-11-03 15:14,DBC,BUY,32.486235,2.9697349,96.57,0.0966,0.00,calo brusco (RSI 2 giorni 2.6)
