@@ -1,42 +1,42 @@
 [
  {
-  "symbol": "MSFT",
+  "symbol": "SHOP",
   "kind": "azione",
-  "rsi": 1.6
- },
- {
-  "symbol": "DBC",
-  "kind": "ETF",
-  "rsi": 2.6
+  "rsi": 0.9
  },
  {
   "symbol": "CRM",
   "kind": "azione",
-  "rsi": 3.0
+  "rsi": 1.5
  },
  {
-  "symbol": "CSCO",
-  "kind": "azione",
-  "rsi": 3.8
- },
- {
-  "symbol": "SHOP",
-  "kind": "azione",
-  "rsi": 4.6
- },
- {
-  "symbol": "XLK",
+  "symbol": "DBC",
   "kind": "ETF",
-  "rsi": 4.6
+  "rsi": 2.5
  },
  {
-  "symbol": "CRWD",
-  "kind": "azione",
-  "rsi": 5.3
+  "symbol": "EWJ",
+  "kind": "ETF",
+  "rsi": 4.0
+ },
+ {
+  "symbol": "EWT",
+  "kind": "ETF",
+  "rsi": 4.1
  },
  {
   "symbol": "PANW",
   "kind": "azione",
-  "rsi": 5.5
+  "rsi": 4.9
+ },
+ {
+  "symbol": "EWA",
+  "kind": "ETF",
+  "rsi": 5.3
+ },
+ {
+  "symbol": "AAPL",
+  "kind": "azione",
+  "rsi": 6.5
  }
 ]
