@@ -1,6 +1,6 @@
 # MONEYBOT – report (paper trading, soldi finti)
 
-Aggiornato: 2026-11-05 08:59 UTC · giri eseguiti: 652 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
+Aggiornato: 2026-11-05 08:59 UTC · giri eseguiti: 653 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
 
 ## Capitale
 
@@ -8,7 +8,7 @@ Aggiornato: 2026-11-05 08:59 UTC · giri eseguiti: 652 · modalità: Claude come
 |---|---|
 | Capitale iniziale | 1,000.00 $ |
 | Capitale attuale | **997.53 $** (-0.25%) |
-| Se avessi comprato e tenuto tutte le monete | 971.71 $ |
+| Se avessi comprato e tenuto tutte le monete | 976.24 $ |
 | Liquidità | 997.53 $ |
 | Calo massimo dal picco | -0.39% |
 
@@ -39,18 +39,18 @@ Valutati: 5 · superato il cancello: 3 · comprati: 3
 
 | Moneta | Prezzo | 24h | 7g | RSI | Trend | Candidata |
 |---|---|---|---|---|---|---|
-| BTC | 80358.9 | +2.84% | +0.62% | 61 | giù |  |
-| ETH | 2416.13 | +4.88% | +4.58% | 60 | laterale |  |
-| SOL | 95.9 | +3.06% | -3.88% | 57 | giù |  |
-| BNB | 712.38 | +1.27% | -4.82% | 52 | giù |  |
-| XRP | 1.3141 | +3.19% | +1.96% | 63 | laterale |  |
-| ADA | 0.1971 | +3.30% | -0.25% | 56 | giù |  |
-| DOGE | 0.07643 | +2.11% | -1.63% | 52 | giù |  |
-| AVAX | 8.739 | +2.02% | +1.27% | 51 | giù |  |
-| LINK | 11.53 | +3.64% | +1.43% | 59 | giù |  |
-| DOT | 0.944 | -0.63% | -3.08% | 45 | giù |  |
-| LTC | 55.87 | +2.27% | -2.12% | 54 | giù |  |
-| TRX | 0.3186 | -1.21% | -3.80% | 34 | giù |  |
+| BTC | 80494 | +2.54% | +0.53% | 63 | giù |  |
+| ETH | 2420.27 | +4.18% | +4.35% | 62 | laterale |  |
+| SOL | 96.82 | +3.77% | -3.40% | 63 | giù |  |
+| BNB | 715.13 | +1.76% | -4.97% | 56 | giù |  |
+| XRP | 1.3244 | +3.43% | +2.56% | 68 | laterale |  |
+| ADA | 0.1994 | +3.91% | +0.40% | 62 | giù |  |
+| DOGE | 0.07709 | +2.47% | -1.26% | 59 | giù |  |
+| AVAX | 8.797 | +1.00% | +1.24% | 56 | giù |  |
+| LINK | 11.628 | +4.04% | +1.33% | 63 | giù |  |
+| DOT | 0.961 | +0.63% | -1.74% | 55 | giù |  |
+| LTC | 56.24 | +2.83% | -1.64% | 59 | giù |  |
+| TRX | 0.3185 | -1.18% | -3.92% | 33 | giù |  |
 | SUI | 0.9324 | +1.92% | +2.26% | 57 | giù |  |
 | NEAR | 4.042 | -0.49% | -7.02% | 54 | giù |  |
 | ATOM | 1.525 | +7.02% | -5.22% | 70 | giù |  |
