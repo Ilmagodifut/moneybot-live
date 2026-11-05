@@ -124,5 +124,59 @@
   "value": 96.57,
   "pnl": null,
   "reason": "calo brusco (RSI 2 giorni 2.6)"
+ },
+ {
+  "time": "2026-11-05 15:03",
+  "symbol": "DIA",
+  "side": "SELL",
+  "price": 528.10582,
+  "value": 100.47,
+  "pnl": 0.85,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-05 15:03",
+  "symbol": "EWJ",
+  "side": "SELL",
+  "price": 91.004475,
+  "value": 96.71,
+  "pnl": -2.95,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-05 15:03",
+  "symbol": "MSFT",
+  "side": "SELL",
+  "price": 543.20826,
+  "value": 102.83,
+  "pnl": 3.19,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-05 15:03",
+  "symbol": "EWT",
+  "side": "BUY",
+  "price": 90.300127,
+  "value": 95.97,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 2.6)"
+ },
+ {
+  "time": "2026-11-05 15:03",
+  "symbol": "SLB",
+  "side": "BUY",
+  "price": 51.190582,
+  "value": 95.96,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 3.2)"
+ },
+ {
+  "time": "2026-11-05 15:03",
+  "symbol": "PANW",
+  "side": "BUY",
+  "price": 324.79231,
+  "value": 95.95,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 3.8)"
  }
 ]
