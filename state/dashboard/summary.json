@@ -1,14 +1,14 @@
 [
  {
-  "updated": "2026-11-06 04:59",
-  "last_run": "2026-11-06 05:56",
-  "runs": 717,
+  "updated": "2026-11-06 05:59",
+  "last_run": "2026-11-06 06:11",
+  "runs": 718,
   "mode": "claude",
   "status": "active",
   "halt_reason": "",
   "start_cash": 1000.0,
   "equity": 997.53,
-  "benchmark": 915.21,
+  "benchmark": 914.0,
   "cash": 997.53,
   "open_positions": 0,
   "closed_trades": 3,
