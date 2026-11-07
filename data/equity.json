@@ -1,0 +1,1514 @@
+[
+ {
+  "time": "2026-10-29 14:59",
+  "equity": 999.7,
+  "benchmark": 1000.0,
+  "cash": 800.0,
+  "positions": 2
+ },
+ {
+  "time": "2026-10-29 15:59",
+  "equity": 1001.26,
+  "benchmark": 1011.36,
+  "cash": 699.86,
+  "positions": 3
+ },
+ {
+  "time": "2026-10-29 16:59",
+  "equity": 1000.58,
+  "benchmark": 1005.08,
+  "cash": 900.63,
+  "positions": 1
+ },
+ {
+  "time": "2026-10-29 17:59",
+  "equity": 1000.07,
+  "benchmark": 995.87,
+  "cash": 900.63,
+  "positions": 1
+ },
+ {
+  "time": "2026-10-29 18:59",
+  "equity": 999.87,
+  "benchmark": 990.43,
+  "cash": 900.63,
+  "positions": 1
+ },
+ {
+  "time": "2026-10-29 19:59",
+  "equity": 999.93,
+  "benchmark": 989.68,
+  "cash": 900.63,
+  "positions": 1
+ },
+ {
+  "time": "2026-10-29 20:59",
+  "equity": 997.53,
+  "benchmark": 941.86,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-29 21:59",
+  "equity": 997.53,
+  "benchmark": 951.72,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-29 22:59",
+  "equity": 997.53,
+  "benchmark": 946.53,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-29 23:59",
+  "equity": 997.53,
+  "benchmark": 939.21,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 00:59",
+  "equity": 997.53,
+  "benchmark": 931.3,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 01:59",
+  "equity": 997.53,
+  "benchmark": 930.56,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 02:59",
+  "equity": 997.53,
+  "benchmark": 938.76,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 03:59",
+  "equity": 997.53,
+  "benchmark": 952.48,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 04:59",
+  "equity": 997.53,
+  "benchmark": 955.89,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 05:59",
+  "equity": 997.53,
+  "benchmark": 954.43,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 06:59",
+  "equity": 997.53,
+  "benchmark": 960.76,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 07:59",
+  "equity": 997.53,
+  "benchmark": 951.82,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 08:59",
+  "equity": 997.53,
+  "benchmark": 950.55,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 09:59",
+  "equity": 997.53,
+  "benchmark": 950.75,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 10:59",
+  "equity": 997.53,
+  "benchmark": 958.69,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 11:59",
+  "equity": 997.53,
+  "benchmark": 952.33,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 12:59",
+  "equity": 997.53,
+  "benchmark": 952.31,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 13:59",
+  "equity": 997.53,
+  "benchmark": 947.83,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 14:59",
+  "equity": 997.53,
+  "benchmark": 951.53,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 15:59",
+  "equity": 997.53,
+  "benchmark": 952.98,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 16:59",
+  "equity": 997.53,
+  "benchmark": 952.05,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 17:59",
+  "equity": 997.53,
+  "benchmark": 950.73,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 18:59",
+  "equity": 997.53,
+  "benchmark": 947.42,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 19:59",
+  "equity": 997.53,
+  "benchmark": 954.08,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 20:59",
+  "equity": 997.53,
+  "benchmark": 953.91,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 21:59",
+  "equity": 997.53,
+  "benchmark": 954.75,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 22:59",
+  "equity": 997.53,
+  "benchmark": 958.24,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-30 23:59",
+  "equity": 997.53,
+  "benchmark": 963.01,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 00:59",
+  "equity": 997.53,
+  "benchmark": 965.34,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 01:59",
+  "equity": 997.53,
+  "benchmark": 961.53,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 02:59",
+  "equity": 997.53,
+  "benchmark": 960.04,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 03:59",
+  "equity": 997.53,
+  "benchmark": 957.35,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 04:59",
+  "equity": 997.53,
+  "benchmark": 952.74,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 05:59",
+  "equity": 997.53,
+  "benchmark": 953.89,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 06:59",
+  "equity": 997.53,
+  "benchmark": 955.91,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 07:59",
+  "equity": 997.53,
+  "benchmark": 952.31,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 08:59",
+  "equity": 997.53,
+  "benchmark": 951.18,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 09:59",
+  "equity": 997.53,
+  "benchmark": 952.51,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 10:59",
+  "equity": 997.53,
+  "benchmark": 952.58,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 11:59",
+  "equity": 997.53,
+  "benchmark": 953.42,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 12:59",
+  "equity": 997.53,
+  "benchmark": 956.73,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 13:59",
+  "equity": 997.53,
+  "benchmark": 954.93,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 14:59",
+  "equity": 997.53,
+  "benchmark": 955.1,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 15:59",
+  "equity": 997.53,
+  "benchmark": 958.2,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 16:59",
+  "equity": 997.53,
+  "benchmark": 958.46,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 17:59",
+  "equity": 997.53,
+  "benchmark": 959.07,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 18:59",
+  "equity": 997.53,
+  "benchmark": 960.28,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 19:59",
+  "equity": 997.53,
+  "benchmark": 957.78,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 20:59",
+  "equity": 997.53,
+  "benchmark": 955.64,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 21:59",
+  "equity": 997.53,
+  "benchmark": 958.11,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 22:59",
+  "equity": 997.53,
+  "benchmark": 955.49,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-10-31 23:59",
+  "equity": 997.53,
+  "benchmark": 954.81,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 00:59",
+  "equity": 997.53,
+  "benchmark": 955.91,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 01:59",
+  "equity": 997.53,
+  "benchmark": 956.96,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 02:59",
+  "equity": 997.53,
+  "benchmark": 954.94,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 03:59",
+  "equity": 997.53,
+  "benchmark": 956.36,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 04:59",
+  "equity": 997.53,
+  "benchmark": 958.05,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 05:59",
+  "equity": 997.53,
+  "benchmark": 961.63,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 06:59",
+  "equity": 997.53,
+  "benchmark": 961.98,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 07:59",
+  "equity": 997.53,
+  "benchmark": 961.44,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 08:59",
+  "equity": 997.53,
+  "benchmark": 963.6,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 09:59",
+  "equity": 997.53,
+  "benchmark": 960.45,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 10:59",
+  "equity": 997.53,
+  "benchmark": 960.51,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 11:59",
+  "equity": 997.53,
+  "benchmark": 959.26,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 12:59",
+  "equity": 997.53,
+  "benchmark": 957.45,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 13:59",
+  "equity": 997.53,
+  "benchmark": 959.52,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 14:59",
+  "equity": 997.53,
+  "benchmark": 959.66,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 15:59",
+  "equity": 997.53,
+  "benchmark": 957.16,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 16:59",
+  "equity": 997.53,
+  "benchmark": 957.03,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 17:59",
+  "equity": 997.53,
+  "benchmark": 954.52,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 18:59",
+  "equity": 997.53,
+  "benchmark": 951.15,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 19:59",
+  "equity": 997.53,
+  "benchmark": 949.54,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 20:59",
+  "equity": 997.53,
+  "benchmark": 951.91,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 21:59",
+  "equity": 997.53,
+  "benchmark": 951.95,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 22:59",
+  "equity": 997.53,
+  "benchmark": 948.57,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-01 23:59",
+  "equity": 997.53,
+  "benchmark": 954.75,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 00:59",
+  "equity": 997.53,
+  "benchmark": 951.18,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 01:59",
+  "equity": 997.53,
+  "benchmark": 955.92,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 02:59",
+  "equity": 997.53,
+  "benchmark": 955.19,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 03:59",
+  "equity": 997.53,
+  "benchmark": 960.11,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 04:59",
+  "equity": 997.53,
+  "benchmark": 956.15,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 05:59",
+  "equity": 997.53,
+  "benchmark": 954.87,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 06:59",
+  "equity": 997.53,
+  "benchmark": 948.29,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 07:59",
+  "equity": 997.53,
+  "benchmark": 949.04,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 08:59",
+  "equity": 997.53,
+  "benchmark": 951.47,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 09:59",
+  "equity": 997.53,
+  "benchmark": 949.54,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 10:59",
+  "equity": 997.53,
+  "benchmark": 947.39,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 11:59",
+  "equity": 997.53,
+  "benchmark": 947.83,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 12:59",
+  "equity": 997.53,
+  "benchmark": 947.26,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 13:59",
+  "equity": 997.53,
+  "benchmark": 949.3,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 14:59",
+  "equity": 997.53,
+  "benchmark": 948.23,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 15:59",
+  "equity": 997.53,
+  "benchmark": 943.12,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 16:59",
+  "equity": 997.53,
+  "benchmark": 942.5,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 17:59",
+  "equity": 997.53,
+  "benchmark": 935.47,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 18:59",
+  "equity": 997.53,
+  "benchmark": 933.12,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 19:59",
+  "equity": 997.53,
+  "benchmark": 933.12,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 20:59",
+  "equity": 997.53,
+  "benchmark": 931.19,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 21:59",
+  "equity": 997.53,
+  "benchmark": 938.14,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 22:59",
+  "equity": 997.53,
+  "benchmark": 935.67,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-02 23:59",
+  "equity": 997.53,
+  "benchmark": 934.38,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 00:59",
+  "equity": 997.53,
+  "benchmark": 935.65,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 01:59",
+  "equity": 997.53,
+  "benchmark": 933.2,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 02:59",
+  "equity": 997.53,
+  "benchmark": 927.95,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 03:59",
+  "equity": 997.53,
+  "benchmark": 931.94,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 04:59",
+  "equity": 997.53,
+  "benchmark": 933.25,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 05:59",
+  "equity": 997.53,
+  "benchmark": 929.18,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 06:59",
+  "equity": 997.53,
+  "benchmark": 927.39,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 07:59",
+  "equity": 997.53,
+  "benchmark": 929.8,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 08:59",
+  "equity": 997.53,
+  "benchmark": 930.57,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 09:59",
+  "equity": 997.53,
+  "benchmark": 935.54,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 10:59",
+  "equity": 997.53,
+  "benchmark": 936.95,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 11:59",
+  "equity": 997.53,
+  "benchmark": 939.46,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 12:59",
+  "equity": 997.53,
+  "benchmark": 946.6,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 13:59",
+  "equity": 997.53,
+  "benchmark": 946.17,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 14:59",
+  "equity": 997.53,
+  "benchmark": 945.17,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 15:59",
+  "equity": 997.53,
+  "benchmark": 945.85,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 16:59",
+  "equity": 997.53,
+  "benchmark": 943.53,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 17:59",
+  "equity": 997.53,
+  "benchmark": 942.31,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 18:59",
+  "equity": 997.53,
+  "benchmark": 942.17,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 19:59",
+  "equity": 997.53,
+  "benchmark": 941.72,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 20:59",
+  "equity": 997.53,
+  "benchmark": 942.92,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 21:59",
+  "equity": 997.53,
+  "benchmark": 945.41,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 22:59",
+  "equity": 997.53,
+  "benchmark": 944.21,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-03 23:59",
+  "equity": 997.53,
+  "benchmark": 939.71,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 00:59",
+  "equity": 997.53,
+  "benchmark": 935.0,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 01:59",
+  "equity": 997.53,
+  "benchmark": 929.44,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 02:59",
+  "equity": 997.53,
+  "benchmark": 920.91,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 03:59",
+  "equity": 997.53,
+  "benchmark": 924.89,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 04:59",
+  "equity": 997.53,
+  "benchmark": 936.04,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 05:59",
+  "equity": 997.53,
+  "benchmark": 942.47,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 06:59",
+  "equity": 997.53,
+  "benchmark": 945.95,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 07:59",
+  "equity": 997.53,
+  "benchmark": 949.49,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 08:59",
+  "equity": 997.53,
+  "benchmark": 954.06,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 09:59",
+  "equity": 997.53,
+  "benchmark": 953.23,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 10:59",
+  "equity": 997.53,
+  "benchmark": 957.06,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 11:59",
+  "equity": 997.53,
+  "benchmark": 954.32,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 12:59",
+  "equity": 997.53,
+  "benchmark": 947.23,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 13:59",
+  "equity": 997.53,
+  "benchmark": 948.91,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 14:59",
+  "equity": 997.53,
+  "benchmark": 969.99,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 15:59",
+  "equity": 997.53,
+  "benchmark": 977.42,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 16:59",
+  "equity": 997.53,
+  "benchmark": 978.97,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 17:59",
+  "equity": 997.53,
+  "benchmark": 973.12,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 18:59",
+  "equity": 997.53,
+  "benchmark": 968.27,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 19:59",
+  "equity": 997.53,
+  "benchmark": 962.1,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 20:59",
+  "equity": 997.53,
+  "benchmark": 967.27,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 21:59",
+  "equity": 997.53,
+  "benchmark": 968.27,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 22:59",
+  "equity": 997.53,
+  "benchmark": 977.75,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-04 23:59",
+  "equity": 997.53,
+  "benchmark": 970.57,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 00:59",
+  "equity": 997.53,
+  "benchmark": 969.31,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 01:59",
+  "equity": 997.53,
+  "benchmark": 971.58,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 02:59",
+  "equity": 997.53,
+  "benchmark": 973.59,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 03:59",
+  "equity": 997.53,
+  "benchmark": 974.03,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 04:59",
+  "equity": 997.53,
+  "benchmark": 972.79,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 05:59",
+  "equity": 997.53,
+  "benchmark": 968.07,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 06:59",
+  "equity": 997.53,
+  "benchmark": 972.26,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 07:59",
+  "equity": 997.53,
+  "benchmark": 968.97,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 08:59",
+  "equity": 997.53,
+  "benchmark": 971.71,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 09:59",
+  "equity": 997.53,
+  "benchmark": 974.59,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 10:59",
+  "equity": 997.53,
+  "benchmark": 970.3,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 11:59",
+  "equity": 997.53,
+  "benchmark": 970.42,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 12:59",
+  "equity": 997.53,
+  "benchmark": 960.34,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 13:59",
+  "equity": 997.53,
+  "benchmark": 960.76,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 14:59",
+  "equity": 997.53,
+  "benchmark": 942.73,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 15:59",
+  "equity": 997.53,
+  "benchmark": 911.17,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 16:59",
+  "equity": 997.53,
+  "benchmark": 915.52,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 17:59",
+  "equity": 997.53,
+  "benchmark": 910.09,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 18:59",
+  "equity": 997.53,
+  "benchmark": 914.33,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 19:59",
+  "equity": 997.53,
+  "benchmark": 921.94,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 20:59",
+  "equity": 997.53,
+  "benchmark": 917.95,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 21:59",
+  "equity": 997.53,
+  "benchmark": 911.43,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-05 22:59",
+  "equity": 997.53,
+  "benchmark": 907.37,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 02:59",
+  "equity": 997.53,
+  "benchmark": 919.51,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 03:59",
+  "equity": 997.53,
+  "benchmark": 917.42,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 04:59",
+  "equity": 997.53,
+  "benchmark": 915.21,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 05:59",
+  "equity": 997.53,
+  "benchmark": 914.0,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 06:59",
+  "equity": 997.53,
+  "benchmark": 914.1,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 07:59",
+  "equity": 997.53,
+  "benchmark": 914.81,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 08:59",
+  "equity": 997.53,
+  "benchmark": 913.75,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 09:59",
+  "equity": 997.53,
+  "benchmark": 919.88,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 10:59",
+  "equity": 997.53,
+  "benchmark": 920.06,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 11:59",
+  "equity": 997.53,
+  "benchmark": 920.18,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 12:59",
+  "equity": 997.53,
+  "benchmark": 920.33,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 13:59",
+  "equity": 997.53,
+  "benchmark": 921.12,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 14:59",
+  "equity": 997.53,
+  "benchmark": 924.38,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 15:59",
+  "equity": 997.53,
+  "benchmark": 924.15,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 16:59",
+  "equity": 997.53,
+  "benchmark": 926.21,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 17:59",
+  "equity": 997.53,
+  "benchmark": 921.25,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 18:59",
+  "equity": 997.53,
+  "benchmark": 921.13,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 19:59",
+  "equity": 997.53,
+  "benchmark": 919.86,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 20:59",
+  "equity": 997.53,
+  "benchmark": 917.13,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 21:59",
+  "equity": 997.53,
+  "benchmark": 920.47,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 22:59",
+  "equity": 997.53,
+  "benchmark": 916.48,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-06 23:59",
+  "equity": 997.53,
+  "benchmark": 915.62,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 00:59",
+  "equity": 997.53,
+  "benchmark": 915.82,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 01:59",
+  "equity": 997.53,
+  "benchmark": 917.38,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 02:59",
+  "equity": 997.53,
+  "benchmark": 915.24,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 03:59",
+  "equity": 997.53,
+  "benchmark": 914.1,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 04:59",
+  "equity": 997.53,
+  "benchmark": 914.03,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 05:59",
+  "equity": 997.53,
+  "benchmark": 916.56,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 06:59",
+  "equity": 997.53,
+  "benchmark": 916.31,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 07:59",
+  "equity": 997.53,
+  "benchmark": 916.93,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 08:59",
+  "equity": 997.53,
+  "benchmark": 916.61,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 09:59",
+  "equity": 997.53,
+  "benchmark": 913.62,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 10:59",
+  "equity": 997.53,
+  "benchmark": 913.86,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 11:59",
+  "equity": 997.53,
+  "benchmark": 913.93,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 12:59",
+  "equity": 997.53,
+  "benchmark": 914.01,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 13:59",
+  "equity": 997.53,
+  "benchmark": 914.25,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 14:59",
+  "equity": 997.53,
+  "benchmark": 913.73,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 15:59",
+  "equity": 997.53,
+  "benchmark": 910.02,
+  "cash": 997.53,
+  "positions": 0
+ },
+ {
+  "time": "2026-11-07 16:59",
+  "equity": 997.53,
+  "benchmark": 909.97,
+  "cash": 997.53,
+  "positions": 0
+ }
+]

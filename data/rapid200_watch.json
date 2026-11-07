@@ -1,0 +1,42 @@
+[
+ {
+  "symbol": "PANW",
+  "kind": "azione",
+  "rsi": 0.5
+ },
+ {
+  "symbol": "SLB",
+  "kind": "azione",
+  "rsi": 0.7
+ },
+ {
+  "symbol": "XLE",
+  "kind": "ETF",
+  "rsi": 2.4
+ },
+ {
+  "symbol": "MPC",
+  "kind": "azione",
+  "rsi": 2.4
+ },
+ {
+  "symbol": "VLUE",
+  "kind": "ETF",
+  "rsi": 2.4
+ },
+ {
+  "symbol": "CRWD",
+  "kind": "azione",
+  "rsi": 2.9
+ },
+ {
+  "symbol": "EOG",
+  "kind": "azione",
+  "rsi": 3.2
+ },
+ {
+  "symbol": "XOM",
+  "kind": "azione",
+  "rsi": 3.4
+ }
+]
