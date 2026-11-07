@@ -25,16 +25,16 @@
     "TRX": 1793336399999,
     "UNI": 1793336399999
   },
-  "day": "2026-11-06",
+  "day": "2026-11-07",
   "day_start_equity": 997.5264149393824,
   "halt_reason": "",
   "halted": false,
   "judge_calls_today": 0,
-  "judge_day": "2026-11-06",
-  "last_candle": 1794009599999,
-  "last_run": 1794012791021,
+  "judge_day": "2026-11-07",
+  "last_candle": 1794013199999,
+  "last_run": 1794013695593,
   "peak_equity": 1001.4067603099375,
   "positions": {},
-  "runs": 795,
+  "runs": 796,
   "start_time": 1793285999999
 }
