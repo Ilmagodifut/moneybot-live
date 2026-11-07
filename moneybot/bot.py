@@ -116,7 +116,7 @@ def manage_positions(state: State, broker: Broker, candles: dict[str, list[Candl
             pos.stop = max(pos.stop, pos.highest - trail)
             pos.last_checked = c.close_time
         if not closed and trend_broken(s):
-            broker.sell(sym, s.close, s.time, f"trend rotto (media {config.TREND_FAST}h sotto {config.TREND_MID}h)")
+            broker.sell(sym, s.close, s.time, f"trend rotto (media {config.TREND_FAST}h sotto {config.TREND_MID}h di oltre {config.TREND_EXIT_GAP:.1%})")
 
 
 def update_safety(state: State, equity: float, now: int) -> bool:
