@@ -1,6 +1,6 @@
 # MONEYBOT – report (paper trading, soldi finti)
 
-Aggiornato: 2026-11-08 15:59 UTC · giri eseguiti: 957 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
+Aggiornato: 2026-11-08 15:59 UTC · giri eseguiti: 958 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
 
 ## Capitale
 
@@ -8,7 +8,7 @@ Aggiornato: 2026-11-08 15:59 UTC · giri eseguiti: 957 · modalità: Claude come
 |---|---|
 | Capitale iniziale | 1,000.00 $ |
 | Capitale attuale | **997.53 $** (-0.25%) |
-| Se avessi comprato e tenuto tutte le monete | 907.67 $ |
+| Se avessi comprato e tenuto tutte le monete | 907.72 $ |
 | Liquidità | 997.53 $ |
 | Calo massimo dal picco | -0.39% |
 
@@ -39,8 +39,8 @@ Valutati: 5 · superato il cancello: 3 · comprati: 3
 
 | Moneta | Prezzo | 24h | 7g | RSI | Trend | Candidata |
 |---|---|---|---|---|---|---|
-| BTC | 76039.8 | +0.12% | -2.58% | 57 | giù |  |
-| ETH | 2240.79 | -0.27% | -1.38% | 52 | giù |  |
+| BTC | 76073.7 | +0.42% | -2.45% | 59 | giù |  |
+| ETH | 2242.02 | +0.21% | -1.10% | 54 | giù |  |
 | SOL | 89.71 | +0.17% | -5.35% | 53 | giù |  |
 | BNB | 698.69 | +0.68% | -2.26% | 56 | giù |  |
 | XRP | 1.1563 | -0.22% | -7.49% | 39 | giù |  |
