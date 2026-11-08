@@ -16,5 +16,14 @@
   "value": 498.45,
   "pnl": -1.55,
   "reason": "tempo scaduto (5 giorni)"
+ },
+ {
+  "time": "2026-11-08 21:59",
+  "symbol": "BTC",
+  "side": "BUY",
+  "price": 74172.838,
+  "value": 499.23,
+  "pnl": null,
+  "reason": "ribasso -4.0% sotto la media"
  }
 ]
