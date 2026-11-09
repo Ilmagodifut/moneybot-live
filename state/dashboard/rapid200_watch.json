@@ -5,9 +5,9 @@
   "rsi": 0.5
  },
  {
-  "symbol": "SLB",
+  "symbol": "MPC",
   "kind": "azione",
-  "rsi": 0.7
+  "rsi": 1.9
  },
  {
   "symbol": "XLE",
@@ -15,28 +15,28 @@
   "rsi": 2.4
  },
  {
-  "symbol": "MPC",
+  "symbol": "LMT",
   "kind": "azione",
-  "rsi": 2.4
- },
- {
-  "symbol": "VLUE",
-  "kind": "ETF",
   "rsi": 2.4
  },
  {
   "symbol": "CRWD",
   "kind": "azione",
-  "rsi": 2.9
+  "rsi": 2.8
  },
  {
-  "symbol": "EOG",
+  "symbol": "CVX",
   "kind": "azione",
-  "rsi": 3.2
+  "rsi": 3.3
  },
  {
-  "symbol": "XOM",
+  "symbol": "VLUE",
+  "kind": "ETF",
+  "rsi": 5.6
+ },
+ {
+  "symbol": "TXN",
   "kind": "azione",
-  "rsi": 3.4
+  "rsi": 7.7
  }
 ]

@@ -178,5 +178,23 @@
   "value": 95.95,
   "pnl": null,
   "reason": "calo brusco (RSI 2 giorni 3.8)"
+ },
+ {
+  "time": "2026-11-09 15:14",
+  "symbol": "SHOP",
+  "side": "SELL",
+  "price": 149.16538,
+  "value": 93.04,
+  "pnl": -6.63,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-09 15:14",
+  "symbol": "MPC",
+  "side": "BUY",
+  "price": 388.8043,
+  "value": 95.66,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 1.9)"
  }
 ]
