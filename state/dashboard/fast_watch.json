@@ -1,16 +1,16 @@
 [
  {
   "symbol": "ETH",
-  "price": 2146.75,
-  "mean": 2268.105115,
-  "distance": -0.05351,
+  "price": 2140.77,
+  "mean": 2266.838103,
+  "distance": -0.05561,
   "trigger": -0.04
  },
  {
   "symbol": "BTC",
-  "price": 75277.25,
-  "mean": 77126.100664,
-  "distance": -0.02397,
+  "price": 74852.67,
+  "mean": 77103.479512,
+  "distance": -0.02919,
   "trigger": -0.04
  }
 ]
