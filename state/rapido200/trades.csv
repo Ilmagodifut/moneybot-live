@@ -21,3 +21,9 @@ time,symbol,side,price,qty,value,fee,pnl,reason
 2026-11-05 15:03,PANW,BUY,324.79231,0.29511055,95.95,0.0959,0.00,calo brusco (RSI 2 giorni 3.8)
 2026-11-09 15:14,SHOP,SELL,149.16538,0.62438165,93.04,0.0931,-6.63,rimbalzo: sopra la media di 5 giorni
 2026-11-09 15:14,MPC,BUY,388.8043,0.24579355,95.66,0.0957,0.00,calo brusco (RSI 2 giorni 1.9)
+2026-11-10 15:06,EWT,SELL,96.1519,1.0617746,101.99,0.1021,6.02,rimbalzo: sopra la media di 5 giorni
+2026-11-10 15:06,QQQ,SELL,679.48009,0.1429227,97.02,0.0971,-2.58,rimbalzo: sopra la media di 5 giorni
+2026-11-10 15:06,XLK,SELL,170.83454,0.55396235,94.54,0.0946,-5.04,rimbalzo: sopra la media di 5 giorni
+2026-11-10 15:06,CVX,BUY,209.58474,0.45739051,95.96,0.0960,0.00,calo brusco (RSI 2 giorni 2.0)
+2026-11-10 15:06,PM,BUY,195.02747,0.49145745,95.94,0.0959,0.00,calo brusco (RSI 2 giorni 4.9)
+2026-11-10 15:06,XOM,BUY,163.83888,0.58492423,95.93,0.0959,0.00,calo brusco (RSI 2 giorni 9.4)

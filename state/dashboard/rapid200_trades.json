@@ -196,5 +196,59 @@
   "value": 95.66,
   "pnl": null,
   "reason": "calo brusco (RSI 2 giorni 1.9)"
+ },
+ {
+  "time": "2026-11-10 15:06",
+  "symbol": "EWT",
+  "side": "SELL",
+  "price": 96.1519,
+  "value": 101.99,
+  "pnl": 6.02,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-10 15:06",
+  "symbol": "QQQ",
+  "side": "SELL",
+  "price": 679.48009,
+  "value": 97.02,
+  "pnl": -2.58,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-10 15:06",
+  "symbol": "XLK",
+  "side": "SELL",
+  "price": 170.83454,
+  "value": 94.54,
+  "pnl": -5.04,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-10 15:06",
+  "symbol": "CVX",
+  "side": "BUY",
+  "price": 209.58474,
+  "value": 95.96,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 2.0)"
+ },
+ {
+  "time": "2026-11-10 15:06",
+  "symbol": "PM",
+  "side": "BUY",
+  "price": 195.02747,
+  "value": 95.94,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 4.9)"
+ },
+ {
+  "time": "2026-11-10 15:06",
+  "symbol": "XOM",
+  "side": "BUY",
+  "price": 163.83888,
+  "value": 95.93,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 9.4)"
  }
 ]
