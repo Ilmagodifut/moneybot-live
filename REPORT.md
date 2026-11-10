@@ -1,6 +1,6 @@
 # MONEYBOT – report (paper trading, soldi finti)
 
-Aggiornato: 2026-11-10 06:59 UTC · giri eseguiti: 1103 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
+Aggiornato: 2026-11-10 06:59 UTC · giri eseguiti: 1104 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
 
 ## Capitale
 
@@ -8,7 +8,7 @@ Aggiornato: 2026-11-10 06:59 UTC · giri eseguiti: 1103 · modalità: Claude com
 |---|---|
 | Capitale iniziale | 1,000.00 $ |
 | Capitale attuale | **997.53 $** (-0.25%) |
-| Se avessi comprato e tenuto tutte le monete | 898.68 $ |
+| Se avessi comprato e tenuto tutte le monete | 897.60 $ |
 | Liquidità | 997.53 $ |
 | Calo massimo dal picco | -0.39% |
 
@@ -39,15 +39,15 @@ Valutati: 5 · superato il cancello: 3 · comprati: 3
 
 | Moneta | Prezzo | 24h | 7g | RSI | Trend | Candidata |
 |---|---|---|---|---|---|---|
-| BTC | 74815.8 | +0.46% | -2.40% | 48 | giù |  |
-| ETH | 2125.38 | -0.16% | -5.48% | 44 | giù |  |
-| SOL | 86.26 | -0.42% | -5.95% | 44 | giù |  |
-| BNB | 691.12 | +0.90% | -0.62% | 55 | giù |  |
-| XRP | 1.0992 | +0.40% | -12.12% | 47 | giù |  |
-| ADA | 0.1788 | +2.35% | -4.74% | 54 | giù |  |
-| DOGE | 0.07014 | +1.53% | -5.15% | 53 | giù |  |
-| AVAX | 8.606 | +8.48% | +3.59% | 58 | giù |  |
-| LINK | 10.624 | +2.63% | -4.01% | 50 | giù |  |
+| BTC | 74655.1 | +0.47% | -2.51% | 45 | giù |  |
+| ETH | 2117.91 | +0.21% | -5.70% | 40 | giù |  |
+| SOL | 86.12 | +0.08% | -5.91% | 43 | giù |  |
+| BNB | 689.89 | +1.26% | -0.34% | 52 | giù |  |
+| XRP | 1.1016 | +0.93% | -11.82% | 49 | giù |  |
+| ADA | 0.1791 | +3.29% | -4.12% | 56 | giù |  |
+| DOGE | 0.07005 | +1.89% | -4.99% | 52 | giù |  |
+| AVAX | 8.487 | +7.44% | +2.14% | 50 | giù |  |
+| LINK | 10.623 | +2.62% | -4.02% | 50 | giù |  |
 | DOT | 0.86 | -0.12% | -7.63% | 45 | giù |  |
 | LTC | 51.49 | +2.28% | -4.15% | 53 | giù |  |
 | TRX | 0.3185 | +0.50% | -0.66% | 57 | giù |  |
