@@ -1,6 +1,6 @@
 # MONEYBOT – report (paper trading, soldi finti)
 
-Aggiornato: 2026-11-11 04:59 UTC · giri eseguiti: 1193 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
+Aggiornato: 2026-11-11 04:59 UTC · giri eseguiti: 1194 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
 
 ## Capitale
 
@@ -8,7 +8,7 @@ Aggiornato: 2026-11-11 04:59 UTC · giri eseguiti: 1193 · modalità: Claude com
 |---|---|
 | Capitale iniziale | 1,000.00 $ |
 | Capitale attuale | **997.53 $** (-0.25%) |
-| Se avessi comprato e tenuto tutte le monete | 881.40 $ |
+| Se avessi comprato e tenuto tutte le monete | 880.31 $ |
 | Liquidità | 997.53 $ |
 | Calo massimo dal picco | -0.39% |
 
@@ -39,17 +39,17 @@ Valutati: 5 · superato il cancello: 3 · comprati: 3
 
 | Moneta | Prezzo | 24h | 7g | RSI | Trend | Candidata |
 |---|---|---|---|---|---|---|
-| BTC | 73770.2 | -1.06% | -3.56% | 46 | giù |  |
-| ETH | 2062.76 | -2.46% | -8.29% | 45 | giù |  |
-| SOL | 83.35 | -2.87% | -8.49% | 41 | giù |  |
-| BNB | 683.11 | -0.88% | -0.44% | 51 | giù |  |
-| XRP | 1.0585 | -3.19% | -16.01% | 41 | giù |  |
-| ADA | 0.1752 | -1.24% | -5.60% | 48 | giù |  |
-| DOGE | 0.06838 | -1.74% | -6.79% | 46 | giù |  |
-| AVAX | 8.445 | -1.46% | +0.51% | 55 | giù |  |
-| LINK | 10.388 | -1.75% | -3.55% | 48 | giù |  |
-| DOT | 0.846 | -0.47% | -8.34% | 46 | giù |  |
-| LTC | 51.17 | +0.25% | -3.47% | 56 | giù |  |
+| BTC | 73736 | -1.40% | -4.72% | 45 | giù |  |
+| ETH | 2064.37 | -2.73% | -9.45% | 45 | giù |  |
+| SOL | 82.82 | -3.76% | -10.30% | 36 | giù |  |
+| BNB | 681.27 | -1.23% | -1.91% | 47 | giù |  |
+| XRP | 1.0546 | -3.50% | -17.03% | 39 | giù |  |
+| ADA | 0.1749 | -2.02% | -7.07% | 46 | giù |  |
+| DOGE | 0.06818 | -2.35% | -8.18% | 44 | giù |  |
+| AVAX | 8.444 | -1.39% | -0.76% | 55 | giù |  |
+| LINK | 10.368 | -2.28% | -5.32% | 46 | giù |  |
+| DOT | 0.845 | -0.82% | -9.53% | 45 | giù |  |
+| LTC | 51.03 | -0.58% | -4.53% | 53 | giù |  |
 | TRX | 0.3177 | +0.00% | -1.37% | 44 | giù |  |
 | SUI | 0.8277 | -2.17% | -6.60% | 48 | giù |  |
 | NEAR | 3.668 | +1.47% | -4.33% | 56 | giù |  |
