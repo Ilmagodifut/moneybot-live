@@ -1,6 +1,6 @@
 # MONEYBOT – report (paper trading, soldi finti)
 
-Aggiornato: 2026-11-11 03:59 UTC · giri eseguiti: 1192 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
+Aggiornato: 2026-11-11 04:59 UTC · giri eseguiti: 1193 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
 
 ## Capitale
 
@@ -8,7 +8,7 @@ Aggiornato: 2026-11-11 03:59 UTC · giri eseguiti: 1192 · modalità: Claude com
 |---|---|
 | Capitale iniziale | 1,000.00 $ |
 | Capitale attuale | **997.53 $** (-0.25%) |
-| Se avessi comprato e tenuto tutte le monete | 882.31 $ |
+| Se avessi comprato e tenuto tutte le monete | 881.40 $ |
 | Liquidità | 997.53 $ |
 | Calo massimo dal picco | -0.39% |
 
@@ -50,13 +50,13 @@ Valutati: 5 · superato il cancello: 3 · comprati: 3
 | LINK | 10.388 | -1.75% | -3.55% | 48 | giù |  |
 | DOT | 0.846 | -0.47% | -8.34% | 46 | giù |  |
 | LTC | 51.17 | +0.25% | -3.47% | 56 | giù |  |
-| TRX | 0.3176 | -0.09% | -1.21% | 42 | giù |  |
-| SUI | 0.8312 | -1.28% | -4.93% | 52 | giù |  |
-| NEAR | 3.69 | +2.53% | -1.57% | 59 | giù |  |
-| ATOM | 1.401 | +0.65% | +0.57% | 60 | giù |  |
-| UNI | 6.701 | -3.04% | -5.70% | 41 | giù |  |
+| TRX | 0.3177 | +0.00% | -1.37% | 44 | giù |  |
+| SUI | 0.8277 | -2.17% | -6.60% | 48 | giù |  |
+| NEAR | 3.668 | +1.47% | -4.33% | 56 | giù |  |
+| ATOM | 1.402 | +0.94% | -0.64% | 61 | giù |  |
+| UNI | 6.669 | -3.93% | -7.32% | 39 | giù |  |
 | TON | 1.6 | +1.01% | -3.21% | 50 | giù |  |
-| APT | 0.5729 | -2.65% | -5.42% | 50 | giù |  |
+| APT | 0.57 | -3.60% | -7.83% | 47 | giù |  |
 
 ---
 Questo è un esperimento con soldi finti. Nessun risultato passato garantisce risultati futuri.
