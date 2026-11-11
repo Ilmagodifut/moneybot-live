@@ -250,5 +250,41 @@
   "value": 95.93,
   "pnl": null,
   "reason": "calo brusco (RSI 2 giorni 9.4)"
+ },
+ {
+  "time": "2026-11-11 15:07",
+  "symbol": "CSCO",
+  "side": "SELL",
+  "price": 100.80957,
+  "value": 96.5,
+  "pnl": -3.11,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-11 15:07",
+  "symbol": "MPC",
+  "side": "SELL",
+  "price": 393.53314,
+  "value": 96.63,
+  "pnl": 0.97,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-11 15:07",
+  "symbol": "USO",
+  "side": "BUY",
+  "price": 143.15154,
+  "value": 97.02,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 8.3)"
+ },
+ {
+  "time": "2026-11-11 15:07",
+  "symbol": "SHY",
+  "side": "BUY",
+  "price": 81.325642,
+  "value": 97.0,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 8.6)"
  }
 ]

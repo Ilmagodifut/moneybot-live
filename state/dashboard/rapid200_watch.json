@@ -1,42 +1,42 @@
 [
  {
-  "symbol": "CVX",
-  "kind": "azione",
-  "rsi": 2.0
- },
- {
-  "symbol": "PM",
-  "kind": "azione",
-  "rsi": 4.9
- },
- {
-  "symbol": "XOM",
-  "kind": "azione",
-  "rsi": 9.4
- },
- {
   "symbol": "DBC",
   "kind": "ETF",
-  "rsi": 9.8
+  "rsi": 6.4
  },
  {
   "symbol": "USO",
   "kind": "ETF",
-  "rsi": 10.6
+  "rsi": 8.3
  },
  {
-  "symbol": "MO",
+  "symbol": "XOM",
   "kind": "azione",
-  "rsi": 13.3
+  "rsi": 8.3
  },
  {
-  "symbol": "ACN",
-  "kind": "azione",
+  "symbol": "SHY",
+  "kind": "ETF",
+  "rsi": 8.6
+ },
+ {
+  "symbol": "NEAR-USD",
+  "kind": "crypto",
   "rsi": 16.5
  },
  {
-  "symbol": "CB",
+  "symbol": "CVX",
   "kind": "azione",
-  "rsi": 17.4
+  "rsi": 17.9
+ },
+ {
+  "symbol": "NEE",
+  "kind": "azione",
+  "rsi": 22.6
+ },
+ {
+  "symbol": "PM",
+  "kind": "azione",
+  "rsi": 23.1
  }
 ]

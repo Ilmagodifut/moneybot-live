@@ -27,3 +27,7 @@ time,symbol,side,price,qty,value,fee,pnl,reason
 2026-11-10 15:06,CVX,BUY,209.58474,0.45739051,95.96,0.0960,0.00,calo brusco (RSI 2 giorni 2.0)
 2026-11-10 15:06,PM,BUY,195.02747,0.49145745,95.94,0.0959,0.00,calo brusco (RSI 2 giorni 4.9)
 2026-11-10 15:06,XOM,BUY,163.83888,0.58492423,95.93,0.0959,0.00,calo brusco (RSI 2 giorni 9.4)
+2026-11-11 15:07,CSCO,SELL,100.80957,0.95819386,96.50,0.0966,-3.11,rimbalzo: sopra la media di 5 giorni
+2026-11-11 15:07,MPC,SELL,393.53314,0.24579355,96.63,0.0967,0.97,rimbalzo: sopra la media di 5 giorni
+2026-11-11 15:07,USO,BUY,143.15154,0.67705416,97.02,0.0970,0.00,calo brusco (RSI 2 giorni 8.3)
+2026-11-11 15:07,SHY,BUY,81.325642,1.1915899,97.00,0.0970,0.00,calo brusco (RSI 2 giorni 8.6)
