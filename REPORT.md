@@ -1,6 +1,6 @@
 # MONEYBOT – report (paper trading, soldi finti)
 
-Aggiornato: 2026-11-12 11:59 UTC · giri eseguiti: 1314 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
+Aggiornato: 2026-11-12 12:59 UTC · giri eseguiti: 1315 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
 
 ## Capitale
 
@@ -8,7 +8,7 @@ Aggiornato: 2026-11-12 11:59 UTC · giri eseguiti: 1314 · modalità: Claude com
 |---|---|
 | Capitale iniziale | 1,000.00 $ |
 | Capitale attuale | **997.53 $** (-0.25%) |
-| Se avessi comprato e tenuto tutte le monete | 860.54 $ |
+| Se avessi comprato e tenuto tutte le monete | 857.15 $ |
 | Liquidità | 997.53 $ |
 | Calo massimo dal picco | -0.39% |
 
@@ -39,24 +39,24 @@ Valutati: 5 · superato il cancello: 3 · comprati: 3
 
 | Moneta | Prezzo | 24h | 7g | RSI | Trend | Candidata |
 |---|---|---|---|---|---|---|
-| BTC | 72957.4 | -1.40% | -9.25% | 32 | giù |  |
-| ETH | 2022.76 | -1.67% | -16.45% | 31 | giù |  |
-| SOL | 82.49 | -1.75% | -14.54% | 38 | giù |  |
-| BNB | 664.41 | -2.50% | -7.32% | 25 | giù |  |
-| XRP | 1.0386 | -1.90% | -21.23% | 38 | giù |  |
-| ADA | 0.1717 | -2.83% | -13.28% | 35 | giù |  |
-| DOGE | 0.06657 | -2.43% | -13.41% | 34 | giù |  |
-| AVAX | 8.473 | -1.21% | -3.18% | 43 | laterale |  |
-| LINK | 10 | -3.83% | -13.32% | 32 | giù |  |
-| DOT | 0.833 | -2.12% | -12.50% | 37 | giù |  |
-| LTC | 49.15 | -3.68% | -11.87% | 28 | giù |  |
-| TRX | 0.3164 | -0.28% | -0.75% | 39 | giù |  |
-| SUI | 0.8051 | -3.45% | -12.89% | 33 | giù |  |
-| NEAR | 3.449 | -8.93% | -14.05% | 33 | giù |  |
-| ATOM | 1.402 | -1.68% | -8.07% | 52 | giù |  |
-| UNI | 6.105 | -5.66% | -17.84% | 32 | giù |  |
+| BTC | 72909.6 | -1.32% | -8.48% | 31 | giù |  |
+| ETH | 2022.64 | -1.49% | -15.49% | 31 | giù |  |
+| SOL | 82.2 | -2.06% | -13.78% | 35 | giù |  |
+| BNB | 659.78 | -3.15% | -7.18% | 21 | giù |  |
+| XRP | 1.0373 | -1.97% | -20.52% | 37 | giù |  |
+| ADA | 0.1715 | -2.89% | -12.19% | 34 | giù |  |
+| DOGE | 0.06637 | -2.58% | -12.60% | 33 | giù |  |
+| AVAX | 8.412 | -1.45% | -2.90% | 40 | laterale |  |
+| LINK | 9.987 | -3.32% | -12.70% | 32 | giù |  |
+| DOT | 0.83 | -3.15% | -11.23% | 35 | giù |  |
+| LTC | 49.11 | -3.91% | -10.98% | 28 | giù |  |
+| TRX | 0.3162 | -0.38% | -0.72% | 37 | giù |  |
+| SUI | 0.8007 | -3.67% | -12.13% | 30 | giù |  |
+| NEAR | 3.407 | -9.03% | -13.53% | 30 | giù |  |
+| ATOM | 1.392 | -2.73% | -8.24% | 46 | giù |  |
+| UNI | 6.042 | -6.41% | -17.36% | 29 | giù |  |
 | TON | 1.6 | +1.01% | -3.21% | 50 | giù |  |
-| APT | 0.5505 | -4.24% | -13.44% | 29 | giù |  |
+| APT | 0.5464 | -4.89% | -13.34% | 26 | giù |  |
 
 ---
 Questo è un esperimento con soldi finti. Nessun risultato passato garantisce risultati futuri.
