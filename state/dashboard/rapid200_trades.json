@@ -286,5 +286,50 @@
   "value": 97.0,
   "pnl": null,
   "reason": "calo brusco (RSI 2 giorni 8.6)"
+ },
+ {
+  "time": "2026-11-12 15:08",
+  "symbol": "CRM",
+  "side": "SELL",
+  "price": 215.17736,
+  "value": 92.55,
+  "pnl": -7.45,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-12 15:08",
+  "symbol": "CVX",
+  "side": "SELL",
+  "price": 214.76756,
+  "value": 98.13,
+  "pnl": 2.18,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-12 15:08",
+  "symbol": "PANW",
+  "side": "SELL",
+  "price": 317.90097,
+  "value": 93.72,
+  "pnl": -2.22,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-12 15:08",
+  "symbol": "SLB",
+  "side": "SELL",
+  "price": 50.499738,
+  "value": 94.48,
+  "pnl": -1.48,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-12 15:08",
+  "symbol": "XOM",
+  "side": "SELL",
+  "price": 168.1159,
+  "value": 98.24,
+  "pnl": 2.31,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
  }
 ]

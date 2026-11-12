@@ -31,3 +31,8 @@ time,symbol,side,price,qty,value,fee,pnl,reason
 2026-11-11 15:07,MPC,SELL,393.53314,0.24579355,96.63,0.0967,0.97,rimbalzo: sopra la media di 5 giorni
 2026-11-11 15:07,USO,BUY,143.15154,0.67705416,97.02,0.0970,0.00,calo brusco (RSI 2 giorni 8.3)
 2026-11-11 15:07,SHY,BUY,81.325642,1.1915899,97.00,0.0970,0.00,calo brusco (RSI 2 giorni 8.6)
+2026-11-12 15:08,CRM,SELL,215.17736,0.43055528,92.55,0.0926,-7.45,rimbalzo: sopra la media di 5 giorni
+2026-11-12 15:08,CVX,SELL,214.76756,0.45739051,98.13,0.0982,2.18,rimbalzo: sopra la media di 5 giorni
+2026-11-12 15:08,PANW,SELL,317.90097,0.29511055,93.72,0.0938,-2.22,rimbalzo: sopra la media di 5 giorni
+2026-11-12 15:08,SLB,SELL,50.499738,1.8726884,94.48,0.0946,-1.48,rimbalzo: sopra la media di 5 giorni
+2026-11-12 15:08,XOM,SELL,168.1159,0.58492423,98.24,0.0983,2.31,rimbalzo: sopra la media di 5 giorni
