@@ -36,3 +36,8 @@ time,symbol,side,price,qty,value,fee,pnl,reason
 2026-11-12 15:08,PANW,SELL,317.90097,0.29511055,93.72,0.0938,-2.22,rimbalzo: sopra la media di 5 giorni
 2026-11-12 15:08,SLB,SELL,50.499738,1.8726884,94.48,0.0946,-1.48,rimbalzo: sopra la media di 5 giorni
 2026-11-12 15:08,XOM,SELL,168.1159,0.58492423,98.24,0.0983,2.31,rimbalzo: sopra la media di 5 giorni
+2026-11-13 15:09,PM,SELL,198.05093,0.49145745,97.24,0.0973,1.29,rimbalzo: sopra la media di 5 giorni
+2026-11-13 15:09,USO,SELL,146.50671,0.67705416,99.09,0.0992,2.08,rimbalzo: sopra la media di 5 giorni
+2026-11-13 15:09,ABT,BUY,108.82438,0.88753716,96.68,0.0967,0.00,calo brusco (RSI 2 giorni 6.0)
+2026-11-13 15:09,NEE,BUY,84.80238,1.1387794,96.67,0.0967,0.00,calo brusco (RSI 2 giorni 6.3)
+2026-11-13 15:09,BNDX,BUY,47.293635,2.0416432,96.65,0.0967,0.00,calo brusco (RSI 2 giorni 6.4)

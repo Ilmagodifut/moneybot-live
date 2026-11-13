@@ -331,5 +331,50 @@
   "value": 98.24,
   "pnl": 2.31,
   "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-13 15:09",
+  "symbol": "PM",
+  "side": "SELL",
+  "price": 198.05093,
+  "value": 97.24,
+  "pnl": 1.29,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-13 15:09",
+  "symbol": "USO",
+  "side": "SELL",
+  "price": 146.50671,
+  "value": 99.09,
+  "pnl": 2.08,
+  "reason": "rimbalzo: sopra la media di 5 giorni"
+ },
+ {
+  "time": "2026-11-13 15:09",
+  "symbol": "ABT",
+  "side": "BUY",
+  "price": 108.82438,
+  "value": 96.68,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 6.0)"
+ },
+ {
+  "time": "2026-11-13 15:09",
+  "symbol": "NEE",
+  "side": "BUY",
+  "price": 84.80238,
+  "value": 96.67,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 6.3)"
+ },
+ {
+  "time": "2026-11-13 15:09",
+  "symbol": "BNDX",
+  "side": "BUY",
+  "price": 47.293635,
+  "value": 96.65,
+  "pnl": null,
+  "reason": "calo brusco (RSI 2 giorni 6.4)"
  }
 ]
