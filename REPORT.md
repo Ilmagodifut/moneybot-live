@@ -1,6 +1,6 @@
 # MONEYBOT – report (paper trading, soldi finti)
 
-Aggiornato: 2026-11-13 13:59 UTC · giri eseguiti: 1418 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
+Aggiornato: 2026-11-13 13:59 UTC · giri eseguiti: 1419 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
 
 ## Capitale
 
