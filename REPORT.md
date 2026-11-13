@@ -1,6 +1,6 @@
 # MONEYBOT – report (paper trading, soldi finti)
 
-Aggiornato: 2026-11-13 21:59 UTC · giri eseguiti: 1453 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
+Aggiornato: 2026-11-13 22:59 UTC · giri eseguiti: 1454 · modalità: Claude come giudice (`claude-sonnet-5-5`) · stato: **attivo**
 
 ## Capitale
 
@@ -8,7 +8,7 @@ Aggiornato: 2026-11-13 21:59 UTC · giri eseguiti: 1453 · modalità: Claude com
 |---|---|
 | Capitale iniziale | 1,000.00 $ |
 | Capitale attuale | **997.53 $** (-0.25%) |
-| Se avessi comprato e tenuto tutte le monete | 840.06 $ |
+| Se avessi comprato e tenuto tutte le monete | 835.81 $ |
 | Liquidità | 997.53 $ |
 | Calo massimo dal picco | -0.39% |
 
@@ -46,17 +46,17 @@ Valutati: 5 · superato il cancello: 3 · comprati: 3
 | XRP | 1.0146 | -2.04% | -14.00% | 41 | giù |  |
 | ADA | 0.1685 | -2.77% | -9.60% | 38 | giù |  |
 | DOGE | 0.06463 | -2.45% | -11.25% | 41 | giù |  |
-| AVAX | 8.304 | -0.23% | -1.24% | 46 | giù |  |
-| LINK | 9.874 | -2.12% | -9.72% | 43 | giù |  |
-| DOT | 0.82 | -1.20% | -10.87% | 43 | giù |  |
-| LTC | 49.41 | -1.36% | -6.70% | 49 | giù |  |
-| TRX | 0.3128 | -0.89% | -1.85% | 42 | giù |  |
-| SUI | 0.7984 | -0.65% | -8.60% | 46 | giù |  |
-| NEAR | 3.489 | +2.59% | -6.69% | 49 | giù |  |
-| ATOM | 1.379 | -3.23% | -1.64% | 40 | giù |  |
-| UNI | 5.746 | -4.42% | -17.16% | 40 | giù |  |
+| AVAX | 8.191 | -1.80% | -1.92% | 40 | giù |  |
+| LINK | 9.773 | -2.97% | -10.08% | 38 | giù |  |
+| DOT | 0.813 | -2.28% | -11.34% | 38 | giù |  |
+| LTC | 49.11 | -2.07% | -6.78% | 45 | giù |  |
+| TRX | 0.3124 | -1.01% | -1.95% | 39 | giù |  |
+| SUI | 0.791 | -1.49% | -8.95% | 42 | giù |  |
+| NEAR | 3.415 | +0.29% | -7.75% | 41 | giù |  |
+| ATOM | 1.366 | -4.74% | -1.94% | 35 | giù |  |
+| UNI | 5.719 | -5.11% | -17.10% | 38 | giù |  |
 | TON | 1.6 | +1.01% | -3.21% | 50 | giù |  |
-| APT | 0.5359 | -3.16% | -12.56% | 41 | giù |  |
+| APT | 0.5319 | -4.08% | -12.50% | 38 | giù |  |
 
 ---
 Questo è un esperimento con soldi finti. Nessun risultato passato garantisce risultati futuri.
