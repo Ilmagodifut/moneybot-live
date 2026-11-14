@@ -1,0 +1,128 @@
+[
+ {
+  "symbol": "APT",
+  "price": 0.6704,
+  "mean": 0.717314,
+  "distance": -0.0654,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "DOT",
+  "price": 0.985,
+  "mean": 1.043426,
+  "distance": -0.05599,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "NEAR",
+  "price": 4.425,
+  "mean": 4.658659,
+  "distance": -0.05016,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "ATOM",
+  "price": 1.595,
+  "mean": 1.660043,
+  "distance": -0.03918,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "ADA",
+  "price": 0.2024,
+  "mean": 0.208888,
+  "distance": -0.03106,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "AVAX",
+  "price": 8.841,
+  "mean": 9.071482,
+  "distance": -0.02541,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "XRP",
+  "price": 1.2865,
+  "mean": 1.311387,
+  "distance": -0.01898,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "SUI",
+  "price": 0.9316,
+  "mean": 0.947348,
+  "distance": -0.01662,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "SOL",
+  "price": 100.63,
+  "mean": 102.307764,
+  "distance": -0.0164,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "ETH",
+  "price": 2331.47,
+  "mean": 2362.150204,
+  "distance": -0.01299,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "LTC",
+  "price": 57.77,
+  "mean": 58.001125,
+  "distance": -0.00398,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "LINK",
+  "price": 11.685,
+  "mean": 11.730112,
+  "distance": -0.00385,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "BTC",
+  "price": 80864.01,
+  "mean": 80979.073456,
+  "distance": -0.00142,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "BNB",
+  "price": 744.48,
+  "mean": 742.928062,
+  "distance": 0.00209,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "TRX",
+  "price": 0.3315,
+  "mean": 0.330628,
+  "distance": 0.00264,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "TON",
+  "price": 1.6,
+  "mean": 1.594703,
+  "distance": 0.00332,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "DOGE",
+  "price": 0.07933,
+  "mean": 0.078953,
+  "distance": 0.00477,
+  "trigger": -0.08
+ },
+ {
+  "symbol": "UNI",
+  "price": 7.19,
+  "mean": 7.114765,
+  "distance": 0.01057,
+  "trigger": -0.08
+ }
+]

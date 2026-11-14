@@ -1,0 +1,42 @@
+[
+ {
+  "symbol": "SHY",
+  "kind": "ETF",
+  "rsi": 2.8
+ },
+ {
+  "symbol": "NEAR-USD",
+  "kind": "crypto",
+  "rsi": 5.1
+ },
+ {
+  "symbol": "ABT",
+  "kind": "azione",
+  "rsi": 6.0
+ },
+ {
+  "symbol": "NEE",
+  "kind": "azione",
+  "rsi": 6.3
+ },
+ {
+  "symbol": "BNDX",
+  "kind": "ETF",
+  "rsi": 6.4
+ },
+ {
+  "symbol": "ISRG",
+  "kind": "azione",
+  "rsi": 10.7
+ },
+ {
+  "symbol": "PFE",
+  "kind": "azione",
+  "rsi": 11.9
+ },
+ {
+  "symbol": "ACN",
+  "kind": "azione",
+  "rsi": 14.8
+ }
+]

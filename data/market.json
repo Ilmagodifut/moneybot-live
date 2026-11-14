@@ -1,0 +1,200 @@
+[
+ {
+  "symbol": "BTC",
+  "price": 64768.39,
+  "change_24h": -0.06016,
+  "change_7d": -0.14439,
+  "rsi": 24.9,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 81178.32
+ },
+ {
+  "symbol": "ETH",
+  "price": 1783.8,
+  "change_24h": -0.08453,
+  "change_7d": -0.19975,
+  "rsi": 22.5,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 2344.73
+ },
+ {
+  "symbol": "SOL",
+  "price": 70.53,
+  "change_24h": -0.11849,
+  "change_7d": -0.20806,
+  "rsi": 19.1,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 101.79
+ },
+ {
+  "symbol": "BNB",
+  "price": 582.31,
+  "change_24h": -0.08735,
+  "change_7d": -0.16267,
+  "rsi": 21.3,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 748.17
+ },
+ {
+  "symbol": "XRP",
+  "price": 0.9274,
+  "change_24h": -0.09363,
+  "change_7d": -0.19796,
+  "rsi": 18.9,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 1.3028
+ },
+ {
+  "symbol": "ADA",
+  "price": 0.1483,
+  "change_24h": -0.13173,
+  "change_7d": -0.17839,
+  "rsi": 15.7,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 0.2038
+ },
+ {
+  "symbol": "DOGE",
+  "price": 0.05778,
+  "change_24h": -0.11665,
+  "change_7d": -0.19053,
+  "rsi": 18.1,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 0.07988
+ },
+ {
+  "symbol": "AVAX",
+  "price": 7.16,
+  "change_24h": -0.1465,
+  "change_7d": -0.12309,
+  "rsi": 14.4,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 8.898
+ },
+ {
+  "symbol": "LINK",
+  "price": 8.829,
+  "change_24h": -0.11444,
+  "change_7d": -0.17916,
+  "rsi": 20.1,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 11.797
+ },
+ {
+  "symbol": "DOT",
+  "price": 0.708,
+  "change_24h": -0.14078,
+  "change_7d": -0.2036,
+  "rsi": 15.0,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 1.004
+ },
+ {
+  "symbol": "LTC",
+  "price": 44.46,
+  "change_24h": -0.10633,
+  "change_7d": -0.1422,
+  "rsi": 20.8,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 57.86
+ },
+ {
+  "symbol": "TRX",
+  "price": 0.308,
+  "change_24h": -0.0166,
+  "change_7d": -0.0381,
+  "rsi": 28.3,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 0.3313
+ },
+ {
+  "symbol": "SUI",
+  "price": 0.6994,
+  "change_24h": -0.1314,
+  "change_7d": -0.18132,
+  "rsi": 18.6,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 0.942
+ },
+ {
+  "symbol": "NEAR",
+  "price": 2.963,
+  "change_24h": -0.16157,
+  "change_7d": -0.18599,
+  "rsi": 17.2,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 4.523
+ },
+ {
+  "symbol": "ATOM",
+  "price": 1.246,
+  "change_24h": -0.09841,
+  "change_7d": -0.08651,
+  "rsi": 20.2,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 1.62
+ },
+ {
+  "symbol": "UNI",
+  "price": 4.782,
+  "change_24h": -0.17877,
+  "change_7d": -0.32467,
+  "rsi": 18.0,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 7.278
+ },
+ {
+  "symbol": "TON",
+  "price": 1.6,
+  "change_24h": 0.0101,
+  "change_7d": -0.03206,
+  "rsi": 50.1,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 1.6
+ },
+ {
+  "symbol": "APT",
+  "price": 0.4446,
+  "change_24h": -0.1797,
+  "change_7d": -0.2524,
+  "rsi": 12.9,
+  "trend": "down",
+  "candidate": false,
+  "held": false,
+  "bench_start": 0.687
+ }
+]
