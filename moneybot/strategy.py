@@ -79,7 +79,7 @@ def rules_only_gate(s: Snapshot) -> bool:
 
 
 def trend_broken(s: Snapshot) -> bool:
-    return s.trend_fast < s.trend_mid
+    return s.trend_fast < s.trend_mid * (1 - config.TREND_EXIT_GAP)
 
 
 def trend_label(s: Snapshot) -> str:
