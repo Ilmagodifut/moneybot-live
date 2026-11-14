@@ -1,0 +1,56 @@
+[
+ {
+  "time": "2026-10-29 14:59",
+  "symbol": "TRX",
+  "side": "BUY",
+  "price": 0.33146565,
+  "value": 100.0,
+  "pnl": null,
+  "reason": "regole"
+ },
+ {
+  "time": "2026-10-29 14:59",
+  "symbol": "UNI",
+  "side": "BUY",
+  "price": 7.281639,
+  "value": 100.0,
+  "pnl": null,
+  "reason": "regole"
+ },
+ {
+  "time": "2026-10-29 15:59",
+  "symbol": "BNB",
+  "side": "BUY",
+  "price": 750.49506,
+  "value": 100.14,
+  "pnl": null,
+  "reason": "regole"
+ },
+ {
+  "time": "2026-10-29 16:59",
+  "symbol": "TRX",
+  "side": "SELL",
+  "price": 0.3312343,
+  "value": 99.73,
+  "pnl": -0.27,
+  "reason": "trend rotto (media 80h sotto 200h)"
+ },
+ {
+  "time": "2026-10-29 16:59",
+  "symbol": "UNI",
+  "side": "SELL",
+  "price": 7.372312,
+  "value": 101.04,
+  "pnl": 1.04,
+  "reason": "trend rotto (media 80h sotto 200h)"
+ },
+ {
+  "time": "2026-10-29 20:59",
+  "symbol": "BNB",
+  "side": "SELL",
+  "price": 727.61622,
+  "value": 96.89,
+  "pnl": -3.25,
+  "reason": "stop"
+ }
+]

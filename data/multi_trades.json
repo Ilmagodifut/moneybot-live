@@ -1,0 +1,92 @@
+[
+ {
+  "time": "2026-10-29 21:01",
+  "symbol": "MU",
+  "side": "BUY",
+  "price": 934.73715,
+  "value": 100.0,
+  "pnl": null,
+  "reason": "tra i 10 pi\u00f9 forti dell'ultimo anno"
+ },
+ {
+  "time": "2026-10-29 21:01",
+  "symbol": "USO",
+  "side": "BUY",
+  "price": 168.2741,
+  "value": 100.0,
+  "pnl": null,
+  "reason": "tra i 10 pi\u00f9 forti dell'ultimo anno"
+ },
+ {
+  "time": "2026-10-29 21:01",
+  "symbol": "MPC",
+  "side": "BUY",
+  "price": 432.72626,
+  "value": 100.0,
+  "pnl": null,
+  "reason": "tra i 10 pi\u00f9 forti dell'ultimo anno"
+ },
+ {
+  "time": "2026-10-29 21:01",
+  "symbol": "AMD",
+  "side": "BUY",
+  "price": 566.70319,
+  "value": 100.0,
+  "pnl": null,
+  "reason": "tra i 10 pi\u00f9 forti dell'ultimo anno"
+ },
+ {
+  "time": "2026-10-29 21:01",
+  "symbol": "TXN",
+  "side": "BUY",
+  "price": 313.09647,
+  "value": 100.0,
+  "pnl": null,
+  "reason": "tra i 10 pi\u00f9 forti dell'ultimo anno"
+ },
+ {
+  "time": "2026-10-29 21:01",
+  "symbol": "CRWD",
+  "side": "BUY",
+  "price": 261.28057,
+  "value": 100.0,
+  "pnl": null,
+  "reason": "tra i 10 pi\u00f9 forti dell'ultimo anno"
+ },
+ {
+  "time": "2026-10-29 21:01",
+  "symbol": "NEAR-USD",
+  "side": "BUY",
+  "price": 4.175687,
+  "value": 100.0,
+  "pnl": null,
+  "reason": "tra i 10 pi\u00f9 forti dell'ultimo anno"
+ },
+ {
+  "time": "2026-10-29 21:01",
+  "symbol": "ADI",
+  "side": "BUY",
+  "price": 433.49664,
+  "value": 100.0,
+  "pnl": null,
+  "reason": "tra i 10 pi\u00f9 forti dell'ultimo anno"
+ },
+ {
+  "time": "2026-10-29 21:01",
+  "symbol": "EWY",
+  "side": "BUY",
+  "price": 161.91092,
+  "value": 100.0,
+  "pnl": null,
+  "reason": "tra i 10 pi\u00f9 forti dell'ultimo anno"
+ },
+ {
+  "time": "2026-10-29 21:01",
+  "symbol": "MRK",
+  "side": "BUY",
+  "price": 146.40317,
+  "value": 100.0,
+  "pnl": null,
+  "reason": "tra i 10 pi\u00f9 forti dell'ultimo anno"
+ }
+]
